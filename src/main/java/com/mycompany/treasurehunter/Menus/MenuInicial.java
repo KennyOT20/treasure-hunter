@@ -5,6 +5,7 @@
 package com.mycompany.treasurehunter.Menus;
 
 import com.mycompany.treasurehunter.Jugador.Jugador;
+import com.mycompany.treasurehunter.Mapa.Mapa;
 
 /**
  *
@@ -40,11 +41,14 @@ public class MenuInicial extends MenuBase {
     public void ejecutarOpcion(int opcionMenu) {
         
         Jugador jugador = new Jugador();
+        Mapa mapa = new Mapa();
         
             switch(opcionMenu){
                 case 1 -> {
                     limpiarPantalla();
                     jugador.obtenerNombre();
+                    limpiarPantalla();
+                    mapa.generarMapaPorDefecto();    
                 }
                 case 2 -> {
                 }
