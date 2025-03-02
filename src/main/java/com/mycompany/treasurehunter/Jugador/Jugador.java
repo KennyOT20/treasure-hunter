@@ -49,7 +49,6 @@ public class Jugador {
     
     //metodo encargado de obtener un simbolo del ujugador para representarlo en el mapa
     private void obtenerSimboloJugador(){
-        
         char [] nombre = nombreJugador.toCharArray();
         simboloJugador = Character.toUpperCase(nombre[0]);      
     }
@@ -61,40 +60,36 @@ public class Jugador {
     }
     
     public void aplicarCura(){
-        
+      
         if(puntosDeMana > 0){
-            calcularMana();
+            puntosDeMana --;
             puntosDeVida += calcularCura();
         } else{
-            System.out.println("Puntos de mana insuficiente, intente de nuevo");
+            System.out.println("Puntos de Mp insuficientes");
         }
     }
     
-    //metodo encargado de evaluar la cantidad de  puntos de mana y que no sea menor de 0
-    private void calcularMana(){
-        
-        puntosDeMana --;
-        
-            if(puntosDeMana <= 0){
-                puntosDeMana = 0;
-            }
-    }
+   
     
     //Metodo encargado de calcular la defensa del jugador (reducir el ataque del enemigo)
     private int calcularDefensa(){
         
-        int defensa = 15;
+        int defensa = numerosAleatorios (0,5);
         return defensa;
     }
     
     public void aplicarDefensa(){
         
+        if(puntosDeMana > 0){
+            puntosDeMana --;
+        } else{
+            System.out.println("Puntos de Mp insuficientes");
+        }
+       
     }
     
     private int calcularAtaque(){
-        
         int ataque = numerosAleatorios(18, 32);
-        
         return ataque;
     }
     
@@ -105,7 +100,90 @@ public class Jugador {
     //Metodo encargado de obtener numeros aleatorios para calcular la defensa,cura o ataque del jugador
     private int numerosAleatorios(int minimo, int maximo){
         Random random = new Random();
-        return random.nextInt((maximo - minimo) + 1) + minimo ;
+        return random.nextInt(minimo, maximo) ;
     }
+
+    //Getters y Setters mnecesarios para el jugador
+
+    public String getNombreJugador() {
+        return nombreJugador;
+    }
+
+    public void setNombreJugador(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
+    }
+
+    public int getPuntosDeMana() {
+        return puntosDeMana;
+    }
+
+    public void setPuntosDeMana(int puntosDeMana) {
+        this.puntosDeMana = puntosDeMana;
+    }
+
+    public int getPuntosDeVida() {
+        return puntosDeVida;
+    }
+
+    public void setPuntosDeVida(int puntosDeVida) {
+        this.puntosDeVida = puntosDeVida;
+    }
+
+    public int getPuntosDeDefensa() {
+        return puntosDeDefensa;
+    }
+
+    public void setPuntosDeDefensa(int puntosDeDefensa) {
+        this.puntosDeDefensa = puntosDeDefensa;
+    }
+
+    public int getVidaMax() {
+        return vidaMax;
+    }
+
+    public void setVidaMax(int vidaMax) {
+        this.vidaMax = vidaMax;
+    }
+
+    public int getManaMax() {
+        return manaMax;
+    }
+
+    public void setManaMax(int manaMax) {
+        this.manaMax = manaMax;
+    }
+
+    public int getDefensaMax() {
+        return defensaMax;
+    }
+
+    public void setDefensaMax(int defensaMax) {
+        this.defensaMax = defensaMax;
+    }
+
+    public int getPosicionX() {
+        return posicionX;
+    }
+
+    public void setPosicionX(int posicionX) {
+        this.posicionX = posicionX;
+    }
+
+    public int getPosicionY() {
+        return posicionY;
+    }
+
+    public void setPosicionY(int posicionY) {
+        this.posicionY = posicionY;
+    }
+
+    public char getSimboloJugador() {
+        return simboloJugador;
+    }
+
+    public void setSimboloJugador(char simboloJugador) {
+        this.simboloJugador = simboloJugador;
+    }
+    
     
 }

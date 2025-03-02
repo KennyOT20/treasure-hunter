@@ -41,7 +41,7 @@ public class MenuInicial extends MenuBase {
     public void ejecutarOpcion(int opcionMenu) {
         
         Jugador jugador = new Jugador();
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(jugador);
         
             switch(opcionMenu){
                 case 1 -> {

@@ -4,10 +4,21 @@
  */
 package com.mycompany.treasurehunter.Casillas;
 
+import com.mycompany.treasurehunter.Jugador.Jugador;
+
 /**
  *
  * @author kenny
  */
-public class CasillaTesoro {
+public class CasillaTesoro extends Casilla {
+
+    public CasillaTesoro(Jugador jugador, String nombre, String colorCasilla, int posicionX, int posicionY) {
+        super(jugador, nombre, colorCasilla, posicionX, posicionY);
+    }
+
+    @Override
+    public void efectoDeCasilla() {
+        
+    }
     
 }

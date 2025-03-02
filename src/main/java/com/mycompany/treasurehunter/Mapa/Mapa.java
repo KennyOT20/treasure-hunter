@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Mapa;
 
+import com.mycompany.treasurehunter.Jugador.Jugador;
 import java.util.Scanner;
 
 /**
@@ -12,16 +13,22 @@ import java.util.Scanner;
  */
 public class Mapa {
     
+    private Jugador jugador;
     private static Scanner scanner = new Scanner(System.in); 
     private int cantidadFilas;
     private int cantidadColumnas;
     private String [][] mapa;
+
+    public Mapa(Jugador jugador) {
+        this.jugador = jugador;
+    }
     
     //Metodo encargado de generar un mapa por defecto
     public void generarMapaPorDefecto(){
         cantidadFilas = 27;
         cantidadColumnas = 27;
         mapa = new String[cantidadFilas][cantidadColumnas];
+        inicializarMapa();
         generarMapa();
         
     }
@@ -30,42 +37,99 @@ public class Mapa {
     public void configurarMapa(){
         
     }
-    
-    
+   
     //Metodo encargado de generar el indice de letrar horizonal(a,b,c,d,e,f,g....x,y,z)
     private void generarIndiceHorizontal(){
         
-        System.out.println("    ");
+        System.out.print("    ");
         for (int j = 0; j < mapa[0].length; j++) {
             System.out.print((char) ('A' + j) + "  ");
         }
         System.out.println();
     }
     
-    //Metodo encargado de comprobrar los espacios para que el mapa se imprima de manera correcta sin importar el tamaño
-    private void comprobarEspacios(){
-        
-    }
-    
     //Metodo encargado de imprimir el mapa con los indices ya bien definido
     private void imprimirMapa(){
         
-        for (int i = 0; i < mapa.length; i++) {
-            System.out.print((i + 1) + " ");
-            for (int j = 0; j < mapa[i].length; j++) {
-                System.out.print("[ ]");
+        for (int i = 0; i < cantidadFilas; i++) {
+            System.out.printf("%2d ", (i + 1));
+            for (int j = 0; j < cantidadColumnas; j++) {
+                System.out.print("[" + mapa[i][j] +  "]");
             }
             System.out.println();
         }
     }
     
+    //metodo encargado de iniciar el mapa con espacios vacios
+    private void inicializarMapa(){
+        
+        for (int i = 0; i < cantidadFilas; i++) {
+            for (int j = 0; j <cantidadColumnas; j++) {
+                mapa[i][j] = " ";
+            }
+        }
+    }
+    
+    //Metodo encargado de colocar el simbolo del jugador en el mapa
+    private void colocarJugadorEnMapa(){
+       
+        jugador.setPosicionX(15);
+        jugador.setPosicionY(8);
+        
+        int posicionX = jugador.getPosicionX();
+        int posicionY = jugador.getPosicionY();
+        
+        mapa[posicionX][posicionY] = String.valueOf(jugador.getSimboloJugador());
+    }
+    
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
     public void generarMapa(){
-
+        
         generarIndiceHorizontal();
-        comprobarEspacios();
+        colocarJugadorEnMapa();
         imprimirMapa();
         
     }
     
+    //Metodo encargado de realizar el moviento de los jugadores
+    private void moverJugador(){
+        
+        String movimiento;
+        movimiento = scanner.nextLine();
+        
+        switch(movimiento.toUpperCase()){
+            case "W" -> {
+                
+            }
+            case "A" -> {
+            }
+            case "D" -> {
+            }
+            case "S" -> {
+            }
+            default -> {
+            }
+        }
+        
+    }
+    
+    //Metodo encargado de realizar los movimientos hacia arriba del mapa
+    private void movimientoW(){
+        
+    }
+    
+    //Metodo encargado de realizar los movimientos hacia la izquierda
+    private void movimientoA(){
+        
+    }
+    
+    //Metodo encargado de realizar los movimientos hacia la abajo
+    private void movimientoS(){
+        
+    }
+    
+    //Metodo encargado de realizar los miviemntos hacia la Derecha
+    private void movimientoD(){
+        
+    }
 }
