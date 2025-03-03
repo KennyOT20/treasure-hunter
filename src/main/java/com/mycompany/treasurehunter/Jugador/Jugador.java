@@ -88,6 +88,10 @@ public class Jugador {
        
     }
     
+    /**
+     * Metodo encargado de calcular el ataque que llega a tener el jugador
+     * @return Un numero aleatorio entre 18 y 32 
+     */
     private int calcularAtaque(){
         int ataque = numerosAleatorios(18, 32);
         return ataque;
@@ -97,7 +101,12 @@ public class Jugador {
         
     }
     
-    //Metodo encargado de obtener numeros aleatorios para calcular la defensa,cura o ataque del jugador
+    /**
+     * Se encarga de retornar dos numeros aleatorios entre un intervalo de numeros
+     * @param minimo Recibe un numero entre un intervalo minimo
+     * @param maximo Recibe un numero entre un intervalo maximo
+     * @return retorna un numero aleatorio entre los numeros obtenidos de <code> maximo <code> y  <code> minimo <code> 
+     */
     private int numerosAleatorios(int minimo, int maximo){
         Random random = new Random();
         return random.nextInt(minimo, maximo) ;

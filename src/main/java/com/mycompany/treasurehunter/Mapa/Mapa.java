@@ -23,7 +23,7 @@ public class Mapa {
         this.jugador = jugador;
     }
     
-    //Metodo encargado de generar un mapa por defecto
+    //Metodo encargado de generar un mapa por defecto de 27 *27 
     public void generarMapaPorDefecto(){
         cantidadFilas = 27;
         cantidadColumnas = 27;
@@ -52,7 +52,7 @@ public class Mapa {
     private void imprimirMapa(){
         
         for (int i = 0; i < cantidadFilas; i++) {
-            System.out.printf("%2d ", (i + 1));
+            System.out.printf("%2d ", (i + 1)); //.printf para darle 2 espacios definidos al indce
             for (int j = 0; j < cantidadColumnas; j++) {
                 System.out.print("[" + mapa[i][j] +  "]");
             }
@@ -79,7 +79,7 @@ public class Mapa {
         int posicionX = jugador.getPosicionX();
         int posicionY = jugador.getPosicionY();
         
-        mapa[posicionX][posicionY] = String.valueOf(jugador.getSimboloJugador());
+        mapa[posicionX][posicionY] = String.valueOf(jugador.getSimboloJugador());//Value of para capturar el simbolo char del jugador
     }
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
@@ -91,45 +91,59 @@ public class Mapa {
         
     }
     
-    //Metodo encargado de realizar el moviento de los jugadores
-    private void moverJugador(){
+    //Metodo ebncargado de realizar los movimientos 
+    public void realizarMovimiento(){
         
         String movimiento;
-        movimiento = scanner.nextLine();
         
-        switch(movimiento.toUpperCase()){
-            case "W" -> {
-                
-            }
-            case "A" -> {
-            }
-            case "D" -> {
-            }
-            case "S" -> {
-            }
-            default -> {
-            }
-        }
+            System.out.print("|a: Izquierda|, ");
+            System.out.print("|w: arriba|, ");
+            System.out.print("|s: Abajo|, ");
+            System.out.print("|d: derecha");
+            System.out.println("");
+            System.out.print("Elija una opcion: ");
+            movimiento = scanner.nextLine();
+        
+            switch(movimiento.toUpperCase()){
+                case "W":
+                    movimientoW();
+                    break;
+                case "A":
+                    movimientoA();
+                    break;
+                case "S":
+                    movimientoS();
+                    break;
+                case "D":
+                    movimientoD();
+                    break;
+                default:
+                    System.out.println("Opcion no valida, intente de nuevo");
+                    realizarMovimiento();
+                    break;
+                    
+                    
+            };
         
     }
     
     //Metodo encargado de realizar los movimientos hacia arriba del mapa
-    private void movimientoW(){
+    public void movimientoW(){
         
     }
     
     //Metodo encargado de realizar los movimientos hacia la izquierda
-    private void movimientoA(){
+    public void movimientoA(){
         
     }
     
     //Metodo encargado de realizar los movimientos hacia la abajo
-    private void movimientoS(){
+    public void movimientoS(){
         
     }
     
     //Metodo encargado de realizar los miviemntos hacia la Derecha
-    private void movimientoD(){
+    public void movimientoD(){
         
     }
 }

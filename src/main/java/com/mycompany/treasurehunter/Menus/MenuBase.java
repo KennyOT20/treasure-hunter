@@ -17,6 +17,14 @@ public abstract class MenuBase {
         
     }
     
+    
+    /**
+     * Metodo encargado de validar las opciones del jugador.
+     * El jugador solo puede ingresar opciones numericas enteras.
+     * Si el jugador ingresa un simbolo o letra se muestra un mnsaje de error
+     * @throws  InputMismatchException e se encarga de validar que solo sean numeros enteros ingresados
+     * por el usuario
+     */
     protected void validarOpcion(){
         
         Scanner scanner = new Scanner(System.in);

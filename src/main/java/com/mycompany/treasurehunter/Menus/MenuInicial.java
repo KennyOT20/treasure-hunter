@@ -48,7 +48,9 @@ public class MenuInicial extends MenuBase {
                     limpiarPantalla();
                     jugador.obtenerNombre();
                     limpiarPantalla();
-                    mapa.generarMapaPorDefecto();    
+                    mapa.generarMapaPorDefecto(); 
+                    System.out.println("");
+                    mapa.realizarMovimiento();
                 }
                 case 2 -> {
                 }
