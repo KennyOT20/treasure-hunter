@@ -27,6 +27,8 @@ public class Mapa {
     public void generarMapaPorDefecto(){
         cantidadFilas = 27;
         cantidadColumnas = 27;
+        jugador.setPosicionX(4);
+        jugador.setPosicionY(3);
         mapa = new String[cantidadFilas][cantidadColumnas];
         inicializarMapa();
         generarMapa();
@@ -73,13 +75,7 @@ public class Mapa {
     //Metodo encargado de colocar el simbolo del jugador en el mapa
     private void colocarJugadorEnMapa(){
        
-        jugador.setPosicionX(15);
-        jugador.setPosicionY(8);
-        
-        int posicionX = jugador.getPosicionX();
-        int posicionY = jugador.getPosicionY();
-        
-        mapa[posicionX][posicionY] = String.valueOf(jugador.getSimboloJugador());//Value of para capturar el simbolo char del jugador
+        mapa[jugador.getPosicionX()][jugador.getPosicionY()] = String.valueOf(jugador.getSimboloJugador());
     }
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
@@ -128,22 +124,40 @@ public class Mapa {
     }
     
     //Metodo encargado de realizar los movimientos hacia arriba del mapa
-    public void movimientoW(){
+    private void movimientoW(){
         
+        jugador.setPosicionY(jugador.getPosicionY() + 1);
+        
+            if(jugador.getPosicionY() > mapa[cantidadFilas].length){
+                System.out.println("Has llegado al limite del mapa");
+            }
     }
     
     //Metodo encargado de realizar los movimientos hacia la izquierda
-    public void movimientoA(){
+    private void movimientoA(){
         
+        jugador.setPosicionX(jugador.getPosicionX() - 1);
+            
+            if(jugador.getPosicionX() < mapa[0].length){
+                System.out.println("Has llegado al limite del mapa");
+            }
     }
     
     //Metodo encargado de realizar los movimientos hacia la abajo
-    public void movimientoS(){
-        
+    private void movimientoS(){
+        jugador.setPosicionY(jugador.getPosicionY() - 1);
+            if(jugador.getPosicionY() < mapa.length){
+               System.out.println("Has llegado al limite del mapa"); 
+            }
     }
     
     //Metodo encargado de realizar los miviemntos hacia la Derecha
-    public void movimientoD(){
-        
+    private void movimientoD(){
+        jugador.setPosicionX(jugador.getPosicionX() + 1);
+            if(jugador.getPosicionX() > mapa.length){
+                System.out.println("Has llegado al limite del mapa");
+            }
     }
+    
+   
 }
