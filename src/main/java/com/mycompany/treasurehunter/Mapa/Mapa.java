@@ -4,7 +4,7 @@
  */
 package com.mycompany.treasurehunter.Mapa;
 
-import com.mycompany.treasurehunter.Jugador.Jugador;
+import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.util.Scanner;
 
 /**
@@ -32,11 +32,6 @@ public class Mapa {
         mapa = new String[cantidadFilas][cantidadColumnas];
         inicializarMapa();
         generarMapa();
-        
-    }
-    
-    //metodo encargado de hacer que el usuario pueda configurar los mapas.
-    public void configurarMapa(){
         
     }
    
@@ -85,78 +80,6 @@ public class Mapa {
         colocarJugadorEnMapa();
         imprimirMapa();
         
-    }
-    
-    //Metodo ebncargado de realizar los movimientos 
-    public void realizarMovimiento(){
-        
-        String movimiento;
-        
-            System.out.print("|a: Izquierda|, ");
-            System.out.print("|w: arriba|, ");
-            System.out.print("|s: Abajo|, ");
-            System.out.print("|d: derecha");
-            System.out.println("");
-            System.out.print("Elija una opcion: ");
-            movimiento = scanner.nextLine();
-        
-            switch(movimiento.toUpperCase()){
-                case "W":
-                    movimientoW();
-                    break;
-                case "A":
-                    movimientoA();
-                    break;
-                case "S":
-                    movimientoS();
-                    break;
-                case "D":
-                    movimientoD();
-                    break;
-                default:
-                    System.out.println("Opcion no valida, intente de nuevo");
-                    realizarMovimiento();
-                    break;
-                    
-                    
-            };
-        
-    }
-    
-    //Metodo encargado de realizar los movimientos hacia arriba del mapa
-    private void movimientoW(){
-        
-        jugador.setPosicionY(jugador.getPosicionY() + 1);
-        
-            if(jugador.getPosicionY() > mapa[cantidadFilas].length){
-                System.out.println("Has llegado al limite del mapa");
-            }
-    }
-    
-    //Metodo encargado de realizar los movimientos hacia la izquierda
-    private void movimientoA(){
-        
-        jugador.setPosicionX(jugador.getPosicionX() - 1);
-            
-            if(jugador.getPosicionX() < mapa[0].length){
-                System.out.println("Has llegado al limite del mapa");
-            }
-    }
-    
-    //Metodo encargado de realizar los movimientos hacia la abajo
-    private void movimientoS(){
-        jugador.setPosicionY(jugador.getPosicionY() - 1);
-            if(jugador.getPosicionY() < mapa.length){
-               System.out.println("Has llegado al limite del mapa"); 
-            }
-    }
-    
-    //Metodo encargado de realizar los miviemntos hacia la Derecha
-    private void movimientoD(){
-        jugador.setPosicionX(jugador.getPosicionX() + 1);
-            if(jugador.getPosicionX() > mapa.length){
-                System.out.println("Has llegado al limite del mapa");
-            }
     }
     
    

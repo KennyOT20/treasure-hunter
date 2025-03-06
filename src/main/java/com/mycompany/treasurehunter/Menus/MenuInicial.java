@@ -4,7 +4,7 @@
  */
 package com.mycompany.treasurehunter.Menus;
 
-import com.mycompany.treasurehunter.Jugador.Jugador;
+import com.mycompany.treasurehunter.Personaje.Jugador;
 import com.mycompany.treasurehunter.Mapa.Mapa;
 
 /**
@@ -49,10 +49,8 @@ public class MenuInicial extends MenuBase {
                     jugador.obtenerNombre();
                     limpiarPantalla();
                     mapa.generarMapaPorDefecto(); 
-                    mapa.realizarMovimiento();
                     limpiarPantalla();
                     mapa.generarMapa();
-                    mapa.realizarMovimiento();
                 }
                 case 2 -> {
                 }

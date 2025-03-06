@@ -4,7 +4,7 @@
  */
 package com.mycompany.treasurehunter.Casillas;
 
-import com.mycompany.treasurehunter.Jugador.Jugador;
+import com.mycompany.treasurehunter.Personaje.Jugador;
 
 /**
  *
