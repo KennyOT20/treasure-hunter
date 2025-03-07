@@ -6,9 +6,11 @@ package com.mycompany.treasurehunter.Menus;
 
 import com.mycompany.treasurehunter.Personaje.Jugador;
 import com.mycompany.treasurehunter.Mapa.Mapa;
+import com.mycompany.treasurehunter.Partida.Partida;
 
 /**
- *
+ *Clase que hereda los metodos del menuBase para mostrar un menu inicial del juego que se
+ * encarga de mostrar las opciones iniciales
  * @author kenny
  */
 public class MenuInicial extends MenuBase {
@@ -42,6 +44,8 @@ public class MenuInicial extends MenuBase {
         
         Jugador jugador = new Jugador();
         Mapa mapa = new Mapa(jugador);
+        Partida partida = new Partida(mapa);
+        
         
             switch(opcionMenu){
                 case 1 -> {
@@ -49,8 +53,7 @@ public class MenuInicial extends MenuBase {
                     jugador.obtenerNombre();
                     limpiarPantalla();
                     mapa.generarMapaPorDefecto(); 
-                    limpiarPantalla();
-                    mapa.generarMapa();
+                    partida.iniciarPartida();
                 }
                 case 2 -> {
                 }

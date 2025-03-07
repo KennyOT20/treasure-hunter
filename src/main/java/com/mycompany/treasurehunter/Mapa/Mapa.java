@@ -5,7 +5,6 @@
 package com.mycompany.treasurehunter.Mapa;
 
 import com.mycompany.treasurehunter.Personaje.Jugador;
-import java.util.Scanner;
 
 /**
  *
@@ -14,7 +13,6 @@ import java.util.Scanner;
 public class Mapa {
     
     private Jugador jugador;
-    private static Scanner scanner = new Scanner(System.in); 
     private int cantidadFilas;
     private int cantidadColumnas;
     private String [][] mapa;
@@ -39,7 +37,7 @@ public class Mapa {
     private void generarIndiceHorizontal(){
         
         System.out.print("    ");
-        for (int j = 0; j < mapa[0].length; j++) {
+        for (int j = 0; j < mapa[0].length - 1; j++) {
             System.out.print((char) ('A' + j) + "  ");
         }
         System.out.println();
@@ -50,7 +48,7 @@ public class Mapa {
         
         for (int i = 0; i < cantidadFilas; i++) {
             System.out.printf("%2d ", (i + 1)); //.printf para darle 2 espacios definidos al indce
-            for (int j = 0; j < cantidadColumnas; j++) {
+            for (int j = 0; j < cantidadColumnas - 1; j++) {
                 System.out.print("[" + mapa[i][j] +  "]");
             }
             System.out.println();
@@ -61,7 +59,7 @@ public class Mapa {
     private void inicializarMapa(){
         
         for (int i = 0; i < cantidadFilas; i++) {
-            for (int j = 0; j <cantidadColumnas; j++) {
+            for (int j = 0; j <cantidadColumnas - 1; j++) {
                 mapa[i][j] = " ";
             }
         }
@@ -69,9 +67,63 @@ public class Mapa {
     
     //Metodo encargado de colocar el simbolo del jugador en el mapa
     private void colocarJugadorEnMapa(){
-       
         mapa[jugador.getPosicionX()][jugador.getPosicionY()] = String.valueOf(jugador.getSimboloJugador());
     }
+    
+    //Metodos encargados de realizar los movimientos del jugador: Arriba, abajo, izquierda o Derecha.
+    public void movimientoDerecha(){
+        
+        jugador.setPosicionY(jugador.getPosicionY() + 1);
+        
+            if(jugador.getPosicionY() > mapa[0].length ){
+                System.out.println("Has alcanzado el limite del mapa "); 
+                jugador.setPosicionY(jugador.getPosicionY() - 1);
+            } else{
+                generarMapa();
+               // actualizarMapa();
+            }
+    }
+    
+    public void movimientoIzquierda(){
+       
+        jugador.setPosicionY(jugador.getPosicionY() - 1);
+        
+            if(jugador.getPosicionY() < 0){
+                System.out.println("Has alcanzado el limite del mapa");
+                jugador.setPosicionY(jugador.getPosicionY() + 1); 
+            } else{
+                generarMapa();
+            }
+        
+            
+    }
+    
+    public void movimientoArriba(){
+        
+        jugador.setPosicionX(jugador.getPosicionX() - 1 );
+        
+            if(jugador.getPosicionX() < 0){
+                System.out.println("Has alcanzado el limite del mapa");
+                jugador.setPosicionX(jugador.getPosicionX() + 1 );
+            } else{
+                generarMapa();
+            //    actualizarMapa();
+            }
+    }
+    
+    public void movimientoAbajo(){
+        
+        jugador.setPosicionX(jugador.getPosicionX() + 1);
+        
+            if(jugador.getPosicionX() > mapa.length){
+                System.out.println("Has alcanzado el limite del mapa");
+            }else{
+                generarMapa();
+                //actualizarMapa();
+            }
+    }
+    
+ 
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
     public void generarMapa(){

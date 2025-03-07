@@ -7,9 +7,13 @@
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Casillas/CasillaTeletransporte.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Casillas/CasillaTesoro.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Casillas/CasillaTrampa.java
-/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Jugador/Jugador.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/AlmacenarMapas.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/Mapa.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/ModificarMapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuBase.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuInicial.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuJuego.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Partida/Partida.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Personaje/Enemigo.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Personaje/Jugador.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/TreasureHunter.java

@@ -8,7 +8,7 @@ import com.mycompany.treasurehunter.Mapa.Mapa;
 import java.util.Scanner;
 
 /**
- *
+ *Clazse encargada de gestionar los movimientos del jugador 
  * @author kenny
  */
 public class MenuJuego{
@@ -36,12 +36,16 @@ public class MenuJuego{
         
         switch(movimiento.toUpperCase()){
             case "W" -> {
+                mapa.movimientoArriba();
             }
             case "A" -> {
+                mapa.movimientoIzquierda();
             }
             case "S" -> {
+                mapa.movimientoAbajo();
             }
             case "D" -> {
+                mapa.movimientoDerecha();
             }
             default -> {
                 System.out.println("Opcion no valida, intente de nuevo");

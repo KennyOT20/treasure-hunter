@@ -9,5 +9,10 @@ package com.mycompany.treasurehunter.Personaje;
  * @author kenny
  */
 public class Enemigo {
+ 
+    private String nombreEnemigo;
+    private int puntosHP;
+    private int dañoEnemigo;
+    
     
 }

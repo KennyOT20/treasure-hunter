@@ -4,12 +4,16 @@ com/mycompany/treasurehunter/Casillas/CasillaTeletransporte.class
 com/mycompany/treasurehunter/Casillas/CasillaTrampa.class
 com/mycompany/treasurehunter/Casillas/CasillaEnergia.class
 com/mycompany/treasurehunter/Mapa/AlmacenarMapas.class
+com/mycompany/treasurehunter/Personaje/Jugador.class
 com/mycompany/treasurehunter/Casillas/CasillaMuro.class
+com/mycompany/treasurehunter/Partida/Partida.class
 com/mycompany/treasurehunter/Menus/MenuBase.class
 com/mycompany/treasurehunter/Casillas/Casilla.class
 com/mycompany/treasurehunter/Casillas/CasillaPista.class
 com/mycompany/treasurehunter/Casillas/CasillaCombate.class
 com/mycompany/treasurehunter/Menus/MenuInicial.class
-com/mycompany/treasurehunter/Jugador/Jugador.class
+com/mycompany/treasurehunter/Mapa/ModificarMapa.class
+com/mycompany/treasurehunter/Menus/MenuJuego.class
+com/mycompany/treasurehunter/Personaje/Enemigo.class
 com/mycompany/treasurehunter/Mapa/Mapa.class
 com/mycompany/treasurehunter/Casillas/CasillaNormal.class
