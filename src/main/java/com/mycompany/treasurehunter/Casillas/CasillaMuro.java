@@ -12,13 +12,21 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class CasillaMuro extends Casilla {
 
-    public CasillaMuro(Jugador jugador, String nombre, String colorCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, colorCasilla, posicionX, posicionY);
+    public CasillaMuro(Jugador jugador, String nombre, int posicionX, int posicionY) {
+        super(jugador, nombre, posicionX, posicionY);
     }
 
     @Override
     public void efectoDeCasilla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int coordenadaInicialY = jugador.getPosicionY();
+        int coordenadaInicialX = jugador.getPosicionX();
+        
+        
+    }
+
+    @Override
+    public void modificarCasilla() {
+        System.out.println("Esta casilla no se puede modificar :( ");  
     }
     
 }

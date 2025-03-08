@@ -11,14 +11,22 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  * @author kenny
  */
 public class CasillaPista extends Casilla {
-
-    public CasillaPista(Jugador jugador, String nombre, String colorCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, colorCasilla, posicionX, posicionY);
+    
+    private String[] pistas ={
+        
+    };
+                  
+    public CasillaPista(Jugador jugador, String nombre, int posicionX, int posicionY) {
+        super(jugador, nombre, posicionX, posicionY);
     }
 
     @Override
     public void efectoDeCasilla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
+
+    @Override
+    public void modificarCasilla() {
+          }
     
 }

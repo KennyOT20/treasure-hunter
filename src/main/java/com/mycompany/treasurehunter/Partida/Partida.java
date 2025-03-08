@@ -24,7 +24,16 @@ public class Partida {
         MenuJuego menu = new MenuJuego(mapa);
         
         while(true){
+            comprobarPartidaGanada();
             menu.mostrarMenu();
         }
+    }
+    
+    /**
+     * Metodo encargado de ir verificando si el usuario a ganado la partida
+     * @return un booleano false hasta que se gane la partida.
+     */
+    private boolean comprobarPartidaGanada(){
+        return false;
     }
 }

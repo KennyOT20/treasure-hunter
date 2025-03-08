@@ -12,21 +12,19 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public abstract class Casilla {
     
-    private Jugador jugador;
+    protected Jugador jugador;
     private String nombre;
-    private String colorCasilla;
     private int posicionX;
     private int posicionY;
 
-    public Casilla(Jugador jugador, String nombre, String colorCasilla, int posicionX, int posicionY) {
+    public Casilla(Jugador jugador, String nombre, int posicionX, int posicionY) {
         this.jugador = jugador;
         this.nombre = nombre;
-        this.colorCasilla = colorCasilla;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
     }
 
     
     public abstract void efectoDeCasilla();
-    
+    public abstract void modificarCasilla();
 }

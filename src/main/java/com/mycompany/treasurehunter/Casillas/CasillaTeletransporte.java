@@ -4,21 +4,40 @@
  */
 package com.mycompany.treasurehunter.Casillas;
 
+import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Personaje.Jugador;
+import java.util.Random;
 
 /**
  *
  * @author kenny
  */
 public class CasillaTeletransporte extends Casilla {
-
-    public CasillaTeletransporte(Jugador jugador, String nombre, String colorCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, colorCasilla, posicionX, posicionY);
+    
+    private int nuevaCoordenadaX;
+    private int nuevaCoordenadaY;
+    
+    public CasillaTeletransporte(Jugador jugador,Mapa mapa, String nombre, int posicionX, int posicionY) {
+        super(jugador, nombre, posicionX, posicionY);
     }
 
     @Override
     public void efectoDeCasilla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Mapa mapa = new Mapa(jugador);
+        Random random = new Random();
+        
+        nuevaCoordenadaX = random.nextInt(0, mapa.getCantidadFilas() - 1);
+        nuevaCoordenadaY = random.nextInt(0, mapa.getCantidadColumnas() - 1);
+        
+        jugador.setPosicionX(nuevaCoordenadaX);
+        jugador.setPosicionY(nuevaCoordenadaY);
+        System.out.println("Has sido teletransportado a otra casilla");
+            
+    }
+
+    @Override
+    public void modificarCasilla() {
+       
     }
     
 }
