@@ -4,14 +4,13 @@
  */
 package com.mycompany.treasurehunter.Personaje;
 
-import java.util.Random;
 import java.util.Scanner;
 
 /**
  *
  * @author kenny
  */
-public class Jugador {
+public class Jugador extends Personaje{
     
     private String nombreJugador;
     private int puntosDeMana;
@@ -23,9 +22,14 @@ public class Jugador {
     private int posicionX;
     private int posicionY;
     private char simboloJugador;
+
+    public Jugador() {
+        super(obtenerNombre(),500, calcularAtaque());
+    }
+    
     
     //Metodo para encargado de obtener y validar el nombre del jugador.
-    public void obtenerNombre(){
+    public String obtenerNombre(){
         
         Scanner scanner = new Scanner(System.in);
         
@@ -39,79 +43,31 @@ public class Jugador {
             nombreJugador = scanner.nextLine().trim();
             
             if(nombreJugador.isEmpty()){
-                
                 System.out.println("¡Error!, el nombre no puede estar vacio");
             }
         } while(nombreJugador.isEmpty());
      
-        obtenerSimboloJugador();
+        obtenerSimboloJugador(nombreJugador);
+        
+        return nombreJugador;
     }
     
     //metodo encargado de obtener un simbolo del ujugador para representarlo en el mapa
-    private void obtenerSimboloJugador(){
+    private void obtenerSimboloJugador(String nombreJugador){
         char [] nombre = nombreJugador.toCharArray();
         simboloJugador = Character.toUpperCase(nombre[0]);      
     }
     
-    //Metodo encargado de calcular la cura del personaje
-    private int calcularCura(){
-        int cura = numerosAleatorios(10, 25);
-        return cura;
-    }
-    
-    public void aplicarCura(){
-      
-        if(puntosDeMana > 0){
-            puntosDeMana --;
-            puntosDeVida += calcularCura();
-        } else{
-            System.out.println("Puntos de Mp insuficientes");
-        }
-    }
-    
-   
-    
-    //Metodo encargado de calcular la defensa del jugador (reducir el ataque del enemigo)
-    private int calcularDefensa(){
-        
-        int defensa = numerosAleatorios (0,5);
-        return defensa;
-    }
-    
-    public void aplicarDefensa(){
-        
-        if(puntosDeMana > 0){
-            puntosDeMana --;
-        } else{
-            System.out.println("Puntos de Mp insuficientes");
-        }
-       
-    }
-    
-    /**
-     * Metodo encargado de calcular el ataque que llega a tener el jugador
-     * @return Un numero aleatorio entre 18 y 32 
-     */
     private int calcularAtaque(){
-        int ataque = numerosAleatorios(18, 32);
-        return ataque;
+        int ataqueMax = calcularNumerosRandom(24,52);
+        return ataqueMax;
     }
     
-    public void aplicarAtaque(){
-        
+    //Metodo abstracto para aplicar el ataque del jugador
+      @Override
+    public void aplicarAtaque() {
     }
     
-    /**
-     * Se encarga de retornar dos numeros aleatorios entre un intervalo de numeros
-     * @param minimo Recibe un numero entre un intervalo minimo
-     * @param maximo Recibe un numero entre un intervalo maximo
-     * @return retorna un numero aleatorio entre los numeros obtenidos de <code> maximo <code> y  <code> minimo <code> 
-     */
-    private int numerosAleatorios(int minimo, int maximo){
-        Random random = new Random();
-        return random.nextInt(minimo, maximo) ;
-    }
-
     //Getters y Setters mnecesarios para el jugador
 
     public String getNombreJugador() {
@@ -193,6 +149,7 @@ public class Jugador {
     public void setSimboloJugador(char simboloJugador) {
         this.simboloJugador = simboloJugador;
     }
-    
-    
+
+  
+
 }

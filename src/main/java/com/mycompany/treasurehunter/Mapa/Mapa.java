@@ -168,7 +168,6 @@ public class Mapa {
         generarCasillas();
         colocarJugadorEnMapa();
         imprimirMapa();
-        
     }
     
     private void generarCasillas(){

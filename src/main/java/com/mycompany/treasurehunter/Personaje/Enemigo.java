@@ -8,23 +8,69 @@ package com.mycompany.treasurehunter.Personaje;
  *
  * @author kenny
  */
-public class Enemigo {
+public class Enemigo extends Personaje{
     
     private Jugador jugador;
-
-    public Enemigo(Jugador jugador) {
-        this.jugador = jugador;
-    }
+    private int hpEnemigo;
+    private int hpMaximo;
+    private int ataqueEnemigo;
+    private static final String[] NOMBRE_ENEMIGO = {"Calavera Negra", "Barba Roja", "Jack", "Adrian" }; 
     private String nombreEnemigo;
-    private int puntosHP;
-    private int dañoEnemigo;
-    
-    public void generarEnemigos(){
+
+    public Enemigo(Jugador jugador, int nombre, int hpMax, int ataque) {
+        super(nombre, hpMax, ataque);
+    }
+
         
+    //Metodo encargado de generar los enemigos 
+    public void generarEnemigos(){
+       int hpMinimo = jugador.getPuntosDeVida() - (jugador.getPuntosDeVida()/2);
+       hpMaximo = jugador.getPuntosDeVida() + (jugador.getPuntosDeVida()/2);
+       hpEnemigo = calcularNumerosRandom(hpMinimo, hpMaximo);
+       int indice = calcularNumerosRandom(0, NOMBRE_ENEMIGO.length);
+       ataqueEnemigo = calcularNumerosRandom(25,53);
+       nombreEnemigo = NOMBRE_ENEMIGO[indice];
     }
     
-    private int calcularDañoEnemigo(){
-        int daño = 15;
-        return daño;
+    //metodo abstracto para aplicar el ataque
+    
+     @Override
+    public void aplicarAtaque() {
+       
     }
+    
+    //Getters y setters necesarios 
+
+    public int getHpEnemigo() {
+        return hpEnemigo;
+    }
+
+    public void setHpEnemigo(int hpEnemigo) {
+        this.hpEnemigo = hpEnemigo;
+    }
+
+    public int getAtaqueEnemigo() {
+        return ataqueEnemigo;
+    }
+
+    public void setAtaqueEnemigo(int ataqueEnemigo) {
+        this.ataqueEnemigo = ataqueEnemigo;
+    }
+
+    public String getNombreEnemigo() {
+        return nombreEnemigo;
+    }
+
+    public void setNombreEnemigo(String nombreEnemigo) {
+        this.nombreEnemigo = nombreEnemigo;
+    }
+
+    public int getHpMaximo() {
+        return hpMaximo;
+    }
+
+   
+    
+    
+    
 }
