@@ -24,10 +24,10 @@ public class Jugador extends Personaje{
     private char simboloJugador;
 
     public Jugador() {
-        super(obtenerNombre(),500, calcularAtaque());
+        super("Sin nombre", 500, 0);
     }
-    
-    
+
+
     //Metodo para encargado de obtener y validar el nombre del jugador.
     public String obtenerNombre(){
         
@@ -58,14 +58,10 @@ public class Jugador extends Personaje{
         simboloJugador = Character.toUpperCase(nombre[0]);      
     }
     
-    private int calcularAtaque(){
-        int ataqueMax = calcularNumerosRandom(24,52);
-        return ataqueMax;
-    }
     
     //Metodo abstracto para aplicar el ataque del jugador
       @Override
-    public void aplicarAtaque() {
+    public void aplicarAtaque(Personaje objetivo) {
     }
     
     //Getters y Setters mnecesarios para el jugador
@@ -149,7 +145,5 @@ public class Jugador extends Personaje{
     public void setSimboloJugador(char simboloJugador) {
         this.simboloJugador = simboloJugador;
     }
-
-  
-
+ 
 }

@@ -17,11 +17,10 @@ public class Enemigo extends Personaje{
     private static final String[] NOMBRE_ENEMIGO = {"Calavera Negra", "Barba Roja", "Jack", "Adrian" }; 
     private String nombreEnemigo;
 
-    public Enemigo(Jugador jugador, int nombre, int hpMax, int ataque) {
-        super(nombre, hpMax, ataque);
+    public Enemigo() {
+        super("Sin enemigo", 0, 0);
     }
 
-        
     //Metodo encargado de generar los enemigos 
     public void generarEnemigos(){
        int hpMinimo = jugador.getPuntosDeVida() - (jugador.getPuntosDeVida()/2);
@@ -35,7 +34,7 @@ public class Enemigo extends Personaje{
     //metodo abstracto para aplicar el ataque
     
      @Override
-    public void aplicarAtaque() {
+    public void aplicarAtaque(Personaje objetivo) {
        
     }
     
@@ -67,10 +66,5 @@ public class Enemigo extends Personaje{
 
     public int getHpMaximo() {
         return hpMaximo;
-    }
-
-   
-    
-    
-    
+    }  
 }

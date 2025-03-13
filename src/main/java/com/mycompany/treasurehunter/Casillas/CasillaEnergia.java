@@ -18,7 +18,7 @@ public class CasillaEnergia extends Casilla {
 
     @Override
     public void efectoDeCasilla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     
     }
 
     @Override

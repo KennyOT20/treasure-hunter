@@ -11,14 +11,14 @@ import java.util.Random;
  * @author kenny
  */
 public abstract class Personaje {
-    
-    protected int nombre;
-    protected int hpMax;
-    protected int ataque;
 
-    public Personaje(int nombre, int hpMax, int ataque) {
+    private String nombre;
+    private int hp;
+    private int ataque;
+
+    public Personaje(String nombre, int hp, int ataque) {
         this.nombre = nombre;
-        this.hpMax = hpMax;
+        this.hp = hp;
         this.ataque = ataque;
     }
     
@@ -34,5 +34,6 @@ public abstract class Personaje {
         return numeroRandom;
     }
     
-    public abstract void aplicarAtaque();
+    //Metodo abstracto encargado de aplicar el ataque del personaje a uno de los dos objetivos 
+    public abstract void aplicarAtaque(Personaje objetivo);
 }
