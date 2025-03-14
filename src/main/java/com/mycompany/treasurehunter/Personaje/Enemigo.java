@@ -10,61 +10,31 @@ package com.mycompany.treasurehunter.Personaje;
  */
 public class Enemigo extends Personaje{
     
-    private Jugador jugador;
-    private int hpEnemigo;
-    private int hpMaximo;
-    private int ataqueEnemigo;
     private static final String[] NOMBRE_ENEMIGO = {"Calavera Negra", "Barba Roja", "Jack", "Adrian" }; 
-    private String nombreEnemigo;
 
     public Enemigo() {
-        super("Sin enemigo", 0, 0);
+        super("", 0, 0, 0);
     }
 
     //Metodo encargado de generar los enemigos 
-    public void generarEnemigos(){
-       int hpMinimo = jugador.getPuntosDeVida() - (jugador.getPuntosDeVida()/2);
-       hpMaximo = jugador.getPuntosDeVida() + (jugador.getPuntosDeVida()/2);
-       hpEnemigo = calcularNumerosRandom(hpMinimo, hpMaximo);
+    public void generarEnemigos(Jugador jugador){
+       int hpMinimo = jugador.getVidaMaxPersonaje() - (jugador.getVidaMaxPersonaje()/2);
+       int hpMaximo = jugador.getVidaMaxPersonaje() + (jugador.getVidaMaxPersonaje()/2);
+       int hpEnemigo = calcularNumerosRandom(hpMinimo, hpMaximo);
+       setVidaPersonaje(hpEnemigo);
        int indice = calcularNumerosRandom(0, NOMBRE_ENEMIGO.length);
-       ataqueEnemigo = calcularNumerosRandom(25,53);
-       nombreEnemigo = NOMBRE_ENEMIGO[indice];
+       setAtaquePersonaje(calcularNumerosRandom(25,53));
+       setNombrePersonaje(NOMBRE_ENEMIGO[indice]);
     }
     
     //metodo abstracto para aplicar el ataque
     
      @Override
     public void aplicarAtaque(Personaje objetivo) {
-       
+        
+        System.out.println("El pirata " + getNombrePersonaje() + " te ah atacado con" );
+        System.out.println(getAtaquePersonaje() + " de daño.");
+         recibirAtaque(getAtaquePersonaje());
     }
     
-    //Getters y setters necesarios 
-
-    public int getHpEnemigo() {
-        return hpEnemigo;
-    }
-
-    public void setHpEnemigo(int hpEnemigo) {
-        this.hpEnemigo = hpEnemigo;
-    }
-
-    public int getAtaqueEnemigo() {
-        return ataqueEnemigo;
-    }
-
-    public void setAtaqueEnemigo(int ataqueEnemigo) {
-        this.ataqueEnemigo = ataqueEnemigo;
-    }
-
-    public String getNombreEnemigo() {
-        return nombreEnemigo;
-    }
-
-    public void setNombreEnemigo(String nombreEnemigo) {
-        this.nombreEnemigo = nombreEnemigo;
-    }
-
-    public int getHpMaximo() {
-        return hpMaximo;
-    }  
 }

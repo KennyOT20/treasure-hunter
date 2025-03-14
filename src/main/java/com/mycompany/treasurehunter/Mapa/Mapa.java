@@ -5,18 +5,29 @@
 package com.mycompany.treasurehunter.Mapa;
 
 import com.mycompany.treasurehunter.Personaje.Jugador;
+import java.io.Serializable;
+import java.util.Random;
 
 /**
  *
  * @author kenny
  */
-public class Mapa {
+public class Mapa implements Serializable {
     
     private Jugador jugador;
-    private static final String FONDO_BLANCO = "\u001B[47m";
-    private static final String RESETEAR_FONDO = "\u001B[0m";
+    
     private static final String FONDO_NEGRO = "\u001B[40m";
+    private static final String FONDO_AMARILLO_BRILLANTE = "\u001B[103m";
+    private static final String FONDO_ROJO = "\u001B[41m";
+    private static final String FONDO_VERDE = "\u001B[42m";
+    private static final String FONDO_AMARILLO = "\u001B[43m";
+    private static final String FONDO_AZUL = "\u001B[44m";
+    private static final String FONDO_CYAN = "\u001B[46m";
+    private static final String FONDO_BLANCO = "\u001B[47m";
     private static final String TEXTO_NEGRO = "\u001B[30m";
+    private static final String RESETEAR_FONDO = "\u001B[0m";
+    private static final String[] SIMBOLOS_CASILLAS = {" ", "C","E","M","P", "T","R"};
+    private static final String SIMBOLO_CASILLA_TESORO = "K";
     private int cantidadFilas;
     private int cantidadColumnas;
     private int coordenadaX;
@@ -29,8 +40,8 @@ public class Mapa {
     
     //Metodo encargado de generar un mapa por defecto de 27 *27 
     public void generarMapaPorDefecto(){
-        cantidadFilas = 27;
-        cantidadColumnas = 27;
+        cantidadFilas = 24;
+        cantidadColumnas = 24;
         jugador.setPosicionX(4);
         jugador.setPosicionY(3);
         mapa = new String[cantidadFilas][cantidadColumnas];
@@ -63,7 +74,7 @@ public class Mapa {
     private void inicializarMapa(){
         for (int i = 0; i < cantidadFilas; i++) {
             for (int j = 0; j <cantidadColumnas - 1; j++) {
-                mapa[i][j] = " ";
+                mapa[i][j] = generarCasillas();
             }
         }
     }
@@ -144,7 +155,9 @@ public class Mapa {
             }
     }
     
+    //Metodo encargado de ir actualizando el mapa cada vez que el jugador pase por encima de una casilla
     private void actualizarMapa(){
+        
         mapa[coordenadaX][coordenadaY] = " ";
         colocarJugadorEnMapa();
     }
@@ -155,23 +168,61 @@ public class Mapa {
      * @param j es encargado de recibir desde el metodo imprimirMapa la cantidad de columnas
      */
     private void agregarColores(int i, int j){
-        if(mapa[i][j].equals(" ")){
-            System.out.print("[" + FONDO_NEGRO + " "+ RESETEAR_FONDO + "]");
+        if(mapa[i][j].equals(SIMBOLOS_CASILLAS[0])){
+            System.out.print(FONDO_NEGRO + "   "+ RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[1])){
+            System.out.print(FONDO_ROJO + "   " + RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[2])){
+            System.out.print(FONDO_VERDE + "   " + RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[3])){
+            System.out.print(FONDO_AMARILLO_BRILLANTE + "   " + RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[4])){
+            System.out.print(FONDO_AZUL + "   " + RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[5])){
+            System.out.print(FONDO_AMARILLO + "   " + RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[6])){
+            System.out.print(FONDO_CYAN + "   " + RESETEAR_FONDO);
         }else if(i == jugador.getPosicionX() && j == jugador.getPosicionY()){
-            System.out.print("[" + FONDO_BLANCO + TEXTO_NEGRO + jugador.getSimboloJugador() + RESETEAR_FONDO + "]");
+            System.out.print(FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO);
         }
     }
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
     public void generarMapa(){
+        simbologiaDeMapa();
         generarIndiceHorizontal();
-        generarCasillas();
         colocarJugadorEnMapa();
         imprimirMapa();
     }
     
-    private void generarCasillas(){
+    /**
+     * Metodo encargado de generar las casillas aleatorias mediante el simbolo de las casillas
+     * @return un simbolo y lo coloca en el mapa en el metodo inicializar mapa
+     */
+    private String generarCasillas(){
+        Random random = new Random();
+        int indiceCasillas = random.nextInt(SIMBOLOS_CASILLAS.length);
+        String letraAletoria = SIMBOLOS_CASILLAS[indiceCasillas];
+        return letraAletoria;
+    }
+    
+    private void comprobarCasillas(){
         
+    }
+    
+    private void simbologiaDeMapa(){
+        
+        System.out.println("Partida de: " + jugador.getNombrePersonaje());
+        System.out.print("Jugador: " + FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO + " Casillas--> " );
+        System.out.print(" |Normal: " + FONDO_NEGRO + "   "+ RESETEAR_FONDO);
+        System.out.print(" |Energia: " + FONDO_VERDE + "   " + RESETEAR_FONDO );
+        System.out.print(" |Combate: " + FONDO_ROJO + "   " + RESETEAR_FONDO);
+        System.out.print(" |Pista: " + FONDO_AMARILLO_BRILLANTE + "   " + RESETEAR_FONDO);
+        System.out.print(" |Teletransporte: " + FONDO_CYAN + "   " + RESETEAR_FONDO );
+        System.out.print(" |Muro: " + FONDO_AMARILLO + "   " + RESETEAR_FONDO);
+        System.out.print(" |Trampa: " + FONDO_AZUL + "   " + RESETEAR_FONDO );
+        System.out.println();
+        System.out.println();
     }
     
     //Getters y Setters necesarios

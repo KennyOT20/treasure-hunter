@@ -5,12 +5,13 @@
 package com.mycompany.treasurehunter.Casillas;
 
 import com.mycompany.treasurehunter.Personaje.Jugador;
+import java.io.Serializable;
 
 /**
  *
  * @author kenny
  */
-public abstract class Casilla {
+public abstract class Casilla implements Serializable {
     
     protected Jugador jugador;
     private String nombre;

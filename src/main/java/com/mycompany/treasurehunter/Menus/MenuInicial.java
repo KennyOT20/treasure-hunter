@@ -4,9 +4,7 @@
  */
 package com.mycompany.treasurehunter.Menus;
 
-import com.mycompany.treasurehunter.Personaje.Jugador;
-import com.mycompany.treasurehunter.Mapa.Mapa;
-import com.mycompany.treasurehunter.Partida.Partida;
+import com.mycompany.treasurehunter.Controlador.Controlador;
 
 /**
  *Clase que hereda los metodos del menuBase para mostrar un menu inicial del juego que se
@@ -14,7 +12,13 @@ import com.mycompany.treasurehunter.Partida.Partida;
  * @author kenny
  */
 public class MenuInicial extends MenuBase {
+    
+    private Controlador controlador;
 
+    public MenuInicial() {
+        this.controlador = new Controlador();
+    }
+    
     @Override
     public void mostrarMenu() {
         
@@ -41,19 +45,12 @@ public class MenuInicial extends MenuBase {
     
     @Override
     public void ejecutarOpcion(int opcionMenu) {
-        
-        Jugador jugador = new Jugador();
-        Mapa mapa = new Mapa(jugador);
-        Partida partida = new Partida(mapa);
+
         
         
             switch(opcionMenu){
                 case 1 -> {
-                    limpiarPantalla();
-                    jugador.obtenerNombre();
-                    limpiarPantalla();
-                    mapa.generarMapaPorDefecto(); 
-                    partida.iniciarPartida();
+                   controlador.iniciarPartida();
                 }
                 case 2 -> {
                 }

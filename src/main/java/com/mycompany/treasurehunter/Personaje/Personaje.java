@@ -11,15 +11,17 @@ import java.util.Random;
  * @author kenny
  */
 public abstract class Personaje {
+    
+    private String nombrePersonaje;
+    private int vidaPersonaje;
+    private int vidaMaxPersonaje;
+    private int ataquePersonaje;
 
-    private String nombre;
-    private int hp;
-    private int ataque;
-
-    public Personaje(String nombre, int hp, int ataque) {
-        this.nombre = nombre;
-        this.hp = hp;
-        this.ataque = ataque;
+    public Personaje(String nombrePersonaje, int vidaPersonaje, int vidaMaxPersonaje, int ataquePersonaje) {
+        this.nombrePersonaje = nombrePersonaje;
+        this.vidaPersonaje = vidaPersonaje;
+        this.vidaMaxPersonaje = vidaMaxPersonaje;
+        this.ataquePersonaje = ataquePersonaje;
     }
     
     /**
@@ -34,6 +36,59 @@ public abstract class Personaje {
         return numeroRandom;
     }
     
-    //Metodo abstracto encargado de aplicar el ataque del personaje a uno de los dos objetivos 
+    /**
+     * Metodo encargado de recibir el ataque del personaje segun el turno de cada personaje
+     * puede ser usado para tanto para el jugador o para el enemigo
+     * Se encarga de realizar la validacion para que la vida del personaje no sea menor que cero
+     * @param ataque recibe el ataque del jugador o del enemigo para poder aplicar el daño
+     */
+    protected void recibirAtaque(int ataque){
+         
+        vidaPersonaje -= ataque;
+        
+        if (vidaPersonaje <= 0){
+            vidaPersonaje = 0;
+        } else{
+            System.out.println();
+        }
+    }
+    
+    /**
+     * Metodo abstracto encargado de realizar el ataque ya sea del enemigo o del jugador.
+     * @param objetivo 
+     */
     public abstract void aplicarAtaque(Personaje objetivo);
+    
+    public String getNombrePersonaje() {
+        return nombrePersonaje;
+    }
+
+    public void setNombrePersonaje(String nombrePersonaje) {
+        this.nombrePersonaje = nombrePersonaje;
+    }
+
+    public int getVidaPersonaje() {
+        return vidaPersonaje;
+    }
+
+    public void setVidaPersonaje(int vidaPersonaje) {
+        this.vidaPersonaje = vidaPersonaje;
+    }
+
+    public int getVidaMaxPersonaje() {
+        return vidaMaxPersonaje;
+    }
+
+    public void setVidaMaxPersonaje(int vidaMaxPersonaje) {
+        this.vidaMaxPersonaje = vidaMaxPersonaje;
+    }
+
+    public int getAtaquePersonaje() {
+        return ataquePersonaje;
+    }
+
+    public void setAtaquePersonaje(int ataquePersonaje) {
+        this.ataquePersonaje = ataquePersonaje;
+    }
+    
 }

@@ -26,7 +26,7 @@ public class CasillaTrampa extends Casilla {
         
             if(elegirTrampa == false){
                 int puntosDeHpPerdido = calcularDañoTrampa(25,62);
-                jugador.setPuntosDeVida(jugador.getPuntosDeVida() - puntosDeHpPerdido);
+                jugador.setVidaPersonaje(jugador.getVidaPersonaje() - puntosDeHpPerdido);
                 System.out.println("¡Oh no, has caido en una trampa!");
                 System.out.print("Has perdido " + puntosDeHpPerdido + " de hp");
             } else{

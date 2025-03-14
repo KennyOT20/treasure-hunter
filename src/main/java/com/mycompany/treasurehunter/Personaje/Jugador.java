@@ -4,34 +4,33 @@
  */
 package com.mycompany.treasurehunter.Personaje;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author kenny
  */
-public class Jugador extends Personaje{
+public class Jugador extends Personaje implements Serializable{
     
-    private String nombreJugador;
     private int puntosDeMana;
-    private int puntosDeVida;
     private int puntosDeDefensa;
-    private int vidaMax;
     private int manaMax;
     private int defensaMax;
     private int posicionX;
     private int posicionY;
     private char simboloJugador;
-
+    
+    //Constructor con valores iniciales
     public Jugador() {
-        super("Sin nombre", 500, 0);
+        super("", 500, 500, 0);
     }
 
-
     //Metodo para encargado de obtener y validar el nombre del jugador.
-    public String obtenerNombre(){
+    public void obtenerNombre(){
         
         Scanner scanner = new Scanner(System.in);
+        String nombreJugador;
         
         do{
             System.out.println("==============================");
@@ -46,10 +45,9 @@ public class Jugador extends Personaje{
                 System.out.println("¡Error!, el nombre no puede estar vacio");
             }
         } while(nombreJugador.isEmpty());
-     
-        obtenerSimboloJugador(nombreJugador);
         
-        return nombreJugador;
+        setNombrePersonaje(nombreJugador);
+        obtenerSimboloJugador(nombreJugador);
     }
     
     //metodo encargado de obtener un simbolo del ujugador para representarlo en el mapa
@@ -62,17 +60,13 @@ public class Jugador extends Personaje{
     //Metodo abstracto para aplicar el ataque del jugador
       @Override
     public void aplicarAtaque(Personaje objetivo) {
+        
+        setAtaquePersonaje(calcularNumerosRandom(20,42));
+        System.out.println("Has atacado con " + getAtaquePersonaje());
+        recibirAtaque(getAtaquePersonaje());
     }
     
     //Getters y Setters mnecesarios para el jugador
-
-    public String getNombreJugador() {
-        return nombreJugador;
-    }
-
-    public void setNombreJugador(String nombreJugador) {
-        this.nombreJugador = nombreJugador;
-    }
 
     public int getPuntosDeMana() {
         return puntosDeMana;
@@ -82,28 +76,12 @@ public class Jugador extends Personaje{
         this.puntosDeMana = puntosDeMana;
     }
 
-    public int getPuntosDeVida() {
-        return puntosDeVida;
-    }
-
-    public void setPuntosDeVida(int puntosDeVida) {
-        this.puntosDeVida = puntosDeVida;
-    }
-
     public int getPuntosDeDefensa() {
         return puntosDeDefensa;
     }
 
     public void setPuntosDeDefensa(int puntosDeDefensa) {
         this.puntosDeDefensa = puntosDeDefensa;
-    }
-
-    public int getVidaMax() {
-        return vidaMax;
-    }
-
-    public void setVidaMax(int vidaMax) {
-        this.vidaMax = vidaMax;
     }
 
     public int getManaMax() {

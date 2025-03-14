@@ -26,7 +26,7 @@ public class MenuJuego{
             String opcion;
             
             System.out.println("");
-            System.out.print("a : Derecha| |d: Izquierda| |w: Arriba| |s: Abajo| ");
+            System.out.print("a : Izquierda| |d: Derecha| |w: Arriba| |s: Abajo| ");
             System.out.println("");
             System.out.println("1. Ver pista                  ");
             System.out.println("2. Ver todas las pistas       ");
