@@ -17,4 +17,5 @@ com/mycompany/treasurehunter/Mapa/ModificarMapa.class
 com/mycompany/treasurehunter/Menus/MenuJuego.class
 com/mycompany/treasurehunter/Controlador/Controlador.class
 com/mycompany/treasurehunter/Personaje/Enemigo.class
+com/mycompany/treasurehunter/Batalla/Batalla.class
 com/mycompany/treasurehunter/Mapa/Mapa.class

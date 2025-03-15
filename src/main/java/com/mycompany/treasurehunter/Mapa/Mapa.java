@@ -30,8 +30,8 @@ public class Mapa implements Serializable {
     private static final String SIMBOLO_CASILLA_TESORO = "K";
     private int cantidadFilas;
     private int cantidadColumnas;
-    private int coordenadaX;
-    private int coordenadaY;
+    private int jugadorCoordenadaX;
+    private int jugadorCoordenadaY;
     private String [][] mapa;
 
     public Mapa(Jugador jugador) {
@@ -86,8 +86,8 @@ public class Mapa implements Serializable {
     
     //Metodos encargados de realizar los movimientos del jugador: Arriba, abajo, izquierda o Derecha.
     public void movimientoDerecha(){
-        coordenadaX = jugador.getPosicionX();
-        coordenadaY = jugador.getPosicionY();
+        jugadorCoordenadaX = jugador.getPosicionX();
+        jugadorCoordenadaY = jugador.getPosicionY();
         
         jugador.setPosicionY(jugador.getPosicionY() + 1);
         
@@ -103,8 +103,8 @@ public class Mapa implements Serializable {
     }
     
     public void movimientoIzquierda(){
-        coordenadaX = jugador.getPosicionX();
-        coordenadaY = jugador.getPosicionY();
+        jugadorCoordenadaX = jugador.getPosicionX();
+        jugadorCoordenadaY = jugador.getPosicionY();
        
         jugador.setPosicionY(jugador.getPosicionY() - 1);
         
@@ -122,8 +122,8 @@ public class Mapa implements Serializable {
     }
     
     public void movimientoArriba(){
-        coordenadaX = jugador.getPosicionX();
-        coordenadaY = jugador.getPosicionY();
+        jugadorCoordenadaX = jugador.getPosicionX();
+        jugadorCoordenadaY = jugador.getPosicionY();
         
         jugador.setPosicionX(jugador.getPosicionX() - 1 );
         
@@ -139,8 +139,8 @@ public class Mapa implements Serializable {
     }
     
     public void movimientoAbajo(){
-        coordenadaX = jugador.getPosicionX();
-        coordenadaY = jugador.getPosicionY();
+        jugadorCoordenadaX = jugador.getPosicionX();
+        jugadorCoordenadaY = jugador.getPosicionY();
         
         jugador.setPosicionX(jugador.getPosicionX() + 1);
                 
@@ -158,8 +158,10 @@ public class Mapa implements Serializable {
     //Metodo encargado de ir actualizando el mapa cada vez que el jugador pase por encima de una casilla
     private void actualizarMapa(){
         
-        mapa[coordenadaX][coordenadaY] = " ";
+        if(mapa[jugadorCoordenadaX][jugadorCoordenadaY].equals(" ")){
+        mapa[jugadorCoordenadaX][jugadorCoordenadaY] = " ";
         colocarJugadorEnMapa();
+        }
     }
     
     /**
