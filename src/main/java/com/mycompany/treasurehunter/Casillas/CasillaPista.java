@@ -15,10 +15,12 @@ public class CasillaPista extends Casilla {
     private String[] pistas ={
         
     };
-                  
-    public CasillaPista(Jugador jugador, String nombre, int posicionX, int posicionY) {
-        super(jugador, nombre, posicionX, posicionY);
+
+    public CasillaPista(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
+        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
     }
+
+    
 
     @Override
     public void efectoDeCasilla() {

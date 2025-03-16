@@ -7,8 +7,10 @@
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Casillas/CasillaTeletransporte.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Casillas/CasillaTesoro.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Casillas/CasillaTrampa.java
-/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Controlador/Controlador.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Controladores/ControladorMenu.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Controladores/ControladorMetodos.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/AlmacenarMapas.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/GeneradorDeCasillas.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/Mapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/ModificarMapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuBase.java

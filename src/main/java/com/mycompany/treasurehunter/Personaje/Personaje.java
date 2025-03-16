@@ -4,13 +4,14 @@
  */
 package com.mycompany.treasurehunter.Personaje;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author kenny
  */
-public abstract class Personaje {
+public abstract class Personaje implements Serializable{
     
     private String nombrePersonaje;
     private int vidaPersonaje;
@@ -23,19 +24,7 @@ public abstract class Personaje {
         this.vidaMaxPersonaje = vidaMaxPersonaje;
         this.ataquePersonaje = ataquePersonaje;
     }
-    
-    /**
-     * Metodo encargado de recibir dos numeros y aleatorizarlos
-     * @param min es el minimo en el intervalor entre los dos numeros
-     * @param max es el maximo en el intervalo entre los dos numeros
-     * @return retorna un numero aleatorio entre los numeros obtenidos de <code>max</code> y <code>min</code>
-     */
-    protected int calcularNumerosRandom(int min, int max){
-        Random random = new Random();
-        int numeroRandom = random.nextInt(min, max);
-        return numeroRandom;
-    }
-    
+
     /**
      * Metodo encargado de recibir el ataque del personaje segun el turno de cada personaje
      * puede ser usado para tanto para el jugador o para el enemigo

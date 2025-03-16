@@ -4,20 +4,16 @@
  */
 package com.mycompany.treasurehunter.Mapa;
 
+import com.mycompany.treasurehunter.Casillas.Casilla;
 import java.io.Serializable;
 
 /**
  *
  * @author kenny
  */
-public class ModificarMapa implements Serializable {
+public class GeneradorDeCasillas implements Serializable {
     
-    private Mapa mapa;
-
-    public ModificarMapa(Mapa mapa) {
-        this.mapa = mapa;
+    public Casilla colocarCasillaEnMapa(){
+        return null;
     }
-    
-    
-    
 }

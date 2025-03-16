@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Menus;
 
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,8 +17,7 @@ public abstract class MenuBase {
     public void mostrarMenu(){
         
     }
-    
-    
+
     /**
      * Metodo encargado de validar las opciones del jugador.
      * El jugador solo puede ingresar opciones numericas enteras.
@@ -40,17 +40,12 @@ public abstract class MenuBase {
                     }
                 } catch(InputMismatchException e){
                     scanner.nextLine();
-                    limpiarPantalla();
+                    ControladorMetodos.limpiarPantalla();
                     System.out.println("Opcion no valida, intente de nuevo");
                     mostrarMenu();
                     
                 }
         
-    }
-    
-    protected void limpiarPantalla(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
     
     public abstract void ejecutarOpcion(int opcionMenu);

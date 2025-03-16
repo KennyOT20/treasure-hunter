@@ -4,7 +4,8 @@
  */
 package com.mycompany.treasurehunter.Menus;
 
-import com.mycompany.treasurehunter.Controlador.Controlador;
+import com.mycompany.treasurehunter.Controladores.ControladorMenu;
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 
 /**
  *Clase que hereda los metodos del menuBase para mostrar un menu inicial del juego que se
@@ -13,10 +14,10 @@ import com.mycompany.treasurehunter.Controlador.Controlador;
  */
 public class MenuInicial extends MenuBase {
     
-    private Controlador controlador;
+    private ControladorMenu controlador;
 
     public MenuInicial() {
-        this.controlador = new Controlador();
+        this.controlador = new ControladorMenu();
     }
     
     @Override
@@ -65,10 +66,11 @@ public class MenuInicial extends MenuBase {
                 case 7 -> {
                 }
                 default -> {
-                    limpiarPantalla();
+                    ControladorMetodos.limpiarPantalla();
                     System.out.println("Opcion no valida, intente de nuevo");
                     mostrarMenu();
                 }
+
             }
         }
     

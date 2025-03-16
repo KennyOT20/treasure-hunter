@@ -4,14 +4,14 @@
  */
 package com.mycompany.treasurehunter.Personaje;
 
-import java.io.Serializable;
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import java.util.Scanner;
 
 /**
  *
  * @author kenny
  */
-public class Jugador extends Personaje implements Serializable{
+public class Jugador extends Personaje{
     
     private int puntosDeMana;
     private int puntosDeDefensa;
@@ -42,6 +42,7 @@ public class Jugador extends Personaje implements Serializable{
             nombreJugador = scanner.nextLine().trim();
             
             if(nombreJugador.isEmpty()){
+                ControladorMetodos.limpiarPantalla();
                 System.out.println("¡Error!, el nombre no puede estar vacio");
             }
         } while(nombreJugador.isEmpty());
@@ -56,15 +57,33 @@ public class Jugador extends Personaje implements Serializable{
         simboloJugador = Character.toUpperCase(nombre[0]);      
     }
     
+    public void verificarAtributosMax(boolean verificacion){
+        if(verificacion == true){
+            setVidaPersonaje(getVidaMaxPersonaje());
+        } else{
+            puntosDeMana = manaMax;
+        }
+    }
+   
+    public void verifivarAtributosMin(boolean verificacion){
+        if(verificacion == true){
+            setVidaPersonaje(0);
+        } else{
+            puntosDeMana = 0;
+        }
+    }
     
     //Metodo abstracto para aplicar el ataque del jugador
       @Override
     public void aplicarAtaque(Personaje objetivo) {
         
-        setAtaquePersonaje(calcularNumerosRandom(20,42));
+        int ataque = ControladorMetodos.calcularNumerosAleatorios(50,55);
+        setAtaquePersonaje(ataque);
         System.out.println("Has atacado con " + getAtaquePersonaje());
         recibirAtaque(getAtaquePersonaje());
     }
+    
+    
     
     //Getters y Setters mnecesarios para el jugador
 

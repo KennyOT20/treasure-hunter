@@ -4,8 +4,8 @@
  */
 package com.mycompany.treasurehunter.Casillas;
 
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Jugador;
-import java.util.Random;
 
 /**
  *
@@ -13,39 +13,40 @@ import java.util.Random;
  */
 public class CasillaTrampa extends Casilla {
     
-    private static final Random random = new Random();
+    private int puntosDeHpPerdido;
+    private int puntosDeMpPerdido;
     
-    public CasillaTrampa(Jugador jugador, String nombre, int posicionX, int posicionY) {
-        super(jugador, nombre, posicionX, posicionY);
+    public CasillaTrampa(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
+        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
     }
 
     @Override
     public void efectoDeCasilla() {
       
-        boolean elegirTrampa = random.nextBoolean();
+        boolean elegirTrampa = ControladorMetodos.opcionesActivas();
         
             if(elegirTrampa == false){
-                int puntosDeHpPerdido = calcularDañoTrampa(25,62);
+                puntosDeHpPerdido = ControladorMetodos.calcularNumerosAleatorios(20, 24);
                 jugador.setVidaPersonaje(jugador.getVidaPersonaje() - puntosDeHpPerdido);
+                
+                if(jugador.getVidaPersonaje() <= 0){
+                    jugador.verifivarAtributosMin(true);
+                }
+                
                 System.out.println("¡Oh no, has caido en una trampa!");
                 System.out.print("Has perdido " + puntosDeHpPerdido + " de hp");
+                
             } else{
-                int puntosDeMpPerdido = calcularDañoTrampa(5,8);
+                puntosDeMpPerdido = ControladorMetodos.calcularNumerosAleatorios(20, 24);
                 jugador.setPuntosDeMana(jugador.getPuntosDeMana() - puntosDeMpPerdido);
+                
+                if(jugador.getPuntosDeMana() <= 0){
+                    jugador.verifivarAtributosMin(false);
+                }
+                
                 System.out.println("¡Oh no, has caido en una trampa!");
                 System.out.print("Has perdido " + puntosDeMpPerdido + " de mp");
             }
-    }
-    
-    /**
-     * Metodo encargado de calcular el daño emitido de la casilla trampa
-     * @param min recibe un numero que sera el minimo entre el un intervalo
-     * @param max recibe el numero maximo del intervalo
-     * @return un numero aleatoro entre el intervalo de <min> y <max> 
-     */
-    private int calcularDañoTrampa(int min, int max){
-        int dañoTrampa = random.nextInt(min, max);
-        return dañoTrampa;
     }
 
     @Override

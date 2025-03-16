@@ -4,11 +4,13 @@
  */
 package com.mycompany.treasurehunter.Mapa;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kenny
  */
-public class AlmacenarMapas {
+public class AlmacenarMapas implements Serializable {
     
     
     

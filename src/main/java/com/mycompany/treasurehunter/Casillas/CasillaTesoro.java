@@ -12,9 +12,12 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class CasillaTesoro extends Casilla {
 
-    public CasillaTesoro(Jugador jugador, String nombre, int posicionX, int posicionY) {
-        super(jugador, nombre,  posicionX, posicionY);
+    public CasillaTesoro(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
+        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
     }
+
+    
+    
 
     @Override
     public void efectoDeCasilla() {

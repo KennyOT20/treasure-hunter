@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.treasurehunter.Controlador;
+package com.mycompany.treasurehunter.Controladores;
 
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Partida.Partida;
@@ -12,7 +12,7 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  *
  * @author kenny
  */
-public class Controlador {
+public class ControladorMenu {
     
     //Metodo encargado de iniciar la partida nueva del jugador
     public void iniciarPartida(){

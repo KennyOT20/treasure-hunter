@@ -24,7 +24,9 @@ public class Batalla {
     
     public void iniciarBatalla(){
         
-        boolean turnos = opcionValida();
+        Random random = new Random();
+        
+        boolean turnos = random.nextBoolean();
         
         while(jugador.getVidaPersonaje() > 0 && enemigo.getVidaPersonaje() > 0){
             if(turnos == false){
@@ -32,20 +34,14 @@ public class Batalla {
             } else{
                 jugador.aplicarAtaque(enemigo);
             }
-            
             turnos = !turnos;
         }
         
-        if(enemigo.getVidaPersonaje() <= 0){
+        if(jugador.getVidaPersonaje() <= 0){
             System.out.println("Has vencido al pirata " + enemigo.getNombrePersonaje());
         } else{
             System.out.println("El pirata " + enemigo.getNombrePersonaje() + " te ha vencido");
         }
     }
     
-    private boolean opcionValida(){
-       Random random = new Random();
-       boolean opcion = random.nextBoolean();
-       return opcion;
-    }
 }

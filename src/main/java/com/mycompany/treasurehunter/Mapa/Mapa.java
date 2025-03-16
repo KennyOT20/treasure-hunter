@@ -4,9 +4,11 @@
  */
 package com.mycompany.treasurehunter.Mapa;
 
+import com.mycompany.treasurehunter.Casillas.CasillaCombate;
+import com.mycompany.treasurehunter.Casillas.CasillaTeletransporte;
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.io.Serializable;
-import java.util.Random;
 
 /**
  *
@@ -15,7 +17,6 @@ import java.util.Random;
 public class Mapa implements Serializable {
     
     private Jugador jugador;
-    
     private static final String FONDO_NEGRO = "\u001B[40m";
     private static final String FONDO_AMARILLO_BRILLANTE = "\u001B[103m";
     private static final String FONDO_ROJO = "\u001B[41m";
@@ -28,6 +29,7 @@ public class Mapa implements Serializable {
     private static final String RESETEAR_FONDO = "\u001B[0m";
     private static final String[] SIMBOLOS_CASILLAS = {" ", "C","E","M","P", "T","R"};
     private static final String SIMBOLO_CASILLA_TESORO = "K";
+    private String casillaAnteriorJugador = SIMBOLOS_CASILLAS[0];
     private int cantidadFilas;
     private int cantidadColumnas;
     private int jugadorCoordenadaX;
@@ -42,8 +44,8 @@ public class Mapa implements Serializable {
     public void generarMapaPorDefecto(){
         cantidadFilas = 24;
         cantidadColumnas = 24;
-        jugador.setPosicionX(4);
-        jugador.setPosicionY(3);
+        jugador.setPosicionX(15);
+        jugador.setPosicionY(2);
         mapa = new String[cantidadFilas][cantidadColumnas];
         inicializarMapa();
         generarMapa();
@@ -155,13 +157,15 @@ public class Mapa implements Serializable {
             }
     }
     
-    //Metodo encargado de ir actualizando el mapa cada vez que el jugador pase por encima de una casilla
-    private void actualizarMapa(){
-        
-        if(mapa[jugadorCoordenadaX][jugadorCoordenadaY].equals(" ")){
-        mapa[jugadorCoordenadaX][jugadorCoordenadaY] = " ";
-        colocarJugadorEnMapa();
-        }
+    /*
+    Metodo encargado de actualizar el mapa guardando el simbolo anterior en una variable y luego se encarga de 
+    volver a colocar el simbolo para que luego en imprimir mapa lo vuelva a pintar con el color correspondiente
+    */
+    public void actualizarMapa(){
+      mapa[jugadorCoordenadaX][jugadorCoordenadaY] = casillaAnteriorJugador;
+      casillaAnteriorJugador = mapa[jugador.getPosicionX()][jugador.getPosicionY()];
+      colocarJugadorEnMapa();
+      llamarCasilla();
     }
     
     /**
@@ -198,20 +202,20 @@ public class Mapa implements Serializable {
     }
     
     /**
-     * Metodo encargado de generar las casillas aleatorias mediante el simbolo de las casillas
+     * Metodo encargado de generar las casillas aleatorias mediante una letra que representa a una casilla en
+     * especifico.
      * @return un simbolo y lo coloca en el mapa en el metodo inicializar mapa
      */
     private String generarCasillas(){
-        Random random = new Random();
-        int indiceCasillas = random.nextInt(SIMBOLOS_CASILLAS.length);
+        int indiceCasillas = ControladorMetodos.calcularNumerosAleatorios(0, SIMBOLOS_CASILLAS.length);
         String letraAletoria = SIMBOLOS_CASILLAS[indiceCasillas];
         return letraAletoria;
     }
     
-    private void comprobarCasillas(){
-        
-    }
-    
+    /*
+    Metodo encargado de mostrar que significa cada color que lleva el mapa, como las casillas combates
+    , simbolo del jugador entre otros.
+    */
     private void simbologiaDeMapa(){
         
         System.out.println("Partida de: " + jugador.getNombrePersonaje());
@@ -222,10 +226,28 @@ public class Mapa implements Serializable {
         System.out.print(" |Pista: " + FONDO_AMARILLO_BRILLANTE + "   " + RESETEAR_FONDO);
         System.out.print(" |Teletransporte: " + FONDO_CYAN + "   " + RESETEAR_FONDO );
         System.out.print(" |Muro: " + FONDO_AMARILLO + "   " + RESETEAR_FONDO);
-        System.out.print(" |Trampa: " + FONDO_AZUL + "   " + RESETEAR_FONDO );
+        System.out.print(" |Trampa: " + FONDO_AZUL + "   " + RESETEAR_FONDO + "|");
         System.out.println();
         System.out.println();
     }
+    
+    //Metodo encargado de ir llamando el efecto de la casilla correspondiente dependiendo de la posicion del jugador.
+    private void llamarCasilla() {
+    String contenidoCasilla = mapa[jugador.getPosicionX()][jugador.getPosicionY()].trim(); // Elimina espacios extra
+
+    System.out.println("DEBUG: Contenido de la casilla actual -> " + contenidoCasilla);
+
+    if (contenidoCasilla.equals(SIMBOLOS_CASILLAS[0])) {
+        System.out.println("Casilla sin efecto, puedes seguir avanzando.");
+    } else if (contenidoCasilla.equals("K")) {
+        System.out.println("Jugador en posición " + jugador.getPosicionX() + "," + jugador.getPosicionY());
+        System.out.println("Activando Casilla Combate...");
+        new CasillaTeletransporte(jugador, "Casilla Combate", "C", 0, 0).efectoDeCasilla();
+    } else {
+        System.out.println("DEBUG: Casilla no reconocida.");
+    }
+}
+
     
     //Getters y Setters necesarios
     public int getCantidadFilas() {

@@ -5,6 +5,7 @@
 package com.mycompany.treasurehunter.Menus;
 
 import com.mycompany.treasurehunter.Mapa.Mapa;
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import java.util.Scanner;
 
 /**
@@ -43,31 +44,28 @@ public class MenuJuego{
         
         switch(opcion.toUpperCase()){
             case "W" -> {
-                limpiarPantalla();
+                ControladorMetodos.limpiarPantalla();
                 mapa.movimientoArriba();
             }
             case "A" -> {
-                limpiarPantalla();
+                ControladorMetodos.limpiarPantalla();
                 mapa.movimientoIzquierda();
             }
             case "S" -> {
-                limpiarPantalla();
+                ControladorMetodos.limpiarPantalla();
                 mapa.movimientoAbajo();
             }
             case "D" -> {
-                limpiarPantalla();
+                ControladorMetodos.limpiarPantalla();
                 mapa.movimientoDerecha();
             }
             default -> {
-                limpiarPantalla();
+                ControladorMetodos.limpiarPantalla();
                 System.out.println("Opcion no valida, intente de nuevo");
                 mapa.generarMapa();
             }
+
         }   
     }  
     
-    private void limpiarPantalla(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
 }

@@ -4,6 +4,8 @@
  */
 package com.mycompany.treasurehunter.Personaje;
 
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
+
 /**
  *
  * @author kenny
@@ -20,10 +22,10 @@ public class Enemigo extends Personaje{
     public void generarEnemigos(Jugador jugador){
        int hpMinimo = jugador.getVidaMaxPersonaje() - (jugador.getVidaMaxPersonaje()/2);
        int hpMaximo = jugador.getVidaMaxPersonaje() + (jugador.getVidaMaxPersonaje()/2);
-       int hpEnemigo = calcularNumerosRandom(hpMinimo, hpMaximo);
+       int hpEnemigo = ControladorMetodos.calcularNumerosAleatorios(hpMinimo, hpMaximo);
        setVidaPersonaje(hpEnemigo);
-       int indice = calcularNumerosRandom(0, NOMBRE_ENEMIGO.length);
-       setAtaquePersonaje(calcularNumerosRandom(25,53));
+       int indice = ControladorMetodos.calcularNumerosAleatorios(0, NOMBRE_ENEMIGO.length);
+       setAtaquePersonaje(ControladorMetodos.calcularNumerosAleatorios(40, 50));
        setNombrePersonaje(NOMBRE_ENEMIGO[indice]);
     }
     
