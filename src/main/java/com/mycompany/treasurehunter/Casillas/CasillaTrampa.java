@@ -26,7 +26,7 @@ public class CasillaTrampa extends Casilla {
         boolean elegirTrampa = ControladorMetodos.opcionesActivas();
         
             if(elegirTrampa == false){
-                puntosDeHpPerdido = ControladorMetodos.calcularNumerosAleatorios(20, 24);
+                puntosDeHpPerdido = ControladorMetodos.calcularNumerosAleatorios(15, 28);
                 jugador.setVidaPersonaje(jugador.getVidaPersonaje() - puntosDeHpPerdido);
                 
                 if(jugador.getVidaPersonaje() <= 0){
@@ -35,9 +35,10 @@ public class CasillaTrampa extends Casilla {
                 
                 System.out.println("¡Oh no, has caido en una trampa!");
                 System.out.print("Has perdido " + puntosDeHpPerdido + " de hp");
+                System.out.println("");
                 
             } else{
-                puntosDeMpPerdido = ControladorMetodos.calcularNumerosAleatorios(20, 24);
+                puntosDeMpPerdido = ControladorMetodos.calcularNumerosAleatorios(10, 14);
                 jugador.setPuntosDeMana(jugador.getPuntosDeMana() - puntosDeMpPerdido);
                 
                 if(jugador.getPuntosDeMana() <= 0){
@@ -46,6 +47,7 @@ public class CasillaTrampa extends Casilla {
                 
                 System.out.println("¡Oh no, has caido en una trampa!");
                 System.out.print("Has perdido " + puntosDeMpPerdido + " de mp");
+                System.out.println("");
             }
     }
 

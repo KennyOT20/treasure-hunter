@@ -6,6 +6,7 @@ package com.mycompany.treasurehunter.Partida;
 
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Menus.MenuJuego;
+import com.mycompany.treasurehunter.Personaje.Jugador;
 
 /**
  *
@@ -21,19 +22,14 @@ public class Partida {
     
     //Metodo encargado de mantener la partida activa
     public void iniciarPartida(){
-        MenuJuego menu = new MenuJuego(mapa);
+        Jugador jugador = new Jugador();
+        MenuJuego menu = new MenuJuego(mapa, jugador);
         
-        while(true){
-            comprobarPartidaGanada();
+        while(jugador.getVidaPersonaje() > 0){
             menu.mostrarMenu();
         }
+        
+        System.out.println("Has perdido, no has logrado encontrare el tesoro :( ");
     }
     
-    /**
-     * Metodo encargado de ir verificando si el usuario a ganado la partida
-     * @return un booleano false hasta que se gane la partida.
-     */
-    private boolean comprobarPartidaGanada(){
-        return false;
-    }
 }

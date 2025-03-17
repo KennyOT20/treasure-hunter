@@ -27,15 +27,12 @@ public class CasillaTeletransporte extends Casilla {
     public void efectoDeCasilla() {
         Mapa mapa = new Mapa(jugador);
         
-         if (mapa.getCantidadFilas() > 1 && mapa.getCantidadColumnas() > 1) {
-        nuevaCoordenadaX = ControladorMetodos.calcularNumerosAleatorios(0, mapa.getCantidadFilas() - 1);
-        nuevaCoordenadaY = ControladorMetodos.calcularNumerosAleatorios(0, mapa.getCantidadColumnas() - 1);
+        nuevaCoordenadaX = ControladorMetodos.calcularNumerosAleatorios(0, 23 );
+        nuevaCoordenadaY = ControladorMetodos.calcularNumerosAleatorios(0, 23 );
         
         jugador.setPosicionX(nuevaCoordenadaX);
         jugador.setPosicionY(nuevaCoordenadaY);
         System.out.println("Has sido teletransportado a otra casilla");
-        mapa.actualizarMapa();
-    } 
     }
 
     @Override

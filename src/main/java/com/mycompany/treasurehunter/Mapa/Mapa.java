@@ -5,7 +5,11 @@
 package com.mycompany.treasurehunter.Mapa;
 
 import com.mycompany.treasurehunter.Casillas.CasillaCombate;
+import com.mycompany.treasurehunter.Casillas.CasillaEnergia;
+import com.mycompany.treasurehunter.Casillas.CasillaMuro;
+import com.mycompany.treasurehunter.Casillas.CasillaPista;
 import com.mycompany.treasurehunter.Casillas.CasillaTeletransporte;
+import com.mycompany.treasurehunter.Casillas.CasillaTrampa;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.io.Serializable;
@@ -164,8 +168,8 @@ public class Mapa implements Serializable {
     public void actualizarMapa(){
       mapa[jugadorCoordenadaX][jugadorCoordenadaY] = casillaAnteriorJugador;
       casillaAnteriorJugador = mapa[jugador.getPosicionX()][jugador.getPosicionY()];
+      llamarCasilla(casillaAnteriorJugador);
       colocarJugadorEnMapa();
-      llamarCasilla();
     }
     
     /**
@@ -181,13 +185,13 @@ public class Mapa implements Serializable {
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[2])){
             System.out.print(FONDO_VERDE + "   " + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[3])){
-            System.out.print(FONDO_AMARILLO_BRILLANTE + "   " + RESETEAR_FONDO);
-        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[4])){
-            System.out.print(FONDO_AZUL + "   " + RESETEAR_FONDO);
-        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[5])){
             System.out.print(FONDO_AMARILLO + "   " + RESETEAR_FONDO);
-        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[6])){
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[4])){
+            System.out.print(FONDO_AMARILLO_BRILLANTE + "   " + RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[5])){
             System.out.print(FONDO_CYAN + "   " + RESETEAR_FONDO);
+        }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[6])){
+            System.out.print(FONDO_AZUL + "   " + RESETEAR_FONDO);
         }else if(i == jugador.getPosicionX() && j == jugador.getPosicionY()){
             System.out.print(FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO);
         }
@@ -195,6 +199,7 @@ public class Mapa implements Serializable {
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
     public void generarMapa(){
+        jugador.mostrarEstadoJugador();
         simbologiaDeMapa();
         generarIndiceHorizontal();
         colocarJugadorEnMapa();
@@ -232,22 +237,25 @@ public class Mapa implements Serializable {
     }
     
     //Metodo encargado de ir llamando el efecto de la casilla correspondiente dependiendo de la posicion del jugador.
-    private void llamarCasilla() {
-    String contenidoCasilla = mapa[jugador.getPosicionX()][jugador.getPosicionY()].trim(); // Elimina espacios extra
-
-    System.out.println("DEBUG: Contenido de la casilla actual -> " + contenidoCasilla);
-
-    if (contenidoCasilla.equals(SIMBOLOS_CASILLAS[0])) {
-        System.out.println("Casilla sin efecto, puedes seguir avanzando.");
-    } else if (contenidoCasilla.equals("K")) {
-        System.out.println("Jugador en posición " + jugador.getPosicionX() + "," + jugador.getPosicionY());
-        System.out.println("Activando Casilla Combate...");
-        new CasillaTeletransporte(jugador, "Casilla Combate", "C", 0, 0).efectoDeCasilla();
-    } else {
-        System.out.println("DEBUG: Casilla no reconocida.");
+    private void llamarCasilla(String casillaActual){
+     
+        if(casillaActual.equals(SIMBOLOS_CASILLAS[0])){
+            System.out.println("Casilla normal sin efecto, puedes seguir avanzando");
+        } else if(casillaActual.equals(SIMBOLOS_CASILLAS[1])){
+            new CasillaCombate(jugador, "Casilla combate", "C", 0, 0).efectoDeCasilla();
+        } else if(casillaActual.equals(SIMBOLOS_CASILLAS[2])){
+            new CasillaEnergia(jugador, "Casilla enerigia", "C", 0, 0).efectoDeCasilla();
+        } else if(casillaActual.equals(SIMBOLOS_CASILLAS[3])){
+            new CasillaMuro(jugador, "Casilla muro", "C", 0, 0).efectoDeCasilla();
+        } else if(casillaActual.equals(SIMBOLOS_CASILLAS[4])){
+            new CasillaPista(jugador, "Casilla pista", "C", 0, 0).efectoDeCasilla();
+        } else if(casillaActual.equals(SIMBOLOS_CASILLAS[5])){
+            new CasillaTeletransporte(jugador, "Casilla teletransporte", "C", 0, 0).efectoDeCasilla();
+        } else if(casillaActual.equals(SIMBOLOS_CASILLAS[6])){
+            new CasillaTrampa(jugador, "Casilla trampa", "C", 0, 0).efectoDeCasilla();
+        } 
+            
     }
-}
-
     
     //Getters y Setters necesarios
     public int getCantidadFilas() {
@@ -265,6 +273,15 @@ public class Mapa implements Serializable {
     public void setCantidadColumnas(int cantidadColumnas) {
         this.cantidadColumnas = cantidadColumnas;
     }
+
+    public int getJugadorCoordenadaX() {
+        return jugadorCoordenadaX;
+    }
+
+    public int getJugadorCoordenadaY() {
+        return jugadorCoordenadaY;
+    }
+    
     
    
 }

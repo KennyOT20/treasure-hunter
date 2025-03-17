@@ -5,11 +5,11 @@ com/mycompany/treasurehunter/Casillas/CasillaTeletransporte.class
 com/mycompany/treasurehunter/Casillas/CasillaTrampa.class
 com/mycompany/treasurehunter/Casillas/CasillaEnergia.class
 com/mycompany/treasurehunter/Mapa/AlmacenarMapas.class
-com/mycompany/treasurehunter/Mapa/GeneradorDeCasillas.class
 com/mycompany/treasurehunter/Personaje/Jugador.class
 com/mycompany/treasurehunter/Casillas/CasillaMuro.class
 com/mycompany/treasurehunter/Partida/Partida.class
 com/mycompany/treasurehunter/Menus/MenuBase.class
+com/mycompany/treasurehunter/Menus/MenuBatalla.class
 com/mycompany/treasurehunter/Casillas/Casilla.class
 com/mycompany/treasurehunter/Casillas/CasillaPista.class
 com/mycompany/treasurehunter/Casillas/CasillaCombate.class

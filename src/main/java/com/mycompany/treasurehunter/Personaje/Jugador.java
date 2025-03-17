@@ -20,6 +20,9 @@ public class Jugador extends Personaje{
     private int posicionX;
     private int posicionY;
     private char simboloJugador;
+    private int posicionAnteriorX;
+    private int posicionAnteriosY;
+    
     
     //Constructor con valores iniciales
     public Jugador() {
@@ -57,6 +60,15 @@ public class Jugador extends Personaje{
         simboloJugador = Character.toUpperCase(nombre[0]);      
     }
     
+    
+    public void curarJugador(){
+        
+    }
+    
+    public void defenderJugador(){
+        
+    }
+    
     public void verificarAtributosMax(boolean verificacion){
         if(verificacion == true){
             setVidaPersonaje(getVidaMaxPersonaje());
@@ -71,6 +83,15 @@ public class Jugador extends Personaje{
         } else{
             puntosDeMana = 0;
         }
+    }
+    
+    public void mostrarEstadoJugador(){
+        System.out.print("Estado de " + getNombrePersonaje());
+        System.out.print(" --> ");
+        System.out.print("Hp: " + getVidaPersonaje() + " / " + getVidaMaxPersonaje());
+        System.out.print(" Mp: " + puntosDeMana + " / " + manaMax);
+        System.out.print(" Def: " + puntosDeDefensa + " / " + defensaMax);
+        System.out.println("");
     }
     
     //Metodo abstracto para aplicar el ataque del jugador
@@ -142,5 +163,23 @@ public class Jugador extends Personaje{
     public void setSimboloJugador(char simboloJugador) {
         this.simboloJugador = simboloJugador;
     }
+
+    public int getPosicionAnteriorX() {
+        return posicionAnteriorX;
+    }
+
+    public void setPosicionAnteriorX(int posicionAnteriorX) {
+        this.posicionAnteriorX = posicionAnteriorX;
+    }
+
+    public int getPosicionAnteriosY() {
+        return posicionAnteriosY;
+    }
+
+    public void setPosicionAnteriosY(int posicionAnteriosY) {
+        this.posicionAnteriosY = posicionAnteriosY;
+    }
+
+    
  
 }

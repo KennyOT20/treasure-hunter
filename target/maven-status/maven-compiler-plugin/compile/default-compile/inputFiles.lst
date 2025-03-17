@@ -10,10 +10,10 @@
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Controladores/ControladorMenu.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Controladores/ControladorMetodos.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/AlmacenarMapas.java
-/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/GeneradorDeCasillas.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/Mapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/ModificarMapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuBase.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuBatalla.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuInicial.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuJuego.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Partida/Partida.java

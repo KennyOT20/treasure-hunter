@@ -24,7 +24,7 @@ public class CasillaPista extends Casilla {
 
     @Override
     public void efectoDeCasilla() {
-       
+        System.out.println("CasullaPista");
     }
 
     @Override

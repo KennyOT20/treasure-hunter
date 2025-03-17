@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Casillas;
 
+
 import com.mycompany.treasurehunter.Personaje.Jugador;
 
 /**
@@ -18,9 +19,9 @@ public class CasillaMuro extends Casilla {
 
     @Override
     public void efectoDeCasilla() {
-        int coordenadaInicialY = jugador.getPosicionY();
-        int coordenadaInicialX = jugador.getPosicionX();
-        
+        jugador.setPosicionX(jugador.getPosicionAnteriorX());
+        jugador.setPosicionY(jugador.getPosicionAnteriosY());
+        System.out.println("Te has topado con una casilla muro, busca otro camino");
         
     }
 

@@ -6,6 +6,7 @@ package com.mycompany.treasurehunter.Menus;
 
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
+import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.util.Scanner;
 
 /**
@@ -15,9 +16,11 @@ import java.util.Scanner;
 public class MenuJuego{
 
     private Mapa mapa;
+    private Jugador jugador;
  
-    public MenuJuego(Mapa mapa) {
+    public MenuJuego(Mapa mapa, Jugador jugador) {
         this.mapa = mapa;
+        this.jugador = jugador;
     }
 
     public void mostrarMenu() {
@@ -41,6 +44,12 @@ public class MenuJuego{
     }
 
     private void ejecutarOpcion(String opcion) {
+        
+        int posicionAnteriorX = jugador.getPosicionX();
+        int posicionAnteriorY = jugador.getPosicionY();
+        jugador.setPosicionAnteriorX(posicionAnteriorX);
+        jugador.setPosicionAnteriosY(posicionAnteriorY);
+        
         
         switch(opcion.toUpperCase()){
             case "W" -> {
@@ -66,6 +75,8 @@ public class MenuJuego{
             }
 
         }   
-    }  
+    }      
+
+    
     
 }
