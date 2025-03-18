@@ -44,7 +44,10 @@ public class MenuBatalla extends MenuBase{
         
         switch(opcionMenu){
             case 1:
+                ControladorMetodos.limpiarPantalla();
                 jugador.aplicarAtaque(enemigo);
+                jugador.mostrarEstadoPersonaje();
+                enemigo.mostrarEstadoPersonaje();
                 break;
             case 2:
                 

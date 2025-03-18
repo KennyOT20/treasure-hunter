@@ -23,13 +23,15 @@ public class Partida {
     //Metodo encargado de mantener la partida activa
     public void iniciarPartida(){
         Jugador jugador = new Jugador();
-        MenuJuego menu = new MenuJuego(mapa, jugador);
+        MenuJuego menu = new MenuJuego(mapa, mapa.getJugador());
         
-        while(jugador.getVidaPersonaje() > 0){
+        //mapa.getJugador().getVidaPersonaje() > 0
+        
+        while(true){
             menu.mostrarMenu();
         }
         
-        System.out.println("Has perdido, no has logrado encontrare el tesoro :( ");
+        //System.out.println("Has perdido, no has logrado encontrare el tesoro :( ");
     }
     
 }

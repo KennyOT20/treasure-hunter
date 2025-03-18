@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Batalla;
 
+import com.mycompany.treasurehunter.Menus.MenuBatalla;
 import com.mycompany.treasurehunter.Personaje.Enemigo;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.util.Random;
@@ -24,15 +25,16 @@ public class Batalla {
     
     public void iniciarBatalla(){
         
+        MenuBatalla menu = new MenuBatalla(jugador, enemigo);
         Random random = new Random();
         
         boolean turnos = random.nextBoolean();
-        
+       
         while(jugador.getVidaPersonaje() > 0 && enemigo.getVidaPersonaje() > 0){
             if(turnos == false){
-                enemigo.aplicarAtaque(jugador);
+                menu.mostrarMenu();
             } else{
-                jugador.aplicarAtaque(enemigo);
+                enemigo.aplicarAtaque(jugador);
             }
             turnos = !turnos;
         }

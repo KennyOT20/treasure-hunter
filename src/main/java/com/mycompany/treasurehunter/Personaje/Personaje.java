@@ -5,7 +5,6 @@
 package com.mycompany.treasurehunter.Personaje;
 
 import java.io.Serializable;
-import java.util.Random;
 
 /**
  *
@@ -42,11 +41,16 @@ public abstract class Personaje implements Serializable{
         }
     }
     
+    
+    
     /**
      * Metodo abstracto encargado de realizar el ataque ya sea del enemigo o del jugador.
      * @param objetivo 
      */
     public abstract void aplicarAtaque(Personaje objetivo);
+    
+    //Metodo encargado de mostrar el estado del personaje
+    public abstract void mostrarEstadoPersonaje();
     
     public String getNombrePersonaje() {
         return nombrePersonaje;

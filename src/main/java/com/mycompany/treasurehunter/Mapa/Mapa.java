@@ -162,15 +162,37 @@ public class Mapa implements Serializable {
     }
     
     /*
-    Metodo encargado de actualizar el mapa guardando el simbolo anterior en una variable y luego se encarga de 
-    volver a colocar el simbolo para que luego en imprimir mapa lo vuelva a pintar con el color correspondiente
+    Metodo encargado de ir acutalizando el mapa luego de un movimiento del jugador
+    se encarga de ir guardando los simbolos de la antigua casilla y la nueva casilla 
+    del jugador para poder evitar que las casillas se borren o se sobreescriban con colores.
     */
-    public void actualizarMapa(){
+   public void actualizarMapa(){
       mapa[jugadorCoordenadaX][jugadorCoordenadaY] = casillaAnteriorJugador;
-      casillaAnteriorJugador = mapa[jugador.getPosicionX()][jugador.getPosicionY()];
-      llamarCasilla(casillaAnteriorJugador);
+      
+      String casillaNuevaJugador = mapa[jugador.getPosicionX()][jugador.getPosicionY()];
+      
+      if(!verificarCasilla(casillaNuevaJugador)){
+          casillaAnteriorJugador = casillaNuevaJugador;
+      }
+    
+      llamarCasilla(casillaNuevaJugador);
       colocarJugadorEnMapa();
+      
     }
+   
+   
+   /**
+    * Metodo encargado de verificar si es una casilla teletransporte o una casillaMuro
+    * para poder evitar que cuando se pise una casilla de estas, no pinte o sobreescriba el fondo
+    * de la otra casilla que pisa el jugador.
+    * @param comprobarCasilla recibe el simbolo y el fondo de la nueva casilla del jugador como parametro
+    * enviado desde el metodo actualizar mapa
+    * @return una verificacion si la casilla del jugador es igual al simbolo de la casilla muro o de la casilla
+    * teletransporte para evitar sobreescribir casillas
+    */
+   private boolean verificarCasilla(String comprobarCasilla){
+       return comprobarCasilla.equals("M") || comprobarCasilla.equals("T");
+   }
     
     /**
      * Metodo encargado de pintar las casillas segun el tipo que sea
@@ -178,7 +200,10 @@ public class Mapa implements Serializable {
      * @param j es encargado de recibir desde el metodo imprimirMapa la cantidad de columnas
      */
     private void agregarColores(int i, int j){
-        if(mapa[i][j].equals(SIMBOLOS_CASILLAS[0])){
+        
+        if(i == jugador.getPosicionX() && j == jugador.getPosicionY()){
+            System.out.print(FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO);
+        } else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[0])){
             System.out.print(FONDO_NEGRO + "   "+ RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[1])){
             System.out.print(FONDO_ROJO + "   " + RESETEAR_FONDO);
@@ -192,14 +217,13 @@ public class Mapa implements Serializable {
             System.out.print(FONDO_CYAN + "   " + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[6])){
             System.out.print(FONDO_AZUL + "   " + RESETEAR_FONDO);
-        }else if(i == jugador.getPosicionX() && j == jugador.getPosicionY()){
-            System.out.print(FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO);
         }
+        
     }
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
     public void generarMapa(){
-        jugador.mostrarEstadoJugador();
+        jugador.mostrarEstadoPersonaje();
         simbologiaDeMapa();
         generarIndiceHorizontal();
         colocarJugadorEnMapa();
@@ -281,6 +305,11 @@ public class Mapa implements Serializable {
     public int getJugadorCoordenadaY() {
         return jugadorCoordenadaY;
     }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+    
     
     
    

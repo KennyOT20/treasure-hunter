@@ -21,7 +21,7 @@ public class CasillaMuro extends Casilla {
     public void efectoDeCasilla() {
         jugador.setPosicionX(jugador.getPosicionAnteriorX());
         jugador.setPosicionY(jugador.getPosicionAnteriosY());
-        System.out.println("Te has topado con una casilla muro, busca otro camino");
+        System.out.println("Te has topado una roca, busca otro camino");
         
     }
 

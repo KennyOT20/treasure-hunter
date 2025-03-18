@@ -85,15 +85,6 @@ public class Jugador extends Personaje{
         }
     }
     
-    public void mostrarEstadoJugador(){
-        System.out.print("Estado de " + getNombrePersonaje());
-        System.out.print(" --> ");
-        System.out.print("Hp: " + getVidaPersonaje() + " / " + getVidaMaxPersonaje());
-        System.out.print(" Mp: " + puntosDeMana + " / " + manaMax);
-        System.out.print(" Def: " + puntosDeDefensa + " / " + defensaMax);
-        System.out.println("");
-    }
-    
     //Metodo abstracto para aplicar el ataque del jugador
       @Override
     public void aplicarAtaque(Personaje objetivo) {
@@ -104,7 +95,15 @@ public class Jugador extends Personaje{
         recibirAtaque(getAtaquePersonaje());
     }
     
-    
+      @Override
+    public void mostrarEstadoPersonaje() {
+        System.out.print("Estado de " + getNombrePersonaje());
+        System.out.print(" --> ");
+        System.out.print("Hp: " + getVidaPersonaje() + " / " + getVidaMaxPersonaje());
+        System.out.print(" Mp: " + puntosDeMana + " / " + manaMax);
+        System.out.print(" Def: " + puntosDeDefensa + " / " + defensaMax);
+        System.out.println("");
+    }
     
     //Getters y Setters mnecesarios para el jugador
 
@@ -179,6 +178,7 @@ public class Jugador extends Personaje{
     public void setPosicionAnteriosY(int posicionAnteriosY) {
         this.posicionAnteriosY = posicionAnteriosY;
     }
+
 
     
  

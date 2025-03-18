@@ -27,6 +27,7 @@ public class CasillaTeletransporte extends Casilla {
     public void efectoDeCasilla() {
         Mapa mapa = new Mapa(jugador);
         
+        System.out.println("Has pisado una casilla de Teletransporte ");
         nuevaCoordenadaX = ControladorMetodos.calcularNumerosAleatorios(0, 23 );
         nuevaCoordenadaY = ControladorMetodos.calcularNumerosAleatorios(0, 23 );
         

@@ -5,6 +5,7 @@
 package com.mycompany.treasurehunter.Casillas;
 
 import com.mycompany.treasurehunter.Batalla.Batalla;
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Enemigo;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 
@@ -26,7 +27,14 @@ public class CasillaCombate extends Casilla {
         Enemigo enemigo = new Enemigo();
         Batalla batalla = new Batalla(jugador, enemigo);
         
+        ControladorMetodos.limpiarPantalla();
+        System.out.println("¡Oh no!, has caido en una casilla de combate.");
+        
         enemigo.generarEnemigos(jugador);
+        
+        System.out.println("Te aparecio el pirata " + enemigo.getNombrePersonaje() + " para defender el tesoro.");
+        jugador.mostrarEstadoPersonaje();
+        System.out.println("Estado del pirata " + enemigo.getNombrePersonaje() + ": " + enemigo.getVidaPersonaje() + " / " + enemigo.getVidaMaxPersonaje());
         batalla.iniciarBatalla();
         
     }

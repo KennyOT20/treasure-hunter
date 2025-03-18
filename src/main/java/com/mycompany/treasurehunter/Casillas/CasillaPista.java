@@ -12,8 +12,10 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class CasillaPista extends Casilla {
     
-    private String[] pistas ={
-        
+    private String[] pistas ={ "El tesoro se encuentra arriba por la izquierda o por la derecha...",
+        "Estas casi cerca, solo te falta regresar por donde estabas",
+        "Casi lo encuentras...",
+        "Estas muy lejos, la proxima agarra otro camino"
     };
 
     public CasillaPista(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
@@ -24,7 +26,7 @@ public class CasillaPista extends Casilla {
 
     @Override
     public void efectoDeCasilla() {
-        System.out.println("CasullaPista");
+        
     }
 
     @Override
