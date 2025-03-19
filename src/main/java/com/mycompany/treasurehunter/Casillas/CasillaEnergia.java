@@ -25,19 +25,22 @@ public class CasillaEnergia extends Casilla {
     @Override
     public void efectoDeCasilla() {
      
-        boolean recuperarRecursos = ControladorMetodos.opcionesActivas();
+        ControladorMetodos controlador = new ControladorMetodos();
+        
+        boolean recuperarRecursos = controlador.opcionesActivas();
         
         System.out.println("Has caido en una casilla de energia");
         
         if(recuperarRecursos == false ){
-            hpRecuperado = ControladorMetodos.calcularNumerosAleatorios(15, 40);
+            hpRecuperado = controlador.calcularNumerosAleatorios(15, 40);
             jugador.setVidaPersonaje(jugador.getVidaPersonaje() + hpRecuperado);
             System.out.println("Has recuperado " + hpRecuperado + " puntos de vida");
             
             if(jugador.getVidaPersonaje() >= jugador.getVidaMaxPersonaje()){
                 jugador.verificarAtributosMax(true);
+                
             } else{
-                mpRecuperado = ControladorMetodos.calcularNumerosAleatorios(8, 15);
+                mpRecuperado = controlador.calcularNumerosAleatorios(8, 15);
                 jugador.setPuntosDeMana(jugador.getPuntosDeMana() + mpRecuperado);
                 System.out.println("Has recuperado " + mpRecuperado + " puntos de vida");
                 

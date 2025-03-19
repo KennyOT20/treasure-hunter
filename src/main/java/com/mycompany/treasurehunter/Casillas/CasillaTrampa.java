@@ -23,10 +23,12 @@ public class CasillaTrampa extends Casilla {
     @Override
     public void efectoDeCasilla() {
       
-        boolean elegirTrampa = ControladorMetodos.opcionesActivas();
+        ControladorMetodos controlador = new ControladorMetodos();
+        
+        boolean elegirTrampa = controlador.opcionesActivas();
         
             if(elegirTrampa == false){
-                puntosDeHpPerdido = ControladorMetodos.calcularNumerosAleatorios(15, 28);
+                puntosDeHpPerdido = controlador.calcularNumerosAleatorios(15, 28);
                 jugador.setVidaPersonaje(jugador.getVidaPersonaje() - puntosDeHpPerdido);
                 
                 if(jugador.getVidaPersonaje() <= 0){
@@ -38,7 +40,7 @@ public class CasillaTrampa extends Casilla {
                 System.out.println("");
                 
             } else{
-                puntosDeMpPerdido = ControladorMetodos.calcularNumerosAleatorios(10, 14);
+                puntosDeMpPerdido = controlador.calcularNumerosAleatorios(2, 8);
                 jugador.setPuntosDeMana(jugador.getPuntosDeMana() - puntosDeMpPerdido);
                 
                 if(jugador.getPuntosDeMana() <= 0){

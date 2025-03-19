@@ -27,6 +27,7 @@ public abstract class MenuBase {
      */
     protected void validarOpcion(){
         
+        ControladorMetodos controlador = new ControladorMetodos();
         Scanner scanner = new Scanner(System.in);
             
             boolean opcionValida = false;
@@ -40,7 +41,7 @@ public abstract class MenuBase {
                     }
                 } catch(InputMismatchException e){
                     scanner.nextLine();
-                    ControladorMetodos.limpiarPantalla();
+                    controlador.limpiarPantalla();
                     System.out.println("Opcion no valida, intente de nuevo");
                     mostrarMenu();
                     

@@ -22,14 +22,14 @@ public class CasillaTeletransporte extends Casilla {
     }
     
     
-    
     @Override
     public void efectoDeCasilla() {
         Mapa mapa = new Mapa(jugador);
+        ControladorMetodos controlador = new ControladorMetodos();
         
         System.out.println("Has pisado una casilla de Teletransporte ");
-        nuevaCoordenadaX = ControladorMetodos.calcularNumerosAleatorios(0, 23 );
-        nuevaCoordenadaY = ControladorMetodos.calcularNumerosAleatorios(0, 23 );
+        nuevaCoordenadaX = controlador.calcularNumerosAleatorios(0, 23 );
+        nuevaCoordenadaY = controlador.calcularNumerosAleatorios(0, 23 );
         
         jugador.setPosicionX(nuevaCoordenadaX);
         jugador.setPosicionY(nuevaCoordenadaY);

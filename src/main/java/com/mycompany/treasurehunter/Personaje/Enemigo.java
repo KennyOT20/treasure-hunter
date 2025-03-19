@@ -20,34 +20,37 @@ public class Enemigo extends Personaje{
 
     //Metodo encargado de generar los enemigos 
     public void generarEnemigos(Jugador jugador){
+       ControladorMetodos controlador = new ControladorMetodos();
+       
        int hpMinimo = jugador.getVidaMaxPersonaje() - (jugador.getVidaMaxPersonaje()/2);
        int hpMaximo = jugador.getVidaMaxPersonaje() + (jugador.getVidaMaxPersonaje()/2);
-       int hpEnemigo = ControladorMetodos.calcularNumerosAleatorios(hpMinimo, hpMaximo);
+       int hpEnemigo = controlador.calcularNumerosAleatorios(hpMinimo, hpMaximo);
        int hpMaxEnemigo = hpEnemigo;
+       
        setVidaPersonaje(hpEnemigo);
        setVidaMaxPersonaje(hpMaxEnemigo);
-       int indice = ControladorMetodos.calcularNumerosAleatorios(0, NOMBRE_ENEMIGO.length);
-       setAtaquePersonaje(ControladorMetodos.calcularNumerosAleatorios(30, 42));
+       
+       int indice = controlador.calcularNumerosAleatorios(0, NOMBRE_ENEMIGO.length);
+       setAtaquePersonaje(controlador.calcularNumerosAleatorios(10, 22));
        setNombrePersonaje(NOMBRE_ENEMIGO[indice]);
-    }
-    
-  
-    
+       
+    }    
+      
     //metodo abstracto para aplicar el ataque
     
      @Override
-    public void aplicarAtaque(Personaje objetivo) {
-        
-        System.out.println("El pirata " + getNombrePersonaje() + " te ataco con " );
-        System.out.print(getAtaquePersonaje() + " de daño.");
-         recibirAtaque(getAtaquePersonaje());
+    public void aplicarAtaque(Personaje objetivo) {      
+        System.out.println("El pirata " + getNombrePersonaje() + " te ataco con "  + getAtaquePersonaje() + " de daño." );
+        objetivo.recibirAtaque(getAtaquePersonaje());
+        System.out.println("");
     }
 
     @Override
     public void mostrarEstadoPersonaje() {
         System.out.println("");
-        System.out.println("Hp de pirata " + getNombrePersonaje());
+        System.out.print("Hp de pirata " + getNombrePersonaje());
         System.out.print(" " + getVidaPersonaje() + " / " + getVidaMaxPersonaje() );
+        System.out.println("");
         
     }
     

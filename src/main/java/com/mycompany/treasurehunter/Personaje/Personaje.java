@@ -31,13 +31,11 @@ public abstract class Personaje implements Serializable{
      * @param ataque recibe el ataque del jugador o del enemigo para poder aplicar el daño
      */
     protected void recibirAtaque(int ataque){
-         
+        
         vidaPersonaje -= ataque;
         
-        if (vidaPersonaje <= 0){
+        if(vidaPersonaje <= 0){
             vidaPersonaje = 0;
-        } else{
-            System.out.println();
         }
     }
     

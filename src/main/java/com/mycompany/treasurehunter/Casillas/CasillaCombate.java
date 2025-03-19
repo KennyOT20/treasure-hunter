@@ -26,15 +26,14 @@ public class CasillaCombate extends Casilla {
     public void efectoDeCasilla() {
         Enemigo enemigo = new Enemigo();
         Batalla batalla = new Batalla(jugador, enemigo);
+        ControladorMetodos controlador = new ControladorMetodos();
         
-        ControladorMetodos.limpiarPantalla();
+        controlador.limpiarPantalla();
         System.out.println("¡Oh no!, has caido en una casilla de combate.");
         
         enemigo.generarEnemigos(jugador);
         
         System.out.println("Te aparecio el pirata " + enemigo.getNombrePersonaje() + " para defender el tesoro.");
-        jugador.mostrarEstadoPersonaje();
-        System.out.println("Estado del pirata " + enemigo.getNombrePersonaje() + ": " + enemigo.getVidaPersonaje() + " / " + enemigo.getVidaMaxPersonaje());
         batalla.iniciarBatalla();
         
     }

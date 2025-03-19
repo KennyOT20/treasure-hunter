@@ -21,7 +21,7 @@ public class ControladorMetodos {
      * @param max recibe como parametro un numero maximo de un intervalo
      * @return un numero aleatorio entre el intervalo de <code> min </code> y <code> max </code>  
      */
-    public static int calcularNumerosAleatorios(int min, int max){
+    public int calcularNumerosAleatorios(int min, int max){
         int numeroAleatorio = random.nextInt(min, max);
         return numeroAleatorio;
     }
@@ -30,13 +30,13 @@ public class ControladorMetodos {
      * Metodo encargado de aleatorizar una variable booleana 
      * @return aleatorizamente un true o un false que nos sirve para otras clases
      */
-    public static boolean opcionesActivas(){
+    public boolean opcionesActivas(){
         boolean opcionActiva = random.nextBoolean();
         return opcionActiva;
     }
     
     //Metodo creado con el proposito de ir limpiando la consola mediante un flush
-    public static void limpiarPantalla(){
+    public void limpiarPantalla(){
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }

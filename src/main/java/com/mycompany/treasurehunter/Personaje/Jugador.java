@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class Jugador extends Personaje{
     
+    private final ControladorMetodos controlador;
     private int puntosDeMana;
     private int puntosDeDefensa;
     private int manaMax;
@@ -26,7 +27,12 @@ public class Jugador extends Personaje{
     
     //Constructor con valores iniciales
     public Jugador() {
-        super("", 500, 500, 0);
+        super("", 200, 200, 0);
+        this.puntosDeMana = 20;
+        this.manaMax = 20;
+        this.puntosDeDefensa = 10;
+        this.defensaMax = 10; 
+        this.controlador = new ControladorMetodos();
     }
 
     //Metodo para encargado de obtener y validar el nombre del jugador.
@@ -45,7 +51,7 @@ public class Jugador extends Personaje{
             nombreJugador = scanner.nextLine().trim();
             
             if(nombreJugador.isEmpty()){
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 System.out.println("¡Error!, el nombre no puede estar vacio");
             }
         } while(nombreJugador.isEmpty());
@@ -63,6 +69,24 @@ public class Jugador extends Personaje{
     
     public void curarJugador(){
         
+        if(puntosDeMana > 0 ){
+            
+            int puntosDeVidaRecuperado = controlador.calcularNumerosAleatorios(14, 22);
+            setVidaPersonaje(getVidaPersonaje() + puntosDeVidaRecuperado);
+            puntosDeMana = puntosDeMana - 1;
+            controlador.limpiarPantalla();
+            System.out.println("Te has curado " + puntosDeVidaRecuperado + " puntos de vida.");
+            
+            if(getVidaPersonaje() >= getVidaMaxPersonaje()){
+                verificarAtributosMax(true);
+                
+            }  
+            
+        } else{
+            controlador.limpiarPantalla();
+            System.out.println("No tienes suficientes puntos de mana para curarte");
+        }
+                
     }
     
     public void defenderJugador(){
@@ -89,15 +113,15 @@ public class Jugador extends Personaje{
       @Override
     public void aplicarAtaque(Personaje objetivo) {
         
-        int ataque = ControladorMetodos.calcularNumerosAleatorios(50,55);
+        int ataque = controlador.calcularNumerosAleatorios(10,25);
         setAtaquePersonaje(ataque);
         System.out.println("Has atacado con " + getAtaquePersonaje());
-        recibirAtaque(getAtaquePersonaje());
+        objetivo.recibirAtaque(getAtaquePersonaje());
     }
     
       @Override
     public void mostrarEstadoPersonaje() {
-        System.out.print("Estado de " + getNombrePersonaje());
+        System.out.print("Estado de partida ");
         System.out.print(" --> ");
         System.out.print("Hp: " + getVidaPersonaje() + " / " + getVidaMaxPersonaje());
         System.out.print(" Mp: " + puntosDeMana + " / " + manaMax);

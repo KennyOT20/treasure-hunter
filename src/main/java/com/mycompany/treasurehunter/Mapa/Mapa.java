@@ -20,7 +20,7 @@ import java.io.Serializable;
  */
 public class Mapa implements Serializable {
     
-    private Jugador jugador;
+    private final Jugador jugador;
     private static final String FONDO_NEGRO = "\u001B[40m";
     private static final String FONDO_AMARILLO_BRILLANTE = "\u001B[103m";
     private static final String FONDO_ROJO = "\u001B[41m";
@@ -38,6 +38,10 @@ public class Mapa implements Serializable {
     private int cantidadColumnas;
     private int jugadorCoordenadaX;
     private int jugadorCoordenadaY;
+    private int movimientoArriba;
+    private int movimientoAbajo;
+    private int movimientoDerecha;
+    private int movimientoIzquierdo;
     private String [][] mapa;
 
     public Mapa(Jugador jugador) {
@@ -92,6 +96,7 @@ public class Mapa implements Serializable {
     
     //Metodos encargados de realizar los movimientos del jugador: Arriba, abajo, izquierda o Derecha.
     public void movimientoDerecha(){
+        movimientoDerecha ++;
         jugadorCoordenadaX = jugador.getPosicionX();
         jugadorCoordenadaY = jugador.getPosicionY();
         
@@ -109,6 +114,7 @@ public class Mapa implements Serializable {
     }
     
     public void movimientoIzquierda(){
+        movimientoIzquierdo ++;
         jugadorCoordenadaX = jugador.getPosicionX();
         jugadorCoordenadaY = jugador.getPosicionY();
        
@@ -128,6 +134,7 @@ public class Mapa implements Serializable {
     }
     
     public void movimientoArriba(){
+        movimientoArriba ++;
         jugadorCoordenadaX = jugador.getPosicionX();
         jugadorCoordenadaY = jugador.getPosicionY();
         
@@ -145,6 +152,7 @@ public class Mapa implements Serializable {
     }
     
     public void movimientoAbajo(){
+        movimientoAbajo ++;
         jugadorCoordenadaX = jugador.getPosicionX();
         jugadorCoordenadaY = jugador.getPosicionY();
         
@@ -236,7 +244,8 @@ public class Mapa implements Serializable {
      * @return un simbolo y lo coloca en el mapa en el metodo inicializar mapa
      */
     private String generarCasillas(){
-        int indiceCasillas = ControladorMetodos.calcularNumerosAleatorios(0, SIMBOLOS_CASILLAS.length);
+        ControladorMetodos controlador = new ControladorMetodos();
+        int indiceCasillas = controlador.calcularNumerosAleatorios(0, SIMBOLOS_CASILLAS.length);
         String letraAletoria = SIMBOLOS_CASILLAS[indiceCasillas];
         return letraAletoria;
     }
@@ -247,7 +256,6 @@ public class Mapa implements Serializable {
     */
     private void simbologiaDeMapa(){
         
-        System.out.println("Partida de: " + jugador.getNombrePersonaje());
         System.out.print("Jugador: " + FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO + " Casillas--> " );
         System.out.print(" |Normal: " + FONDO_NEGRO + "   "+ RESETEAR_FONDO);
         System.out.print(" |Energia: " + FONDO_VERDE + "   " + RESETEAR_FONDO );
@@ -310,7 +318,4 @@ public class Mapa implements Serializable {
         return jugador;
     }
     
-    
-    
-   
 }

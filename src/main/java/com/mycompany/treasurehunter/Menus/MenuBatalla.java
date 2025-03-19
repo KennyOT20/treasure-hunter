@@ -41,23 +41,26 @@ public class MenuBatalla extends MenuBase{
     
     @Override
     public void ejecutarOpcion(int opcionMenu) {
+        ControladorMetodos controlador = new ControladorMetodos();
         
         switch(opcionMenu){
             case 1:
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 jugador.aplicarAtaque(enemigo);
                 jugador.mostrarEstadoPersonaje();
                 enemigo.mostrarEstadoPersonaje();
                 break;
             case 2:
-                
+                controlador.limpiarPantalla();
                 break;
             case 3:
+                controlador.limpiarPantalla();
+                jugador.curarJugador();
                 break;
             case 4:
                 break;
             default:
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 System.out.println("Opcion no valida, intente de nuevo");
                 mostrarMenu();
                 break;

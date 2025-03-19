@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Casillas;
 
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 
 /**
@@ -26,6 +27,13 @@ public class CasillaPista extends Casilla {
 
     @Override
     public void efectoDeCasilla() {
+        ControladorMetodos controlador = new ControladorMetodos();
+        
+        int indicePistas = controlador.calcularNumerosAleatorios(0, pistas.length);
+        String pistaObtenida = pistas[indicePistas];
+        controlador.limpiarPantalla();
+        System.out.println("Pista:");
+        System.out.println(pistaObtenida);
         
     }
 

@@ -44,6 +44,7 @@ public class MenuJuego{
     }
 
     private void ejecutarOpcion(String opcion) {
+        ControladorMetodos controlador = new ControladorMetodos();
         
         int posicionAnteriorX = jugador.getPosicionX();
         int posicionAnteriorY = jugador.getPosicionY();
@@ -53,23 +54,23 @@ public class MenuJuego{
         
         switch(opcion.toUpperCase()){
             case "W" -> {
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 mapa.movimientoArriba();
             }
             case "A" -> {
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 mapa.movimientoIzquierda();
             }
             case "S" -> {
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 mapa.movimientoAbajo();
             }
             case "D" -> {
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 mapa.movimientoDerecha();
             }
             default -> {
-                ControladorMetodos.limpiarPantalla();
+                controlador.limpiarPantalla();
                 System.out.println("Opcion no valida, intente de nuevo");
                 mapa.generarMapa();
             }

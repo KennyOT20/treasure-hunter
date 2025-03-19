@@ -47,7 +47,7 @@ public class MenuInicial extends MenuBase {
     @Override
     public void ejecutarOpcion(int opcionMenu) {
 
-        
+        ControladorMetodos controladorMetodos = new ControladorMetodos();
         
             switch(opcionMenu){
                 case 1 -> {
@@ -66,7 +66,7 @@ public class MenuInicial extends MenuBase {
                 case 7 -> {
                 }
                 default -> {
-                    ControladorMetodos.limpiarPantalla();
+                    controladorMetodos.limpiarPantalla();
                     System.out.println("Opcion no valida, intente de nuevo");
                     mostrarMenu();
                 }

@@ -30,19 +30,24 @@ public class Batalla {
         
         boolean turnos = random.nextBoolean();
        
+
         while(jugador.getVidaPersonaje() > 0 && enemigo.getVidaPersonaje() > 0){
             if(turnos == false){
+                jugador.mostrarEstadoPersonaje();
+                enemigo.mostrarEstadoPersonaje();
+                System.out.println("Tu turno");
                 menu.mostrarMenu();
             } else{
+                System.out.println("Turno de " + enemigo.getNombrePersonaje());
                 enemigo.aplicarAtaque(jugador);
             }
             turnos = !turnos;
         }
         
         if(jugador.getVidaPersonaje() <= 0){
-            System.out.println("Has vencido al pirata " + enemigo.getNombrePersonaje());
+            System.out.println("Te ha vencido el pirata " + enemigo.getNombrePersonaje());
         } else{
-            System.out.println("El pirata " + enemigo.getNombrePersonaje() + " te ha vencido");
+            System.out.println("Has vencido al pirata " + enemigo.getNombrePersonaje());
         }
     }
     
