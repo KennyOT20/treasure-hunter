@@ -24,14 +24,14 @@ public class Partida {
     public void iniciarPartida(){
         MenuJuego menu = new MenuJuego(mapa, mapa.getJugador());
         
-        //mapa.getJugador().getVidaPersonaje() > 0
         
-        while(true){
+        while(mapa.getJugador().getVidaMaxPersonaje() > 0 && mapa.getJugador().isTesoroEncontrado() == false){
             
             menu.mostrarMenu();
+            
         }
-        
-        //System.out.println("Has perdido, no has logrado encontrare el tesoro :( ");
+       
+       
     }
     
 }

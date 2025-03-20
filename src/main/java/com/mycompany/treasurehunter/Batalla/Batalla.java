@@ -4,8 +4,10 @@
  */
 package com.mycompany.treasurehunter.Batalla;
 
+import com.mycompany.treasurehunter.Casillas.CasillaCombate;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Menus.MenuBatalla;
+import com.mycompany.treasurehunter.Menus.RecompensasBatalla;
 import com.mycompany.treasurehunter.Personaje.Enemigo;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.util.Random;
@@ -18,13 +20,15 @@ public class Batalla {
     
     private final Jugador jugador;
     private final Enemigo enemigo;
+    private final CasillaCombate combate;
     private final ControladorMetodos controlador;
     private boolean huirDeBatalla;
     private boolean terminarBatalla;
 
-    public Batalla(Jugador jugador, Enemigo enemigo) {
+    public Batalla(Jugador jugador, Enemigo enemigo, CasillaCombate combate) {
         this.jugador = jugador;
         this.enemigo = enemigo;
+        this.combate = combate;
         this.terminarBatalla = false;
         this.controlador = new ControladorMetodos();
     }
@@ -54,13 +58,21 @@ public class Batalla {
             turnos = !turnos;
         }
         
-        if(jugador.getVidaPersonaje() <= 0){
-            System.out.println("Te ha vencido el pirata " + enemigo.getNombrePersonaje());
-        } else{
+        if(enemigo.getVidaPersonaje() <= 0){
+            RecompensasBatalla recompensa = new RecompensasBatalla(jugador);
             controlador.limpiarPantalla();
-            System.out.println("Has vencido al pirata " + enemigo.getNombrePersonaje());
-            recompensasGanarBatalla();
+            System.out.println("Has vencido al enemigo " + enemigo.getNombrePersonaje());
+            recompensa.mostrarMenu();
+        } else if(jugador.getVidaPersonaje() <= 0){
+            controlador.limpiarPantalla();
+            System.out.println("Te ha vencido el enemigo " + enemigo.getNombrePersonaje());
+            jugador.setVidaPersonaje(combate.getHpAnterior());
+            jugador.setPuntosDeMana(combate.getMpAnterior());
+            System.out.println("Tus estadisticas se reestablecen antes de entrar a la batalla");
+            
+            
         }
+        
         
     }
     
@@ -76,8 +88,6 @@ public class Batalla {
         }
     }
     
-    public void recompensasGanarBatalla(){
-        System.out.println("");
-    }
+    
     
 }

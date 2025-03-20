@@ -23,6 +23,7 @@ public class Jugador extends Personaje{
     private char simboloJugador;
     private int posicionAnteriorX;
     private int posicionAnteriosY;
+    private boolean tesoroEncontrado;
     
     
     //Constructor con valores iniciales
@@ -32,6 +33,7 @@ public class Jugador extends Personaje{
         this.manaMax = 20;
         this.puntosDeDefensa = 10;
         this.defensaMax = 10; 
+        this.tesoroEncontrado = false;
         this.controlador = new ControladorMetodos();
     }
 
@@ -108,6 +110,13 @@ public class Jugador extends Personaje{
             puntosDeMana = 0;
         }
     }
+    
+    public void restablecerEstadisticas(){
+        setVidaPersonaje(getVidaMaxPersonaje());
+        puntosDeMana = manaMax;
+        puntosDeDefensa = defensaMax;
+    }
+    
     
     //Metodo abstracto para aplicar el ataque del jugador
       @Override
@@ -203,7 +212,12 @@ public class Jugador extends Personaje{
         this.posicionAnteriosY = posicionAnteriosY;
     }
 
+    public boolean isTesoroEncontrado() {
+        return tesoroEncontrado;
+    }
 
-    
- 
+    public void setTesoroEncontrado(boolean tesoroEncontrado) {
+        this.tesoroEncontrado = tesoroEncontrado;
+    }
+
 }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Controladores;
 
+import com.mycompany.treasurehunter.Casillas.CasillaTesoro;
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Partida.Partida;
 import com.mycompany.treasurehunter.Personaje.Jugador;

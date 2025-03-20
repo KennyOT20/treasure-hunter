@@ -16,19 +16,24 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
 public class CasillaCombate extends Casilla {
     
     private boolean escaparDeCombate;
+    private int hpAnterior;
+    private int mpAnterior;
+    private int defensaAnterior;
     
     public CasillaCombate(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
         super(jugador, nombre, simboloCasilla, posicionX, posicionY);
-    }
-    
-
-    
+    } 
+     
 
     @Override
     public void efectoDeCasilla() {
         Enemigo enemigo = new Enemigo();
-        Batalla batalla = new Batalla(jugador, enemigo);
+        Batalla batalla = new Batalla(jugador, enemigo, this);
         ControladorMetodos controlador = new ControladorMetodos();
+        
+        hpAnterior = jugador.getVidaPersonaje();
+        mpAnterior = jugador.getPuntosDeMana();
+        defensaAnterior = jugador.getPuntosDeDefensa();
         
         escaparDeCombate = controlador.opcionesActivas();
         
@@ -47,6 +52,19 @@ public class CasillaCombate extends Casilla {
     public void modificarCasilla() {
        
     }
+
+    public int getHpAnterior() {
+        return hpAnterior;
+    }
+
+    public int getMpAnterior() {
+        return mpAnterior;
+    }
+
+    public int getDefensaAnterior() {
+        return defensaAnterior;
+    }
+    
     
     
 }

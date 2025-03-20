@@ -9,6 +9,7 @@ import com.mycompany.treasurehunter.Casillas.CasillaEnergia;
 import com.mycompany.treasurehunter.Casillas.CasillaMuro;
 import com.mycompany.treasurehunter.Casillas.CasillaPista;
 import com.mycompany.treasurehunter.Casillas.CasillaTeletransporte;
+import com.mycompany.treasurehunter.Casillas.CasillaTesoro;
 import com.mycompany.treasurehunter.Casillas.CasillaTrampa;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Jugador;
@@ -52,8 +53,8 @@ public class Mapa implements Serializable {
     public void generarMapaPorDefecto(){
         cantidadFilas = 24;
         cantidadColumnas = 24;
-        jugador.setPosicionX(15);
-        jugador.setPosicionY(2);
+        jugador.setPosicionX(1);
+        jugador.setPosicionY(1);
         mapa = new String[cantidadFilas][cantidadColumnas];
         inicializarMapa();
         generarMapa();
@@ -91,6 +92,7 @@ public class Mapa implements Serializable {
     
     //Metodo encargado de colocar el simbolo del jugador en el mapa
     private void colocarJugadorEnMapa(){
+        mapa[0][0] = SIMBOLO_CASILLA_TESORO;
         mapa[jugador.getPosicionX()][jugador.getPosicionY()] = String.valueOf(jugador.getSimboloJugador());
     }
     
@@ -225,6 +227,9 @@ public class Mapa implements Serializable {
             System.out.print(FONDO_CYAN + "   " + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[6])){
             System.out.print(FONDO_AZUL + "   " + RESETEAR_FONDO);
+        } else if(mapa[i][j].equals(SIMBOLO_CASILLA_TESORO)){
+            System.out.print(FONDO_NEGRO + "   "+ RESETEAR_FONDO);
+            
         }
         
     }
@@ -285,7 +290,9 @@ public class Mapa implements Serializable {
             new CasillaTeletransporte(jugador, "Casilla teletransporte", "C", 0, 0).efectoDeCasilla();
         } else if(casillaActual.equals(SIMBOLOS_CASILLAS[6])){
             new CasillaTrampa(jugador, "Casilla trampa", "C", 0, 0).efectoDeCasilla();
-        } 
+        } else if(casillaActual.equals(SIMBOLO_CASILLA_TESORO)){
+            new CasillaTesoro(jugador, "Casilla Tesoro", "T",0, 0 ).efectoDeCasilla();
+        }
             
     }
     
@@ -317,5 +324,6 @@ public class Mapa implements Serializable {
     public Jugador getJugador() {
         return jugador;
     }
+    
     
 }
