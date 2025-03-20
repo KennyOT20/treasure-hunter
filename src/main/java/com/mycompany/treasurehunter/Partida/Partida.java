@@ -6,7 +6,7 @@ package com.mycompany.treasurehunter.Partida;
 
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Menus.MenuJuego;
-import com.mycompany.treasurehunter.Personaje.Jugador;
+
 
 /**
  *
@@ -14,7 +14,7 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class Partida {
     
-    private Mapa mapa;
+    private final Mapa mapa;
 
     public Partida(Mapa mapa) {
         this.mapa = mapa;
@@ -22,12 +22,12 @@ public class Partida {
     
     //Metodo encargado de mantener la partida activa
     public void iniciarPartida(){
-        Jugador jugador = new Jugador();
         MenuJuego menu = new MenuJuego(mapa, mapa.getJugador());
         
         //mapa.getJugador().getVidaPersonaje() > 0
         
         while(true){
+            
             menu.mostrarMenu();
         }
         

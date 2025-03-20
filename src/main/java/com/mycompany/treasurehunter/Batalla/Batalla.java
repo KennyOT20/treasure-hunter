@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Batalla;
 
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Menus.MenuBatalla;
 import com.mycompany.treasurehunter.Personaje.Enemigo;
 import com.mycompany.treasurehunter.Personaje.Jugador;
@@ -15,40 +16,68 @@ import java.util.Random;
  */
 public class Batalla {
     
-    private Jugador jugador;
-    private Enemigo enemigo;
+    private final Jugador jugador;
+    private final Enemigo enemigo;
+    private final ControladorMetodos controlador;
+    private boolean huirDeBatalla;
+    private boolean terminarBatalla;
 
     public Batalla(Jugador jugador, Enemigo enemigo) {
         this.jugador = jugador;
         this.enemigo = enemigo;
+        this.terminarBatalla = false;
+        this.controlador = new ControladorMetodos();
     }
     
-    public void iniciarBatalla(){
+    public void iniciarBatalla(boolean rendirse){
         
-        MenuBatalla menu = new MenuBatalla(jugador, enemigo);
+        MenuBatalla menu = new MenuBatalla(jugador, enemigo, this);
         Random random = new Random();
         
         boolean turnos = random.nextBoolean();
-       
+        huirDeBatalla = rendirse;
+        
 
-        while(jugador.getVidaPersonaje() > 0 && enemigo.getVidaPersonaje() > 0){
+        while(jugador.getVidaPersonaje() > 0 && enemigo.getVidaPersonaje() > 0 && terminarBatalla == false){
             if(turnos == false){
-                jugador.mostrarEstadoPersonaje();
-                enemigo.mostrarEstadoPersonaje();
-                System.out.println("Tu turno");
                 menu.mostrarMenu();
             } else{
+                System.out.println("");
                 System.out.println("Turno de " + enemigo.getNombrePersonaje());
                 enemigo.aplicarAtaque(jugador);
             }
+            
+            if(terminarBatalla){
+                break;
+            }
+            
             turnos = !turnos;
         }
         
         if(jugador.getVidaPersonaje() <= 0){
             System.out.println("Te ha vencido el pirata " + enemigo.getNombrePersonaje());
         } else{
+            controlador.limpiarPantalla();
             System.out.println("Has vencido al pirata " + enemigo.getNombrePersonaje());
+            recompensasGanarBatalla();
         }
+        
+    }
+    
+    public void huirDeBatalla(){
+        
+        if(huirDeBatalla == true ){
+            controlador.limpiarPantalla();
+            terminarBatalla = true;
+            System.out.println("Has logrado huir de la batalla.");
+        } else{
+            controlador.limpiarPantalla();
+            System.out.println("No puedes huir de la batalla, sigue luchando");
+        }
+    }
+    
+    public void recompensasGanarBatalla(){
+        System.out.println("");
     }
     
 }

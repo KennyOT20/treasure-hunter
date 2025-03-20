@@ -4,6 +4,7 @@
  */
 package com.mycompany.treasurehunter.Menus;
 
+import com.mycompany.treasurehunter.Batalla.Batalla;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Enemigo;
 import com.mycompany.treasurehunter.Personaje.Jugador;
@@ -14,18 +15,25 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class MenuBatalla extends MenuBase{
     
-    private Jugador jugador;
-    private Enemigo enemigo;
+    private final Jugador jugador;
+    private final Enemigo enemigo;
+    private final Batalla batalla;
 
-    public MenuBatalla(Jugador jugador, Enemigo enemigo) {
+    public MenuBatalla(Jugador jugador, Enemigo enemigo, Batalla batalla) {
         this.jugador = jugador;
         this.enemigo = enemigo;
+        this.batalla = batalla;
     }
 
     
     @Override
     public void mostrarMenu() {
-    
+        
+        jugador.mostrarEstadoPersonaje();
+        enemigo.mostrarEstadoPersonaje();
+        
+        System.out.println("¡Tu turno! ");
+        System.out.println("");
         System.out.println("===========================");
         System.out.println("||     Menu Batalla      ||");
         System.out.println("||=======================||");
@@ -51,13 +59,15 @@ public class MenuBatalla extends MenuBase{
                 enemigo.mostrarEstadoPersonaje();
                 break;
             case 2:
-                controlador.limpiarPantalla();
+                
                 break;
             case 3:
                 controlador.limpiarPantalla();
                 jugador.curarJugador();
                 break;
             case 4:
+                controlador.limpiarPantalla();
+                batalla.huirDeBatalla();
                 break;
             default:
                 controlador.limpiarPantalla();

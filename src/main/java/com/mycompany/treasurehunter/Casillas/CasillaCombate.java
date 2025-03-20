@@ -14,7 +14,9 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  * @author kenny
  */
 public class CasillaCombate extends Casilla {
-
+    
+    private boolean escaparDeCombate;
+    
     public CasillaCombate(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
         super(jugador, nombre, simboloCasilla, posicionX, posicionY);
     }
@@ -28,13 +30,16 @@ public class CasillaCombate extends Casilla {
         Batalla batalla = new Batalla(jugador, enemigo);
         ControladorMetodos controlador = new ControladorMetodos();
         
+        escaparDeCombate = controlador.opcionesActivas();
+        
         controlador.limpiarPantalla();
         System.out.println("¡Oh no!, has caido en una casilla de combate.");
         
         enemigo.generarEnemigos(jugador);
         
         System.out.println("Te aparecio el pirata " + enemigo.getNombrePersonaje() + " para defender el tesoro.");
-        batalla.iniciarBatalla();
+        System.out.println("");
+        batalla.iniciarBatalla(escaparDeCombate);
         
     }
 
@@ -42,5 +47,6 @@ public class CasillaCombate extends Casilla {
     public void modificarCasilla() {
        
     }
+    
     
 }

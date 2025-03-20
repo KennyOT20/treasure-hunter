@@ -24,6 +24,7 @@ public class ControladorMenu {
         jugador.obtenerNombre();
         
         limpiarConsola();
+        System.out.println("Partida de: " + jugador.getNombrePersonaje() );
         mapa.generarMapaPorDefecto();
         partida.iniciarPartida();
         

@@ -126,7 +126,7 @@ public class Jugador extends Personaje{
         System.out.print("Hp: " + getVidaPersonaje() + " / " + getVidaMaxPersonaje());
         System.out.print(" Mp: " + puntosDeMana + " / " + manaMax);
         System.out.print(" Def: " + puntosDeDefensa + " / " + defensaMax);
-        System.out.println("");
+   
     }
     
     //Getters y Setters mnecesarios para el jugador

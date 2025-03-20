@@ -255,7 +255,7 @@ public class Mapa implements Serializable {
     , simbolo del jugador entre otros.
     */
     private void simbologiaDeMapa(){
-        
+        System.out.println("");
         System.out.print("Jugador: " + FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO + " Casillas--> " );
         System.out.print(" |Normal: " + FONDO_NEGRO + "   "+ RESETEAR_FONDO);
         System.out.print(" |Energia: " + FONDO_VERDE + "   " + RESETEAR_FONDO );
