@@ -58,6 +58,8 @@ public class MenuInicial extends MenuBase {
                 case 3 -> {
                 }
                 case 4 -> {
+                    controladorMetodos.limpiarPantalla();
+                    controlador.crearMapa();
                 }
                 case 5 -> {
                 }

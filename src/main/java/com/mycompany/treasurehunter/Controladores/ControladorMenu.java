@@ -4,7 +4,7 @@
  */
 package com.mycompany.treasurehunter.Controladores;
 
-import com.mycompany.treasurehunter.Casillas.CasillaTesoro;
+import com.mycompany.treasurehunter.Mapa.CrearMapa;
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Partida.Partida;
 import com.mycompany.treasurehunter.Personaje.Jugador;
@@ -15,10 +15,18 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class ControladorMenu {
     
-    //Metodo encargado de iniciar la partida nueva del jugador
+    private final Jugador jugador;
+    private final Mapa mapa;
+
+    public ControladorMenu() {
+        this.jugador = new Jugador();
+        this.mapa = new Mapa(jugador);
+    }
+    
+    
+    
+    //Metodo encargado de iniciar una partida nueva para el jugador
     public void iniciarPartida(){
-        Jugador jugador = new Jugador();
-        Mapa mapa = new Mapa(jugador);
         Partida partida = new Partida(mapa);
         
         limpiarConsola();
@@ -28,6 +36,19 @@ public class ControladorMenu {
         System.out.println("Partida de: " + jugador.getNombrePersonaje() );
         mapa.generarMapaPorDefecto();
         partida.iniciarPartida();
+        
+    }
+    
+    //Metodo encargado de la creacion del mapa
+    public void crearMapa(){
+        CrearMapa crearMapa = new CrearMapa(mapa);
+        crearMapa.obtenerCantidadFilas();
+        crearMapa.obtenerCantidadColumnas();
+        
+        limpiarConsola();
+        mapa.mapaCreado();
+        
+        
         
     }
     

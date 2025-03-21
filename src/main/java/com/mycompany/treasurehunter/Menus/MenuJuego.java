@@ -15,8 +15,8 @@ import java.util.Scanner;
  */
 public class MenuJuego{
 
-    private Mapa mapa;
-    private Jugador jugador;
+    private final Mapa mapa;
+    private final Jugador jugador;
  
     public MenuJuego(Mapa mapa, Jugador jugador) {
         this.mapa = mapa;

@@ -18,6 +18,7 @@ public class AlmacenarMapas implements Serializable {
     //Metodo encargado de guardar los mapas predefinidos o creados por el ususario
     public void guardarMapa(){
         
+        
     }
     
 }

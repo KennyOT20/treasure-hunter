@@ -60,6 +60,13 @@ public class Mapa implements Serializable {
         generarMapa();
         
     }
+    
+    public void mapaCreado(){
+        mapa = new String[cantidadFilas][cantidadColumnas];
+        inicializarMapa();
+        generarMapa();
+        
+    }
    
     //Metodo encargado de generar el indice de letrar horizonal(a,b,c,d,e,f,g....x,y,z)
     private void generarIndiceHorizontal(){
@@ -82,7 +89,8 @@ public class Mapa implements Serializable {
     }
     
     //metodo encargado de iniciar el mapa con espacios vacios
-    private void inicializarMapa(){
+    public void inicializarMapa(){
+        
         for (int i = 0; i < cantidadFilas; i++) {
             for (int j = 0; j <cantidadColumnas - 1; j++) {
                 mapa[i][j] = generarCasillas();
@@ -236,7 +244,7 @@ public class Mapa implements Serializable {
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
     public void generarMapa(){
-        jugador.mostrarEstadoPersonaje();
+    //    jugador.mostrarEstadoPersonaje();
         simbologiaDeMapa();
         generarIndiceHorizontal();
         colocarJugadorEnMapa();

@@ -93,6 +93,10 @@ public class Jugador extends Personaje{
     
     public void defenderJugador(){
         
+        if(puntosDeMana > 0 && puntosDeDefensa > 0){
+            
+        }
+        
     }
     
     public void verificarAtributosMax(boolean verificacion){
