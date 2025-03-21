@@ -4,7 +4,9 @@
  */
 package com.mycompany.treasurehunter.Partida;
 
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Mapa.Mapa;
+import com.mycompany.treasurehunter.Menus.MenuInicial;
 import com.mycompany.treasurehunter.Menus.MenuJuego;
 
 
@@ -28,6 +30,18 @@ public class Partida {
         while(mapa.getJugador().getVidaMaxPersonaje() > 0 && mapa.getJugador().isTesoroEncontrado() == false){
             
             menu.mostrarMenu();
+            
+        }
+        
+        if(mapa.getJugador().isTesoroEncontrado() == true){
+            ControladorMetodos controlador = new ControladorMetodos();
+            MenuInicial menuInicial = new MenuInicial();
+            
+            controlador.limpiarPantalla();
+            mapa.generarMapa();
+            System.out.println("Enhorabuena, has encontrado el tesoro.");
+            System.out.println("¿Que deseas realizar?");
+            menuInicial.mostrarMenu();
             
         }
        

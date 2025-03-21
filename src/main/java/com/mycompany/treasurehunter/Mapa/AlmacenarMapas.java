@@ -12,6 +12,12 @@ import java.io.Serializable;
  */
 public class AlmacenarMapas implements Serializable {
     
+    private final String CARPETA_DE_MAPAS_PREDEFINIDOS = "ArchivosDelJuego/MapasPredefinidos/";
+    private final String CARPETA_DE_MAPAS_USUARIO =  "ArchivosDelJuego/MapasCreadosPorElUsuario/";
     
+    //Metodo encargado de guardar los mapas predefinidos o creados por el ususario
+    public void guardarMapa(){
+        
+    }
     
 }

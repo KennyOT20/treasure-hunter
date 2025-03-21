@@ -296,6 +296,7 @@ public class Mapa implements Serializable {
             
     }
     
+    
     //Getters y Setters necesarios
     public int getCantidadFilas() {
         return cantidadFilas;

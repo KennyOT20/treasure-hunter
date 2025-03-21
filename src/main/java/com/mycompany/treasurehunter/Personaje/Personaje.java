@@ -37,6 +37,7 @@ public abstract class Personaje implements Serializable{
         if(vidaPersonaje <= 0){
             vidaPersonaje = 0;
         }
+        
     }
     
     
