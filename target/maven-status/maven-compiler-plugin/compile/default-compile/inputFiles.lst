@@ -11,6 +11,7 @@
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Controladores/ControladorMetodos.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/AlmacenarMapas.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/CrearMapa.java
+/home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/GenerarCasillasEnMapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/Mapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Mapa/ModificarMapa.java
 /home/kenny/NetBeansProjects/TreasureHunter/src/main/java/com/mycompany/treasurehunter/Menus/MenuBase.java

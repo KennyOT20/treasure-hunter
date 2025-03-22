@@ -56,14 +56,14 @@ public class Mapa implements Serializable {
         jugador.setPosicionX(1);
         jugador.setPosicionY(1);
         mapa = new String[cantidadFilas][cantidadColumnas];
-        inicializarMapa();
+        inicializarMapa(false);
         generarMapa();
         
     }
     
     public void mapaCreado(){
         mapa = new String[cantidadFilas][cantidadColumnas];
-        inicializarMapa();
+        inicializarMapa(true);
         generarMapa();
         
     }
@@ -89,18 +89,22 @@ public class Mapa implements Serializable {
     }
     
     //metodo encargado de iniciar el mapa con espacios vacios
-    public void inicializarMapa(){
+    public void inicializarMapa(boolean mapaCreado){
         
         for (int i = 0; i < cantidadFilas; i++) {
             for (int j = 0; j <cantidadColumnas - 1; j++) {
-                mapa[i][j] = generarCasillas();
+                if(mapaCreado == false){
+                    mapa[i][j] = generarCasillas();
+                } else{
+                   mapa[i][j] = SIMBOLOS_CASILLAS[0]; 
+                }
+                
             }
         }
     }
     
     //Metodo encargado de colocar el simbolo del jugador en el mapa
     private void colocarJugadorEnMapa(){
-        mapa[0][0] = SIMBOLO_CASILLA_TESORO;
         mapa[jugador.getPosicionX()][jugador.getPosicionY()] = String.valueOf(jugador.getSimboloJugador());
     }
     
@@ -333,6 +337,16 @@ public class Mapa implements Serializable {
     public Jugador getJugador() {
         return jugador;
     }
+
+    public static String[] getSIMBOLOS_CASILLAS() {
+        return SIMBOLOS_CASILLAS;
+    }
+
+    public static String getSIMBOLO_CASILLA_TESORO() {
+        return SIMBOLO_CASILLA_TESORO;
+    }
+    
+    
     
     
 }

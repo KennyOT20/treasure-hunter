@@ -33,13 +33,13 @@ public class CrearMapa {
         while(cantidadCorrecta == false){
         
             try{ 
-                System.out.println("=============================");
-                System.out.println("|| Ahora puedes crear tu   || ");
-                System.out.println("|| personalizado!          ||");
-                System.out.println("=============================");
-                System.out.println("||Ingrese la cantidad de   ||");
-                System.out.println("||filas                    ||");
-                System.out.println("=============================");
+                System.out.println("=================================");
+                System.out.println("|| Ahora puedes crear tu  mapa || ");
+                System.out.println("|| personalizado!              ||");
+                System.out.println("=================================");
+                System.out.println("||Ingrese la cantidad de       ||");
+                System.out.println("||filas                        ||");
+                System.out.println("=================================");
                 System.out.print("CantidadDeFilas: ");
                 cantidadDeFilas = scanner.nextInt();
                 
@@ -90,5 +90,97 @@ public class CrearMapa {
         }
     }
     
-    
+    //Metodo encargado de que el usuario pueda colocar al jugador en el mapa
+    public void colocarJugadorEnMapa(){
+        int coordenadaX;
+        
+        boolean coordenadaCorrecta = false;
+        
+        while (coordenadaCorrecta == false ){
+            try{
+                System.out.println("=======================================");
+                System.out.println("|| Es hora de colocar a tu personaje ||");
+                System.out.println("|| en el mapa.                       ||");
+                System.out.println("=======================================");
+                System.out.println("|| Ingrese que fila quieres iniciar  ||");
+                System.out.println("|| (1," + mapa.getCantidadFilas() + " )");
+                System.out.println("=======================================");
+                System.out.print("Coordenada en X : ");
+                coordenadaX = scanner.nextInt();
+                
+                if(coordenadaX > 0 && coordenadaX <= mapa.getCantidadFilas() ){
+                    mapa.getJugador().setPosicionX(coordenadaX - 1 );
+                    controlador.limpiarPantalla();
+                    colocarJugadorCoordenadaY();
+                    coordenadaCorrecta = true;
+                } else{
+                    controlador.limpiarPantalla();
+                    System.out.println("Error, la fila no esta disponible");
+                }
+            } catch(InputMismatchException e){
+                scanner.nextLine();
+                System.out.println("Opcion no valida, intente de nuevo");
+            }
+            
+            
+        }
+    }
+        
+      private void colocarJugadorCoordenadaY(){
+          
+          int coordenadaY;
+          boolean coordenadaCorrecta = false;
+          
+          while(coordenadaCorrecta == false){
+              try{
+                  System.out.println("===================================");
+                  System.out.println("|| Ingrese en que columna desea  ||");
+                  System.out.println("|| iniciar.                      ||");
+                  System.out.println("|| (1, " + mapa.getCantidadColumnas() + " ) " );
+                  System.out.println("=====================================");
+                  System.out.print("Coordenada Y: ");
+                  coordenadaY = scanner.nextInt();
+                  
+                  if(coordenadaY > 0 && coordenadaY <= mapa.getCantidadColumnas()){
+                      mapa.getJugador().setPosicionY(coordenadaY - 2);
+                      coordenadaCorrecta = true;
+                  } else{
+                      controlador.limpiarPantalla();
+                      System.out.println("Error, la columna no esta disponible");
+                  }
+                  
+              }catch(InputMismatchException e){
+                  scanner.nextLine();
+                  System.out.println("Opcion no valida, intente de nuevo");
+              }
+          }
+      }  
+      
+      public void colocarCasillasEnMapa(){
+          
+          String simboloCasilla;
+          int opcionCasilla;
+          boolean opcionCorrecta = false;
+          
+          while(opcionCorrecta == false){
+              try{
+                System.out.println("=========================================");
+                System.out.println("|| A continuacion podras personalizar  ||");
+                System.out.println("|| las casillas que quieras en tu mapa.||");
+                System.out.println("=========================================");
+                System.out.println("|| 1. Casilla Trampa.                  ||");
+                System.out.println("|| 2. Casilla Combate.                 ||");
+                System.out.println("|| 3. Casilla Teletransporte.          ||");
+                System.out.println("|| 4. Casilla Muro                     ||");
+                System.out.println("|| 5. Casilla Energia.                 ||");
+                System.out.println("|| 6. Casilla Pista.                   ||");
+                System.out.println("|| 7. Casilla Tesoro.                  ||");
+                System.out.println("|| 8. Cancelar Edicion                 ||");
+                System.out.println("=========================================");
+                System.out.print("Seleccione una opcion: ");
+              } catch(InputMismatchException e){
+                  
+              }
+          }
+      }
 }

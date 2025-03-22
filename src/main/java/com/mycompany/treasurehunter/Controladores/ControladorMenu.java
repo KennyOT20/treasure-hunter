@@ -42,12 +42,17 @@ public class ControladorMenu {
     //Metodo encargado de la creacion del mapa
     public void crearMapa(){
         CrearMapa crearMapa = new CrearMapa(mapa);
-        crearMapa.obtenerCantidadFilas();
+        jugador.obtenerNombre();
+        
+        limpiarConsola();
+         crearMapa.obtenerCantidadFilas();
+        
+        limpiarConsola();
         crearMapa.obtenerCantidadColumnas();
         
         limpiarConsola();
+        crearMapa.colocarJugadorEnMapa();
         mapa.mapaCreado();
-        
         
         
     }
