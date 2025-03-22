@@ -156,31 +156,57 @@ public class CrearMapa {
           }
       }  
       
+      /**
+       * Metodo encargado de ir colocando las casillas en el mapa, ademas se encarga de validar
+       * que haya solo un tesoro en el mapa y asi vitar que hayan mas tesoros.
+       */
       public void colocarCasillasEnMapa(){
           
-          String simboloCasilla;
-          int opcionCasilla;
-          boolean opcionCorrecta = false;
-          
-          while(opcionCorrecta == false){
-              try{
-                System.out.println("=========================================");
-                System.out.println("|| A continuacion podras personalizar  ||");
-                System.out.println("|| las casillas que quieras en tu mapa.||");
-                System.out.println("=========================================");
-                System.out.println("|| 1. Casilla Trampa.                  ||");
-                System.out.println("|| 2. Casilla Combate.                 ||");
-                System.out.println("|| 3. Casilla Teletransporte.          ||");
-                System.out.println("|| 4. Casilla Muro                     ||");
-                System.out.println("|| 5. Casilla Energia.                 ||");
-                System.out.println("|| 6. Casilla Pista.                   ||");
-                System.out.println("|| 7. Casilla Tesoro.                  ||");
-                System.out.println("|| 8. Cancelar Edicion                 ||");
-                System.out.println("=========================================");
-                System.out.print("Seleccione una opcion: ");
-              } catch(InputMismatchException e){
+         String simboloCasilla;
+         boolean tesoroColocado = false;
+         int opcionDeCasilla;
+         
+          for (int i = 0; i < mapa.getCantidadFilas(); i++) {
+              for (int j = 0; j < mapa.getCantidadColumnas(); j++) {
+                  
+                  boolean opcionCorrecta = false;
+                  
+                  while(opcionCorrecta == false){
+                      try{
+                          mostrarMenuDeCasillas();
+                          opcionDeCasilla = scanner.nextInt();
+                          opcionCorrecta = true;
+                      } catch(InputMismatchException e){
+                          scanner.nextLine();
+                          controlador.limpiarPantalla();
+                          System.out.println("Opcion incorrecta, intente de nuevo. ");
+                          
+                      }
+                      
+                  }
                   
               }
           }
       }
+      
+      private void mostrarMenuDeCasillas(){
+          
+          System.out.println("==========================================");
+          System.out.println("|| Ahora puedes colocar las casillas    ||");
+          System.out.println("|| que deseas.                          ||");
+          System.out.println("==========================================");
+          System.out.println("|| 1. Casilla Trampa                    ||");
+          System.out.println("|| 2. Casilla Teletransporte            ||");
+          System.out.println("|| 3. Casilla Energia                   ||");
+          System.out.println("|| 4. Casilla Muro                      ||");
+          System.out.println("|| 5. Casilla Pista                     ||");
+          System.out.println("|| 6. Casilla Combate                   ||");
+          System.out.println("|| 7. Casilla Tesoro                    ||");
+          System.out.println("|| 8. Salir de edicion                  ||");
+          System.out.println("==========================================");
+          System.out.print("Ingrese una opcion: ");
+          
+      }
+          
+      
 }

@@ -245,6 +245,21 @@ public class Mapa implements Serializable {
         }
         
     }
+   
+    /**
+     * 
+     * @param fila recibe la coordenada en que fila colocara el usuario la casilla
+     * @param columna recible la coordenada en que columna colocara el usuario su casilla
+     * @param simboloCasilla coloca el simbolo correspondiente en el mapa 
+     */
+    public void editarCasillas(int fila, int columna, String simboloCasilla){
+        if(fila >= 0 && fila < cantidadFilas && columna >= 0 && columna < cantidadColumnas){
+            
+             mapa[fila][columna] = simboloCasilla;
+        } else{
+            System.out.println("Posicion fuera de los limites");
+        }
+    }
     
     //Metodo encargado de generar el mapa ya con todas las validaciones posibles
     public void generarMapa(){

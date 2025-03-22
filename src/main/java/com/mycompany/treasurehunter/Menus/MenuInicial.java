@@ -14,7 +14,7 @@ import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
  */
 public class MenuInicial extends MenuBase {
     
-    private ControladorMenu controlador;
+    private final ControladorMenu controlador;
 
     public MenuInicial() {
         this.controlador = new ControladorMenu();

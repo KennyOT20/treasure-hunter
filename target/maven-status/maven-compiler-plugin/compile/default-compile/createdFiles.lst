@@ -15,7 +15,6 @@ com/mycompany/treasurehunter/Casillas/CasillaMuro.class
 com/mycompany/treasurehunter/Partida/Partida.class
 com/mycompany/treasurehunter/Menus/MenuBatalla.class
 com/mycompany/treasurehunter/Casillas/Casilla.class
-com/mycompany/treasurehunter/Mapa/GenerarCasillasEnMapa.class
 com/mycompany/treasurehunter/Casillas/CasillaPista.class
 com/mycompany/treasurehunter/Casillas/CasillaCombate.class
 com/mycompany/treasurehunter/Menus/MenuInicial.class

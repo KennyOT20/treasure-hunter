@@ -53,6 +53,7 @@ public class ControladorMenu {
         limpiarConsola();
         crearMapa.colocarJugadorEnMapa();
         mapa.mapaCreado();
+        crearMapa.colocarCasillasEnMapa();
         
         
     }
