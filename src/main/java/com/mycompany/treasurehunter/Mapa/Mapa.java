@@ -7,6 +7,7 @@ package com.mycompany.treasurehunter.Mapa;
 import com.mycompany.treasurehunter.Casillas.CasillaCombate;
 import com.mycompany.treasurehunter.Casillas.CasillaEnergia;
 import com.mycompany.treasurehunter.Casillas.CasillaMuro;
+import com.mycompany.treasurehunter.Casillas.CasillaNormal;
 import com.mycompany.treasurehunter.Casillas.CasillaPista;
 import com.mycompany.treasurehunter.Casillas.CasillaTeletransporte;
 import com.mycompany.treasurehunter.Casillas.CasillaTesoro;
@@ -32,8 +33,10 @@ public class Mapa implements Serializable {
     private static final String FONDO_BLANCO = "\u001B[47m";
     private static final String TEXTO_NEGRO = "\u001B[30m";
     private static final String RESETEAR_FONDO = "\u001B[0m";
-    private static final String[] SIMBOLOS_CASILLAS = {" ", "C","E","M","P", "T","R"};
+    private static final String[] SIMBOLOS_CASILLAS = {"N", "C","E","M","P", "T","R", "F"};
     private static final String SIMBOLO_CASILLA_TESORO = "K";
+    private static final String CASILLA ="   ";
+     public static final String FONDO_TABLERO = "\u001B[45m";
     private String casillaAnteriorJugador = SIMBOLOS_CASILLAS[0];
     private int cantidadFilas;
     private int cantidadColumnas;
@@ -47,6 +50,9 @@ public class Mapa implements Serializable {
 
     public Mapa(Jugador jugador) {
         this.jugador = jugador;
+        this.cantidadColumnas = 5;
+        this.cantidadFilas = 5;
+        this.mapa = new String[cantidadFilas][cantidadColumnas];
     }
     
     //Metodo encargado de generar un mapa por defecto de 27 *27 
@@ -71,7 +77,7 @@ public class Mapa implements Serializable {
     //Metodo encargado de generar el indice de letrar horizonal(a,b,c,d,e,f,g....x,y,z)
     private void generarIndiceHorizontal(){
         System.out.print("    ");
-        for (int j = 0; j < mapa[0].length - 1; j++) {
+        for (int j = 0; j < mapa[0].length ; j++) {
             System.out.print((char) ('A' + j) + "  ");
         }
         System.out.println();
@@ -81,7 +87,7 @@ public class Mapa implements Serializable {
     private void imprimirMapa(){
         for (int i = 0; i < cantidadFilas; i++) {
             System.out.printf("%2d ", (i + 1)); //.printf para darle 2 espacios definidos al indce
-            for (int j = 0; j < cantidadColumnas - 1; j++) {
+            for (int j = 0; j < cantidadColumnas ; j++) {
                 agregarColores(i, j);
             }
             System.out.println();
@@ -92,11 +98,11 @@ public class Mapa implements Serializable {
     public void inicializarMapa(boolean mapaCreado){
         
         for (int i = 0; i < cantidadFilas; i++) {
-            for (int j = 0; j <cantidadColumnas - 1; j++) {
+            for (int j = 0; j < cantidadColumnas ; j++) {
                 if(mapaCreado == false){
                     mapa[i][j] = generarCasillas();
                 } else{
-                   mapa[i][j] = SIMBOLOS_CASILLAS[0]; 
+                   mapa[i][j] = "F"; 
                 }
                 
             }
@@ -226,36 +232,39 @@ public class Mapa implements Serializable {
         if(i == jugador.getPosicionX() && j == jugador.getPosicionY()){
             System.out.print(FONDO_BLANCO + TEXTO_NEGRO + " " + jugador.getSimboloJugador() + " " + RESETEAR_FONDO);
         } else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[0])){
-            System.out.print(FONDO_NEGRO + "   "+ RESETEAR_FONDO);
+            System.out.print(FONDO_NEGRO + CASILLA+ RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[1])){
-            System.out.print(FONDO_ROJO + "   " + RESETEAR_FONDO);
+            System.out.print(FONDO_ROJO + CASILLA + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[2])){
-            System.out.print(FONDO_VERDE + "   " + RESETEAR_FONDO);
+            System.out.print(FONDO_VERDE + CASILLA + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[3])){
-            System.out.print(FONDO_AMARILLO + "   " + RESETEAR_FONDO);
+            System.out.print(FONDO_AMARILLO + CASILLA + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[4])){
-            System.out.print(FONDO_AMARILLO_BRILLANTE + "   " + RESETEAR_FONDO);
+            System.out.print(FONDO_AMARILLO_BRILLANTE + CASILLA + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[5])){
-            System.out.print(FONDO_CYAN + "   " + RESETEAR_FONDO);
+            System.out.print(FONDO_CYAN + CASILLA + RESETEAR_FONDO);
         }else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[6])){
-            System.out.print(FONDO_AZUL + "   " + RESETEAR_FONDO);
+            System.out.print(FONDO_AZUL + CASILLA + RESETEAR_FONDO);
         } else if(mapa[i][j].equals(SIMBOLO_CASILLA_TESORO)){
-            System.out.print(FONDO_NEGRO + "   "+ RESETEAR_FONDO);
-            
+            System.out.print(FONDO_NEGRO + CASILLA + RESETEAR_FONDO);  
+        } else if(mapa[i][j].equals(SIMBOLOS_CASILLAS[7])){
+            System.out.print(FONDO_TABLERO + CASILLA + RESETEAR_FONDO);
         }
         
     }
    
     /**
-     * 
+     * Metodo encargado de la edicion de las casillas, este metodo se encarga de 
+     * de ir validando si el usuario coloca una casilla fuera de los limites
      * @param fila recibe la coordenada en que fila colocara el usuario la casilla
      * @param columna recible la coordenada en que columna colocara el usuario su casilla
      * @param simboloCasilla coloca el simbolo correspondiente en el mapa 
      */
     public void editarCasillas(int fila, int columna, String simboloCasilla){
+       // System.out.println("Simbolo puesto:" + simboloCasilla);
         if(fila >= 0 && fila < cantidadFilas && columna >= 0 && columna < cantidadColumnas){
-            
              mapa[fila][columna] = simboloCasilla;
+             actualizarMapa();
         } else{
             System.out.println("Posicion fuera de los limites");
         }
@@ -304,21 +313,21 @@ public class Mapa implements Serializable {
     private void llamarCasilla(String casillaActual){
      
         if(casillaActual.equals(SIMBOLOS_CASILLAS[0])){
-            System.out.println("Casilla normal sin efecto, puedes seguir avanzando");
+            new CasillaNormal(jugador).efectoDeCasillaNormal();
         } else if(casillaActual.equals(SIMBOLOS_CASILLAS[1])){
-            new CasillaCombate(jugador, "Casilla combate", "C", 0, 0).efectoDeCasilla();
+            new CasillaCombate(jugador).efectoDeCasillaNormal();
         } else if(casillaActual.equals(SIMBOLOS_CASILLAS[2])){
-            new CasillaEnergia(jugador, "Casilla enerigia", "C", 0, 0).efectoDeCasilla();
+            new CasillaEnergia(jugador).efectoDeCasillaNormal();
         } else if(casillaActual.equals(SIMBOLOS_CASILLAS[3])){
-            new CasillaMuro(jugador, "Casilla muro", "C", 0, 0).efectoDeCasilla();
+            new CasillaMuro(jugador).efectoDeCasillaNormal();
         } else if(casillaActual.equals(SIMBOLOS_CASILLAS[4])){
-            new CasillaPista(jugador, "Casilla pista", "C", 0, 0).efectoDeCasilla();
+            new CasillaPista(jugador).efectoDeCasillaNormal();
         } else if(casillaActual.equals(SIMBOLOS_CASILLAS[5])){
-            new CasillaTeletransporte(jugador, "Casilla teletransporte", "C", 0, 0).efectoDeCasilla();
+            new CasillaTeletransporte(jugador).efectoDeCasillaNormal();
         } else if(casillaActual.equals(SIMBOLOS_CASILLAS[6])){
-            new CasillaTrampa(jugador, "Casilla trampa", "C", 0, 0).efectoDeCasilla();
+            new CasillaTrampa(jugador).efectoDeCasillaNormal();
         } else if(casillaActual.equals(SIMBOLO_CASILLA_TESORO)){
-            new CasillaTesoro(jugador, "Casilla Tesoro", "T",0, 0 ).efectoDeCasilla();
+            new CasillaTesoro(jugador).efectoDeCasillaNormal();
         }
             
     }
@@ -360,8 +369,5 @@ public class Mapa implements Serializable {
     public static String getSIMBOLO_CASILLA_TESORO() {
         return SIMBOLO_CASILLA_TESORO;
     }
-    
-    
-    
-    
+
 }

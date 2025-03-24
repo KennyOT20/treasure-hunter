@@ -19,14 +19,14 @@ public class CasillaPista extends Casilla {
         "Estas muy lejos, la proxima agarra otro camino"
     };
 
-    public CasillaPista(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
+    public CasillaPista(Jugador jugador) {
+        super(jugador, "Casilla pista");
     }
 
     
 
     @Override
-    public void efectoDeCasilla() {
+    public void efectoDeCasillaNormal() {
         ControladorMetodos controlador = new ControladorMetodos();
         
         int indicePistas = controlador.calcularNumerosAleatorios(0, pistas.length);
@@ -37,8 +37,22 @@ public class CasillaPista extends Casilla {
         
     }
 
+
     @Override
     public void modificarCasilla() {
-          }
+
+    }
+
+    @Override
+    public void menuDeModificacion() {
+
+    }
+
+    @Override
+    public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
     
 }

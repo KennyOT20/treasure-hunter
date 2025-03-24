@@ -7,6 +7,7 @@ com/mycompany/treasurehunter/Menus/MenuBase.class
 com/mycompany/treasurehunter/Controladores/ControladorMenu.class
 com/mycompany/treasurehunter/Mapa/CrearMapa.class
 com/mycompany/treasurehunter/Personaje/Enemigo.class
+com/mycompany/treasurehunter/Casillas/CasillaNormal.class
 com/mycompany/treasurehunter/TreasureHunter.class
 com/mycompany/treasurehunter/Casillas/CasillaTesoro.class
 com/mycompany/treasurehunter/Casillas/CasillaTrampa.class

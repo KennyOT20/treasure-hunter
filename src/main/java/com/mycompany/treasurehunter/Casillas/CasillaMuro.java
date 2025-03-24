@@ -13,12 +13,12 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class CasillaMuro extends Casilla {
 
-    public CasillaMuro(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
+    public CasillaMuro(Jugador jugador) {
+        super(jugador, "Casilla Muro");
     }
 
     @Override
-    public void efectoDeCasilla() {
+    public void efectoDeCasillaNormal() {
         jugador.setPosicionX(jugador.getPosicionAnteriorX());
         jugador.setPosicionY(jugador.getPosicionAnteriosY());
         System.out.println("Te has topado una roca, busca otro camino");
@@ -27,7 +27,15 @@ public class CasillaMuro extends Casilla {
 
     @Override
     public void modificarCasilla() {
-        System.out.println("Esta casilla no se puede modificar :( ");  
     }
-    
+
+    @Override
+    public void menuDeModificacion() {
+
+    }
+
+    @Override
+    public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

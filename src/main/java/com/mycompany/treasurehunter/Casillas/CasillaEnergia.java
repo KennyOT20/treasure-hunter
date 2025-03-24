@@ -16,14 +16,14 @@ public class CasillaEnergia extends Casilla {
     private int hpRecuperado;
     private int mpRecuperado;
     
-    public CasillaEnergia(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
+    public CasillaEnergia(Jugador jugador) {
+        super(jugador, "Casilla Energia ");
     }
 
     
 
     @Override
-    public void efectoDeCasilla() {
+    public void efectoDeCasillaNormal() {
      
         ControladorMetodos controlador = new ControladorMetodos();
         
@@ -53,7 +53,17 @@ public class CasillaEnergia extends Casilla {
 
     @Override
     public void modificarCasilla() {
-       
+
     }
-    
+
+    @Override
+    public void menuDeModificacion() {
+
+    }
+
+    @Override
+    public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

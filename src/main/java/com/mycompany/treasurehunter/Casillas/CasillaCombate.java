@@ -20,13 +20,13 @@ public class CasillaCombate extends Casilla {
     private int mpAnterior;
     private int defensaAnterior;
     
-    public CasillaCombate(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
+    public CasillaCombate(Jugador jugador) {
+        super(jugador, "Casilla combate");
     } 
      
 
     @Override
-    public void efectoDeCasilla() {
+    public void efectoDeCasillaNormal() {
         Enemigo enemigo = new Enemigo();
         Batalla batalla = new Batalla(jugador, enemigo, this);
         ControladorMetodos controlador = new ControladorMetodos();
@@ -48,9 +48,15 @@ public class CasillaCombate extends Casilla {
         
     }
 
+
     @Override
     public void modificarCasilla() {
-       
+
+    }
+
+    @Override
+    public void menuDeModificacion() {
+
     }
 
     public int getHpAnterior() {
@@ -64,7 +70,12 @@ public class CasillaCombate extends Casilla {
     public int getDefensaAnterior() {
         return defensaAnterior;
     }
-    
+
+    @Override
+    public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
     
 }

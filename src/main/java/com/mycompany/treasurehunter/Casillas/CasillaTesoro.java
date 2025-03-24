@@ -11,24 +11,28 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  * @author kenny
  */
 public class CasillaTesoro extends Casilla {
-    
 
-    
-    public CasillaTesoro(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
-    }
-
-    @Override
-    public void efectoDeCasilla() {
-        
-        System.out.println("Enhorabuena, has logrado encontrar el tesoro");
-        boolean partidaGanada = true;
-        jugador.setTesoroEncontrado(partidaGanada);
+    public CasillaTesoro(Jugador jugador) {
+        super(jugador, "Casilla Tesoro");
     }
 
     @Override
     public void modificarCasilla() {
     }
-   
+
+    @Override
+    public void menuDeModificacion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void efectoDeCasillaNormal() {
+        System.out.println("EnhoraBuena has encontrado el tesoro");
+    }
+
+    @Override
+    public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

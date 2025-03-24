@@ -16,12 +16,12 @@ public class CasillaTrampa extends Casilla {
     private int puntosDeHpPerdido;
     private int puntosDeMpPerdido;
     
-    public CasillaTrampa(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
-        super(jugador, nombre, simboloCasilla, posicionX, posicionY);
+    public CasillaTrampa(Jugador jugador) {
+        super(jugador, "Casilla Trampa ");
     }
 
     @Override
-    public void efectoDeCasilla() {
+    public void efectoDeCasillaNormal() {
       
         ControladorMetodos controlador = new ControladorMetodos();
         
@@ -53,9 +53,20 @@ public class CasillaTrampa extends Casilla {
             }
     }
 
+    
     @Override
     public void modificarCasilla() {
-     
+        
+ 
+    }
+
+    @Override
+    public void menuDeModificacion() {
+    }
+
+    @Override
+    public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

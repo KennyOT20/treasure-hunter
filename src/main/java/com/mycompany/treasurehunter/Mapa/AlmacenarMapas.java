@@ -15,6 +15,14 @@ public class AlmacenarMapas implements Serializable {
     private final String CARPETA_DE_MAPAS_PREDEFINIDOS = "ArchivosDelJuego/MapasPredefinidos/";
     private final String CARPETA_DE_MAPAS_USUARIO =  "ArchivosDelJuego/MapasCreadosPorElUsuario/";
     
+    private CrearMapa mapaCreado;
+
+    public AlmacenarMapas(CrearMapa mapaCreado) {
+        this.mapaCreado = mapaCreado;
+    }
+    
+    
+    
     //Metodo encargado de guardar los mapas predefinidos o creados por el ususario
     public void guardarMapa(){
         

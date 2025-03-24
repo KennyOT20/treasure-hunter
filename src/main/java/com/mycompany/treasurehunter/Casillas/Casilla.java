@@ -7,6 +7,7 @@ package com.mycompany.treasurehunter.Casillas;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.io.Serializable;
 
+
 /**
  *
  * @author kenny
@@ -15,20 +16,22 @@ public abstract class Casilla implements Serializable {
     
     protected Jugador jugador;
     private String nombre;
-    private String simboloCasilla;
-    private int posicionX;
-    private int posicionY;
+    private boolean casillaModificada;
 
-    public Casilla(Jugador jugador, String nombre, String simboloCasilla, int posicionX, int posicionY) {
+    public Casilla(Jugador jugador, String nombre) {
         this.jugador = jugador;
         this.nombre = nombre;
-        this.simboloCasilla = simboloCasilla;
-        this.posicionX = posicionX;
-        this.posicionY = posicionY;
+        this.casillaModificada = false;
     }
     
-    public abstract void efectoDeCasilla();
+    
     public abstract void modificarCasilla();
+    public abstract void menuDeModificacion();
+    public abstract void efectoDeCasillaNormal();
+    public abstract void efectoDeCasillaModificado();
+    
+    
+ 
     
     public String getNombre() {
         return nombre;
@@ -38,30 +41,22 @@ public abstract class Casilla implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getSimboloCasilla() {
-        return simboloCasilla;
+    public Jugador getJugador() {
+        return jugador;
     }
 
-    public void setSimboloCasilla(String simboloCasilla) {
-        this.simboloCasilla = simboloCasilla;
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
     }
 
-    public int getPosicionX() {
-        return posicionX;
+    public boolean isCasillaModificada() {
+        return casillaModificada;
     }
 
-    public void setPosicionX(int posicionX) {
-        this.posicionX = posicionX;
+    public void setCasillaModificada(boolean casillaModificada) {
+        this.casillaModificada = casillaModificada;
     }
-
-    public int getPosicionY() {
-        return posicionY;
-    }
-
-    public void setPosicionY(int posicionY) {
-        this.posicionY = posicionY;
-    }
-
-
     
+    
+
 }
