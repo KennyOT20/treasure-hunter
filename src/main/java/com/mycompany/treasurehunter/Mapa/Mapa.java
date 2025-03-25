@@ -247,7 +247,7 @@ public class Mapa implements Serializable {
             System.out.print(FONDO_AZUL + CASILLA + RESETEAR_FONDO);
         } else if(mapa[i][j].equals("K")){
             System.out.print(FONDO_NEGRO + CASILLA + RESETEAR_FONDO);  
-        } else if(mapa[i][j].equals(SIMBOLOS_CASILLAS)){
+        } else if(mapa[i][j].equals(SIMBOLO_FONDO)){
             System.out.print(FONDO_TABLERO + CASILLA + RESETEAR_FONDO);
         }
         

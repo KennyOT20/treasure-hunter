@@ -14,11 +14,14 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class CasillaPista extends Casilla {
     
-    private String[] pistas ={ "El tesoro se encuentra arriba por la izquierda o por la derecha...",
-        "Estas casi cerca, solo te falta regresar por donde estabas",
-        "Casi lo encuentras...",
-        "Estas muy lejos, la proxima agarra otro camino"
-    };
+    private String[] pistas = { 
+    "El tesoro está cerca.",
+    "El tesoro está muy lejos.",
+    "Prueba ir hacia el norte.",
+    "Prueba ir hacia el sur.",
+    "Prueba ir hacia el este.",
+    "Prueba ir hacia el oeste."
+};
 
     public CasillaPista(Jugador jugador, Mapa mapa) {
         super(jugador, "Casilla pista", mapa );

@@ -7,6 +7,7 @@ package com.mycompany.treasurehunter.Casillas;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Personaje.Jugador;
+import java.util.Scanner;
 
 /**
  *
@@ -57,7 +58,16 @@ public class CasillaTrampa extends Casilla {
     
     @Override
     public void modificarCasilla() {
+        Scanner scanner = new Scanner(System.in);
         
+        while(puntosDeHpPerdido > 0 || puntosDeMpPerdido > 0){
+            System.out.println("================================");
+            System.out.println("|| Ingrese la cantidad de Hp  ||");
+            System.out.println("|| que deseas perder.         ||");
+            System.out.println("================================");
+            System.out.print("Cantidad de Hp: ");
+            puntosDeHpPerdido = scanner.nextInt();
+        }
  
     }
 
@@ -67,12 +77,12 @@ public class CasillaTrampa extends Casilla {
 
     @Override
     public void efectoDeCasillaModificado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
 
     @Override
     public void aplicarEfecto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
     
 }

@@ -7,6 +7,7 @@ package com.mycompany.treasurehunter.Casillas;
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Personaje.Jugador;
+import java.util.Scanner;
 
 /**
  *
@@ -27,8 +28,8 @@ public class CasillaTeletransporte extends Casilla {
         ControladorMetodos controlador = new ControladorMetodos();
         
         System.out.println("Has pisado una casilla de Teletransporte ");
-        nuevaCoordenadaX = controlador.calcularNumerosAleatorios(0, 23 );
-        nuevaCoordenadaY = controlador.calcularNumerosAleatorios(0, 23 );
+        nuevaCoordenadaX = controlador.calcularNumerosAleatorios(0, mapa.getCantidadColumnas() );
+        nuevaCoordenadaY = controlador.calcularNumerosAleatorios(0, mapa.getCantidadFilas() );
         
         jugador.setPosicionX(nuevaCoordenadaX);
         jugador.setPosicionY(nuevaCoordenadaY);
@@ -37,12 +38,24 @@ public class CasillaTeletransporte extends Casilla {
 
     @Override
     public void modificarCasilla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        while(nuevaCoordenadaY > 0 && nuevaCoordenadaX <= mapa.getCantidadFilas() ){
+            System.out.println("===================================");
+            System.out.println("|| Ingrese la coordenada en X en ||");
+            System.out.println("|| la que que quieres ser        ||");
+            System.out.println("|| reubicado.                    ||");
+            System.out.println("===================================");
+            System.out.print("Coordenada en Y (" + " 1, " + mapa.getCantidadFilas() +" : " );
+            nuevaCoordenadaY = scanner.nextInt();
+        }
+
+
     }
 
     @Override
     public void menuDeModificacion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

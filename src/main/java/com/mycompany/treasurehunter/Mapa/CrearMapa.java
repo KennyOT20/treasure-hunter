@@ -207,6 +207,7 @@ public class CrearMapa {
                               }            
 
                               if(casilla != null){
+                                  controlador.limpiarPantalla();
                                   menuEdicionDeCasilla(casilla);
                               }
                               controlador.limpiarPantalla();
@@ -360,6 +361,7 @@ public class CrearMapa {
 
                 if(opcion >= 1 && opcion <=2) {
                     if(opcion == 1){
+                        controlador.limpiarPantalla();
                         casillaObjetivo.modificarCasilla();
                     }else{
                         System.out.println("Continuando con la modificacion");

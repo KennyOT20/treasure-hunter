@@ -26,9 +26,13 @@ public class CasillaCombate extends Casilla {
     private int coordenadaYModificada;
     private int coordenadaXModificada;
     private int opcionHuirDeCasilla;
+    private boolean casillaModificada;
+    private static final Scanner scanner = new Scanner(System.in);
     
     public CasillaCombate(Jugador jugador, Mapa mapa) {
         super(jugador, "Casilla combate", mapa);
+        this.escaparDeCombate = false;
+        this.casillaModificada = false;
         this.controlador = new ControladorMetodos();
     } 
      
@@ -61,62 +65,109 @@ public class CasillaCombate extends Casilla {
      */
     @Override
     public void modificarCasilla() {
-        Scanner scanner = new Scanner(System.in);
         
-        boolean casillaModificada = true;
-        setCasillaModificada(casillaModificada);
-        int coordenadaX = -1;
-        int coordenadaY = -1;
-
+        casillaModificada = false;
+        int opcionCorrecta = -1;
         
-        while (coordenadaX <= 0 || coordenadaX > mapa.getCantidadColumnas() || 
-       coordenadaY <= 0 || coordenadaY > mapa.getCantidadFilas()) {
+        while(opcionCorrecta < 1){
             try{
-                System.out.println("===========================================");
-                System.out.println("||     Menu de modificacion de la        ||");
-                System.out.println("|| casilla " + getNombre() + " ");
-                System.out.println("===========================================");
-                System.out.println("|| Ingrese la coordenada en X en la que  ||");
-                System.out.println("|| quieres ser reubicado luego de perder ||");
-                System.out.println("==========================================");
-                System.out.print("Coordenada en X: ");
-                coordenadaX = scanner.nextInt();
+                System.out.println("===================================");
+                System.out.println("|| Bienvenido al menu de edicion ||");
+                System.out.println("=================================== ");
+                System.out.println("|| ¿Desea que esta casilla deje  ||");
+                System.out.println("|| huir al personaje durante una ||");
+                System.out.println("|| batalla?                      ||");
+                System.out.println("===================================");
+                System.out.println("|| 1. Si                         ||");
+                System.out.println("|| 2. No                         ||");
+                System.out.println("===================================");
+                System.out.print("Ingrese su opcion: ");
+                opcionCorrecta = scanner.nextInt();
                 
-                System.out.println("===========================================");
-                System.out.println("|| Ingrese la coordenada en X en la que  ||");
-                System.out.println("|| quieres ser reubicado luego de perder ||");
-                System.out.println("==========================================");
-                System.out.print("Coordenada en Y: ");
-                coordenadaY = scanner.nextInt();
-                
-                
-                System.out.println("=========================================");
-                System.out.println("|| Desea que esta casilla te deje huir ||");
-                System.out.println("|| del combate.                        ||");
-                System.out.println("=========================================");
-                System.out.println("|| 1. Si                               ||");
-                System.out.println("|| 2. No                               ||");
-                System.out.println("==========================================");
-                opcionHuirDeCasilla = scanner.nextInt();
-                
-                if(opcionHuirDeCasilla >= 1 && opcionHuirDeCasilla <= 2){
-                    if(opcionHuirDeCasilla == 1){
+                if(opcionCorrecta >= 1 && opcionCorrecta <= 2){
+                    if(opcionCorrecta == 1){
                         escaparDeCombate = true;
+                        System.out.println("Ahora puedes huir durante un combate");
                     } else{
-                        escaparDeCombate = false;
+                        System.out.println("No podras huir durante una batalla");
                     }
                 } else{
-                    System.out.println("Opcion incorrecta, intente de nuevo.");
-                }
-                
+                    
+                    System.out.println("Opcion no valida, intente de nuevo");
+                   
+                } 
+           
             } catch(InputMismatchException e){
                 scanner.nextLine();
-                System.out.println("Opcion incorrecta, intente de nuevo. ");
+                controlador.limpiarPantalla();
+                System.out.println("Opcion no valida, intente de nuevo");
             }
         }
         
+        controlador.limpiarPantalla();
+        obtenerCoordenadas();
+        
     }
 
+    /**
+     * Metodo encargado de obtener las coordenadas del jugador, estas coordenadas sive para 
+     * que cuando el jugador piuerd la batalla puesa ser penalizado segun el usuario.
+     */
+    private void obtenerCoordenadas(){
+        
+        
+        while(coordenadaXModificada > 0 && coordenadaXModificada <= mapa.getCantidadColumnas()){
+            try{
+                System.out.println("=========================================");
+                System.out.println("|| Ahora debes de colocar la           ||");
+                System.out.println("|| coordenada en X donde quieres       ||");
+                System.out.println("|| ser reubicado cuando seas derrotado ||");
+                System.out.println("=========================================");
+                System.out.print("Ingrese la coordenada en X ( " + mapa.getCantidadColumnas() + 1 + " ): " );
+                coordenadaXModificada = scanner.nextInt();
+                
+                if(coordenadaXModificada > 0 && coordenadaXModificada <= mapa.getCantidadColumnas()){
+                    jugador.setPosicionX(coordenadaXModificada - 1);
+                    System.out.println("Has colocado una nueva coordenada");
+                } else{
+                    controlador.limpiarPantalla();
+                    System.out.println("Coordenada no disponible, intente de nuevo");
+                }
+            }catch(InputMismatchException e ){
+                scanner.nextLine();
+                controlador.limpiarPantalla();
+                System.out.println("Opcion no valida, intente de nuevo. ");
+            }
+                   
+        }
+        
+        controlador.limpiarPantalla();
+        
+        while(coordenadaYModificada > 0 && coordenadaYModificada <= mapa.getCantidadFilas()){
+            try{
+                System.out.println("=========================================");
+                System.out.println("|| Ahora debes de colocar la           ||");
+                System.out.println("|| coordenada en Y donde quieres       ||");
+                System.out.println("|| ser reubicado cuando seas derrotado ||");
+                System.out.println("=========================================");
+                System.out.print("Ingrese la coordenada en Y ( " + mapa.getCantidadFilas() + 1 + " ): " );
+                coordenadaYModificada = scanner.nextInt();
+                
+                if(coordenadaYModificada > 0 && coordenadaYModificada <= mapa.getCantidadColumnas()){
+                    jugador.setPosicionX(coordenadaYModificada - 1);
+                    System.out.println("Has colocado una nueva coordenada");
+                } else{
+                    controlador.limpiarPantalla();
+                    System.out.println("Coordenada no disponible, intente de nuevo");
+                }
+            } catch(InputMismatchException e){
+                scanner.nextLine();
+                controlador.limpiarPantalla();
+                System.out.println("Opcion no valida, intente de nuevo.");
+            }
+        }
+    }
+    
     @Override
     public void menuDeModificacion() {
 

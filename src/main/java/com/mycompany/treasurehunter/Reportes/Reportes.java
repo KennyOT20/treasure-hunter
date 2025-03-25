@@ -10,4 +10,16 @@ package com.mycompany.treasurehunter.Reportes;
  */
 public class Reportes {
     
+    private String[][] personajesDerrotadosBatalla = {
+        
+    }; 
+    
+    private String[][] personajesTesoroEncontrado = {
+        
+    };
+    
+    private String[][] personajesPartidaPerdida = {
+        
+    };
+    
 }

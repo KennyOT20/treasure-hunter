@@ -33,7 +33,7 @@ public class CasillaTesoro extends Casilla {
 
     @Override
     public void efectoDeCasillaModificado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
