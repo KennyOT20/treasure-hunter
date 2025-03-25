@@ -4,6 +4,8 @@
  */
 package com.mycompany.treasurehunter.Casillas;
 
+import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
+import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 import java.io.Serializable;
 
@@ -15,13 +17,17 @@ import java.io.Serializable;
 public abstract class Casilla implements Serializable {
     
     protected Jugador jugador;
+    protected Mapa mapa;
     private String nombre;
     private boolean casillaModificada;
+    private final ControladorMetodos controlador;
 
-    public Casilla(Jugador jugador, String nombre) {
+    public Casilla(Jugador jugador, String nombre, Mapa mapa) {
         this.jugador = jugador;
         this.nombre = nombre;
+        this.mapa = mapa;
         this.casillaModificada = false;
+        this.controlador = new ControladorMetodos();
     }
     
     
@@ -29,6 +35,7 @@ public abstract class Casilla implements Serializable {
     public abstract void menuDeModificacion();
     public abstract void efectoDeCasillaNormal();
     public abstract void efectoDeCasillaModificado();
+    public abstract void aplicarEfecto();
     
     
  
@@ -55,6 +62,14 @@ public abstract class Casilla implements Serializable {
 
     public void setCasillaModificada(boolean casillaModificada) {
         this.casillaModificada = casillaModificada;
+    }
+
+    public ControladorMetodos getControlador() {
+        return controlador;
+    }
+
+    public Mapa getMapa() {
+        return mapa;
     }
     
     

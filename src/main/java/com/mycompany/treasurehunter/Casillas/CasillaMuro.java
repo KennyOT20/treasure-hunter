@@ -5,6 +5,7 @@
 package com.mycompany.treasurehunter.Casillas;
 
 
+import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Personaje.Jugador;
 
 /**
@@ -13,8 +14,8 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class CasillaMuro extends Casilla {
 
-    public CasillaMuro(Jugador jugador) {
-        super(jugador, "Casilla Muro");
+    public CasillaMuro(Jugador jugador, Mapa mapa) {
+        super(jugador, "Casilla Muro", mapa );
     }
 
     @Override
@@ -36,6 +37,11 @@ public class CasillaMuro extends Casilla {
 
     @Override
     public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void aplicarEfecto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

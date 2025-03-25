@@ -7,7 +7,6 @@ package com.mycompany.treasurehunter.Mapa;
 import com.mycompany.treasurehunter.Casillas.Casilla;
 import com.mycompany.treasurehunter.Casillas.CasillaCombate;
 import com.mycompany.treasurehunter.Casillas.CasillaEnergia;
-import com.mycompany.treasurehunter.Casillas.CasillaNormal;
 import com.mycompany.treasurehunter.Casillas.CasillaPista;
 import com.mycompany.treasurehunter.Casillas.CasillaTeletransporte;
 import com.mycompany.treasurehunter.Casillas.CasillaTrampa;
@@ -290,7 +289,7 @@ public class CrearMapa {
                    return Mapa.getSIMBOLOS_CASILLAS()[5];
             }
               case 7 -> {
-                   return Mapa.getSIMBOLO_CASILLA_TESORO();
+                   return  "K";
             }
               case 8 -> {
                    return Mapa.getSIMBOLOS_CASILLAS()[6];
@@ -314,25 +313,25 @@ public class CrearMapa {
                   return null;
             }
               case 2 -> {
-                  return new CasillaCombate(mapa.getJugador());
+                  return new CasillaCombate(mapa.getJugador(), mapa);
             }
               case 3 -> {
-                  return new CasillaEnergia(mapa.getJugador());
+                  return new CasillaEnergia(mapa.getJugador(), mapa);
             }
               case 4 -> {
                   return null;
             }
               case 5 -> {
-                  return new CasillaPista(mapa.getJugador());
+                  return new CasillaPista(mapa.getJugador(), mapa);
             }
               case 6 -> {
-                  return new CasillaTeletransporte(mapa.getJugador());
+                  return new CasillaTeletransporte(mapa.getJugador(), mapa);
             }
               case 7 -> {
                   return null;
             }
               case 8 -> {
-                  return new CasillaTrampa(mapa.getJugador());
+                  return new CasillaTrampa(mapa.getJugador(), mapa);
             }
               default -> {
                   return null;
@@ -342,27 +341,47 @@ public class CrearMapa {
           
       private void menuEdicionDeCasilla(Casilla casillaObjetivo){
           
-          int opcionEdicion;
-          System.out.println("===================================");
-          System.out.println("|| Desea modificar los atributos ||");
-          System.out.println("|| de esta casilla " + casillaObjetivo.getNombre() + " ?");
-          System.out.println("===================================");
-          System.out.println("|| 1. SI                         ||");
-          System.out.println("|| 2. NO                         ||");
-          System.out.println("===================================");
-          System.out.print("Ingrese una opcion: ");
-          opcionEdicion = scanner.nextInt();
+          int opcion;
+          boolean opcionCorrecta = false;
           
-          if(opcionEdicion >= 1 && opcionEdicion <=2) {
-              if(opcionEdicion > 1){
-                  casillaObjetivo.modificarCasilla();
-              } else{
-                  System.out.println("Continuando con la colocacion de las casillas");
+          while(opcionCorrecta == false){
+              try{
+                 
+                System.out.println("===================================");
+                System.out.println("|| Desea modificar los atributos ||");
+                System.out.println("|| de esta casilla " + casillaObjetivo.getNombre() + " ?");
+                System.out.println("===================================");
+                System.out.println("|| 1. SI                         ||");
+                System.out.println("|| 2. NO                         ||");
+                System.out.println("===================================");
+                System.out.print("Ingrese una opcion: ");
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+
+                if(opcion >= 1 && opcion <=2) {
+                    if(opcion == 1){
+                        casillaObjetivo.modificarCasilla();
+                    }else{
+                        System.out.println("Continuando con la modificacion");
+                    }
+                        
+                } else{
+                    System.out.println("Error, opcion no valida, intente de nuevo.");
+
+                }
+                opcionCorrecta = true;
+                
+             } catch(InputMismatchException e){              
+                 scanner.nextLine();
+                  System.out.println("Opcion no valida, intente de nuevo");
+
               }
-          } else{
-              System.out.println("Error, opcion no valida, intente de nuevo.");
-              menuEdicionDeCasilla(casillaObjetivo);
               
           }
+          
       }
+          
+
+          
+
 }

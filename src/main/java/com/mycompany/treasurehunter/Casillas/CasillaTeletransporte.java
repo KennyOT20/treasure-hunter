@@ -17,8 +17,8 @@ public class CasillaTeletransporte extends Casilla {
     private int nuevaCoordenadaX;
     private int nuevaCoordenadaY;
 
-    public CasillaTeletransporte(Jugador jugador) {
-        super(jugador, "Casilla de teletransporte");
+    public CasillaTeletransporte(Jugador jugador, Mapa mapa) {
+        super(jugador, "Casilla de teletransporte", mapa);
     }
     
     
@@ -47,6 +47,11 @@ public class CasillaTeletransporte extends Casilla {
 
     @Override
     public void efectoDeCasillaModificado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void aplicarEfecto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
