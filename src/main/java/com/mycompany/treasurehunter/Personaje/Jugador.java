@@ -24,6 +24,8 @@ public class Jugador extends Personaje{
     private int posicionAnteriorX;
     private int posicionAnteriosY;
     private boolean tesoroEncontrado;
+    private String[] pistasObtenidas;
+    private int cantidadPistas;
     
     
     //Constructor con valores iniciales
@@ -34,6 +36,8 @@ public class Jugador extends Personaje{
         this.puntosDeDefensa = 10;
         this.defensaMax = 10; 
         this.tesoroEncontrado = false;
+        this.pistasObtenidas = new String[10];
+        this.cantidadPistas = 0;
         this.controlador = new ControladorMetodos();
     }
 
@@ -67,7 +71,6 @@ public class Jugador extends Personaje{
         char [] nombre = nombreJugador.toCharArray();
         simboloJugador = Character.toUpperCase(nombre[0]);      
     }
-    
     
     public void curarJugador(){
         
@@ -113,6 +116,30 @@ public class Jugador extends Personaje{
         } else{
             puntosDeMana = 0;
         }
+    }
+    
+    //Metodo encargado de ir almacenando las pistas
+     public void agregarPista(String pista) {
+        if (cantidadPistas < pistasObtenidas.length) {
+            pistasObtenidas[cantidadPistas] = pista;
+            cantidadPistas++;
+        } else {
+            System.out.println("No se pueden almacenar más pistas.");
+        }
+    }
+     
+     public String obtenerUltimaPista() {
+        if (cantidadPistas > 0) {
+            return pistasObtenidas[cantidadPistas - 1];
+        }
+        return "No has obtenido pistas aún.";
+    }
+
+    public String[] obtenerTodasLasPistas() {
+        if (cantidadPistas > 0) {
+            return pistasObtenidas;
+        }
+        return new String[]{"No has obtenido pistas aún."};
     }
     
     public void restablecerEstadisticas(){
@@ -224,4 +251,22 @@ public class Jugador extends Personaje{
         this.tesoroEncontrado = tesoroEncontrado;
     }
 
+    public String[] getPistasObtenidas() {
+        return pistasObtenidas;
+    }
+
+    public void setPistasObtenidas(String[] pistasObtenidas) {
+        this.pistasObtenidas = pistasObtenidas;
+    }
+
+    public int getCantidadPistas() {
+        return cantidadPistas;
+    }
+
+    public void setCantidadPistas(int cantidadPistas) {
+        this.cantidadPistas = cantidadPistas;
+    }
+
+
+    
 }

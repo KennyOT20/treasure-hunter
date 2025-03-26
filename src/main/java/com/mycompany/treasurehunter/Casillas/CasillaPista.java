@@ -32,20 +32,10 @@ public class CasillaPista extends Casilla {
 
     
 
-    @Override
+     @Override
     public void efectoDeCasillaNormal() {
-         ControladorMetodos controlador = new ControladorMetodos();
-        
-        if (casillaModificada) {
-            System.out.println("Pista:");
-            System.out.println(pistaObtenida);
-        } else {
-            int indicePistas = controlador.calcularNumerosAleatorios(0, pistas.length);
-            pistaObtenida = pistas[indicePistas];
-            System.out.println("Pista:");
-            System.out.println(pistaObtenida);
-        }
-    }
+ 
+}
 
 
     @Override
