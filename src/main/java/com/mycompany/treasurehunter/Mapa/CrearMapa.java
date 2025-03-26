@@ -102,7 +102,6 @@ public class CrearMapa {
         int coordenadaX;
         
         boolean coordenadaCorrecta = false;
-        
         while (coordenadaCorrecta == false ){
             try{
                 System.out.println("=======================================");
@@ -112,7 +111,7 @@ public class CrearMapa {
                 System.out.println("|| Ingrese que fila quieres iniciar  ||");
                 System.out.println("|| (1," + mapa.getCantidadFilas() + " )");
                 System.out.println("=======================================");
-                System.out.print("Coordenada en X : ");
+                System.out.print("Coordenada en Y : ");
                 coordenadaX = scanner.nextInt();
                 
                 if(coordenadaX > 0 && coordenadaX <= mapa.getCantidadFilas() ){
@@ -133,36 +132,49 @@ public class CrearMapa {
         }
     }
         
-      private void colocarJugadorCoordenadaY(){
-          
-          int coordenadaY;
-          boolean coordenadaCorrecta = false;
-          
-          while(coordenadaCorrecta == false){
-              try{
-                  System.out.println("===================================");
-                  System.out.println("|| Ingrese en que columna desea  ||");
-                  System.out.println("|| iniciar.                      ||");
-                  System.out.println("|| (1, " + mapa.getCantidadColumnas() + " ) " );
-                  System.out.println("=====================================");
-                  System.out.print("Coordenada Y: ");
-                  coordenadaY = scanner.nextInt();
-                  
-                  if(coordenadaY > 0 && coordenadaY <= mapa.getCantidadColumnas()){
-                      mapa.getJugador().setPosicionY(coordenadaY - 1 );
-                      coordenadaCorrecta = true;
-                  } else{
-                      controlador.limpiarPantalla();
-                      System.out.println("Error, la columna no esta disponible");
-                  }
-                  
-              }catch(InputMismatchException e){
-                  scanner.nextLine();
-                  System.out.println("Opcion no valida, intente de nuevo");
-              }
-          }
-      }  
-      
+    private void colocarJugadorCoordenadaY() {
+        
+        char coordenadaY;
+        boolean coordenadaCorrecta = false;
+        String entradaLetra;
+        
+        while (coordenadaCorrecta == false ) {
+            try {
+                System.out.println("===================================");
+                System.out.println("|| Ingrese en qué columna desea  ||");
+                System.out.println("|| iniciar.                      ||");
+                System.out.println("|| (A - " + colocarLetrasDeIndice(mapa.getCantidadColumnas() - 1 ) + ")              ||");
+                System.out.println("===================================");
+                System.out.print("Coordenada Y: ");
+
+                entradaLetra = scanner.next().toUpperCase();
+                if (entradaLetra.isEmpty()) {
+                    controlador.limpiarPantalla();
+                    System.out.println("Error, se debe de ingresar una lerta.");
+                    continue;
+                }
+
+                coordenadaY = entradaLetra.charAt(0);
+
+                int columna = coordenadaY - 'A';
+
+                if (columna >= 0 && columna < mapa.getCantidadColumnas()) {
+                mapa.getJugador().setPosicionY(columna);
+                coordenadaCorrecta = true;
+                controlador.limpiarPantalla();
+                } else {
+                    controlador.limpiarPantalla();
+                    System.out.println("Error, la columna no existe. Intente de nuevo.");
+                }
+            } catch (Exception e) {
+                scanner.nextLine();
+                controlador.limpiarPantalla();
+                System.out.println("Opcion no valida, intente de nuevo");
+            }
+        }
+}
+
+
       /**
        * Metodo encargado de ir colocando las casillas en el mapa, ademas se encarga de validar
        * que haya solo un tesoro en el mapa y asi vitar que hayan mas tesoros.

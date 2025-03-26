@@ -24,6 +24,8 @@ public class CasillaCombate extends Casilla {
     private int mpAnterior;
     private int defensaAnterior;
     private int coordenadaYModificada;
+    private int coordenadaXPenalizacion;
+    private int coordeanadaYPenalizacion; 
     private int coordenadaXModificada;
     private int opcionHuirDeCasilla;
     private boolean casillaModificada;
@@ -40,7 +42,7 @@ public class CasillaCombate extends Casilla {
     @Override
     public void efectoDeCasillaNormal() {
         Enemigo enemigo = new Enemigo();
-        Batalla batalla = new Batalla(jugador, enemigo, this);
+        Batalla batalla = new Batalla( enemigo, this, mapa);
         
         hpAnterior = jugador.getVidaPersonaje();
         mpAnterior = jugador.getPuntosDeMana();
@@ -87,6 +89,8 @@ public class CasillaCombate extends Casilla {
                 if(opcionCorrecta >= 1 && opcionCorrecta <= 2){
                     if(opcionCorrecta == 1){
                         escaparDeCombate = true;
+                        controlador.limpiarPantalla();
+                        obtenerCoordenadas();
                         System.out.println("Ahora puedes huir durante un combate");
                     } else{
                         System.out.println("No podras huir durante una batalla");
@@ -104,8 +108,6 @@ public class CasillaCombate extends Casilla {
             }
         }
         
-        controlador.limpiarPantalla();
-        obtenerCoordenadas();
         
     }
 
@@ -168,11 +170,21 @@ public class CasillaCombate extends Casilla {
         }
     }
     
+     @Override
+    public void efectoDeCasillaModificado() {
+
+    }
+    
     @Override
     public void menuDeModificacion() {
 
     }
 
+    @Override
+    public void aplicarEfecto() {
+      
+    }
+    
     public int getHpAnterior() {
         return hpAnterior;
     }
@@ -185,15 +197,8 @@ public class CasillaCombate extends Casilla {
         return defensaAnterior;
     }
 
-    @Override
-    public void efectoDeCasillaModificado() {
 
-    }
-
-    @Override
-    public void aplicarEfecto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
     
     

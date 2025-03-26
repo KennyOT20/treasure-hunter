@@ -100,7 +100,7 @@ public class Mapa implements Serializable {
             for (int j = 0; j < cantidadColumnas ; j++) {
                 if(mapaCreado == false){
                     mapa[i][j] = generarCasillas();
-                    //mapa[0][0] = "K";
+                    mapa[0][0] = "K";
                 } else{
                    mapa[i][j] = SIMBOLO_FONDO; 
                 }
