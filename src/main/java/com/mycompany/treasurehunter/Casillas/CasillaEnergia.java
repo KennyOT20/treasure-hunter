@@ -16,9 +16,9 @@ import java.util.Scanner;
  */
 public class CasillaEnergia extends Casilla {
     
-    private ControladorMetodos controlador;
-    private int hpRecuperado;
-    private int mpRecuperado;
+    private final ControladorMetodos controlador;
+    private int hpRecuperado = -1;
+    private int mpRecuperado = -1;
     private boolean casillaEditada;
     
     public CasillaEnergia(Jugador jugador, Mapa mapa) {
@@ -30,27 +30,25 @@ public class CasillaEnergia extends Casilla {
     @Override
     public void efectoDeCasillaNormal() {
      
-        
-        boolean recuperarRecursos = controlador.opcionesActivas();
-        
-        System.out.println("Has caido en una casilla de energia");
-        
-        if(recuperarRecursos == false ){
+        System.out.println("Has caído en una casilla de energía.");
+
+        if (casillaEditada == false) {
             hpRecuperado = controlador.calcularNumerosAleatorios(15, 40);
+            mpRecuperado = controlador.calcularNumerosAleatorios(8, 15);
+        }
+
             jugador.setVidaPersonaje(jugador.getVidaPersonaje() + hpRecuperado);
-            System.out.println("Has recuperado " + hpRecuperado + " puntos de vida");
+            System.out.println("Has recuperado " + hpRecuperado + " puntos de vida.");
+
+        if (jugador.getVidaPersonaje() >= jugador.getVidaMaxPersonaje()) {
+            jugador.verificarAtributosMax(true);
             
-            if(jugador.getVidaPersonaje() >= jugador.getVidaMaxPersonaje()){
-                jugador.verificarAtributosMax(true);
-                
-            } else{
-                mpRecuperado = controlador.calcularNumerosAleatorios(8, 15);
+           } else {
                 jugador.setPuntosDeMana(jugador.getPuntosDeMana() + mpRecuperado);
-                System.out.println("Has recuperado " + mpRecuperado + " puntos de vida");
-                
-                if(jugador.getPuntosDeMana() >= jugador.getManaMax()){
-                    jugador.verificarAtributosMax(false);
-                }
+                System.out.println("Has recuperado " + mpRecuperado + " puntos de maná.");
+
+            if (jugador.getPuntosDeMana() >= jugador.getManaMax()) {
+                jugador.verificarAtributosMax(false);
             }
         }
     }
@@ -76,6 +74,7 @@ public class CasillaEnergia extends Casilla {
                 System.out.println("|| a recuperar.              ||");
                 System.out.println("===============================");
                 System.out.print("Cantidad de Mp: ");
+                
                 mpRecuperado = scanner.nextInt();
                 
         } catch(InputMismatchException e){
@@ -92,12 +91,12 @@ public class CasillaEnergia extends Casilla {
 
     @Override
     public void efectoDeCasillaModificado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
 
     @Override
     public void aplicarEfecto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
 }

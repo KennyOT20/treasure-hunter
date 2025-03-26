@@ -196,10 +196,5 @@ public class CasillaCombate extends Casilla {
     public int getDefensaAnterior() {
         return defensaAnterior;
     }
-
-
-    
-
-    
     
 }

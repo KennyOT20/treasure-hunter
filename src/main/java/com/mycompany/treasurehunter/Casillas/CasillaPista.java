@@ -7,6 +7,7 @@ package com.mycompany.treasurehunter.Casillas;
 import com.mycompany.treasurehunter.Controladores.ControladorMetodos;
 import com.mycompany.treasurehunter.Mapa.Mapa;
 import com.mycompany.treasurehunter.Personaje.Jugador;
+import java.util.Scanner;
 
 /**
  *
@@ -14,6 +15,7 @@ import com.mycompany.treasurehunter.Personaje.Jugador;
  */
 public class CasillaPista extends Casilla {
     
+    private String pistaObtenida;
     private String[] pistas = { 
     "El tesoro está cerca.",
     "El tesoro está muy lejos.",
@@ -22,6 +24,7 @@ public class CasillaPista extends Casilla {
     "Prueba ir hacia el este.",
     "Prueba ir hacia el oeste."
 };
+    private boolean casillaModificada = false;
 
     public CasillaPista(Jugador jugador, Mapa mapa) {
         super(jugador, "Casilla pista", mapa );
@@ -31,20 +34,59 @@ public class CasillaPista extends Casilla {
 
     @Override
     public void efectoDeCasillaNormal() {
-        ControladorMetodos controlador = new ControladorMetodos();
+         ControladorMetodos controlador = new ControladorMetodos();
         
-        int indicePistas = controlador.calcularNumerosAleatorios(0, pistas.length);
-        String pistaObtenida = pistas[indicePistas];
-        controlador.limpiarPantalla();
-        System.out.println("Pista:");
-        System.out.println(pistaObtenida);
-        
+        if (casillaModificada) {
+            System.out.println("Pista:");
+            System.out.println(pistaObtenida);
+        } else {
+            int indicePistas = controlador.calcularNumerosAleatorios(0, pistas.length);
+            pistaObtenida = pistas[indicePistas];
+            System.out.println("Pista:");
+            System.out.println(pistaObtenida);
+        }
     }
 
 
     @Override
     public void modificarCasilla() {
+        Scanner scanner = new Scanner(System.in);
+        int opcionMenu;
+        boolean opcionValida = false;
 
+        while (!opcionValida) {
+            try {
+                System.out.println("========================================");
+                System.out.println("|| Deseas modificar la pista?        ||");
+                System.out.println("========================================");
+                System.out.println("|| 1. Sí                             ||");
+                System.out.println("|| 2. No                             ||");
+                System.out.println("========================================");
+                System.out.print("Seleccione una opción: ");
+                opcionMenu = scanner.nextInt();
+                scanner.nextLine(); 
+
+                switch (opcionMenu) {
+                    case 1 -> {
+                        System.out.println("=====================================");
+                        System.out.println("|| Ingrese la nueva pista:         ||");
+                        System.out.println("=====================================");
+                        pistaObtenida = scanner.nextLine();
+                        casillaModificada = true;
+                        opcionValida = true;
+                    }
+                    case 2 -> {
+                        System.out.println("Pista no modificada. Se mantiene las originslerd.");
+                        opcionValida = true;
+                    }
+                    default -> System.out.println("Opcion no valida, intente de nuevo.");
+                }
+            } catch (Exception e) {
+                System.out.println("Opcion no valida, intente de nuevo.");
+                scanner.nextLine(); 
+            }
+        }
+   
     }
 
     @Override

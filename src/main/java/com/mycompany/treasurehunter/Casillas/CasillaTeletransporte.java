@@ -22,11 +22,13 @@ public class CasillaTeletransporte extends Casilla {
     private int coordenadaXModificada;
     private String letraCoordenada;
     private int coordenadaYModificada;
+    private boolean casillaModificada = false;
     private static final Scanner scanner = new Scanner(System.in);
 
     public CasillaTeletransporte(Jugador jugador, Mapa mapa) {
         super(jugador, "Casilla de teletransporte", mapa);
         this.controlador = new ControladorMetodos();
+        this.casillaModificada = false;
     }
     
     
@@ -34,9 +36,15 @@ public class CasillaTeletransporte extends Casilla {
     public void efectoDeCasillaNormal() {
         
         System.out.println("Has pisado una casilla de Teletransporte ");
-        nuevaCoordenadaX = controlador.calcularNumerosAleatorios(0, mapa.getCantidadColumnas() );
-        nuevaCoordenadaY = controlador.calcularNumerosAleatorios(0, mapa.getCantidadFilas() );
-        
+
+        if (casillaModificada == true) {
+            nuevaCoordenadaX = coordenadaXModificada;
+            nuevaCoordenadaY = coordenadaYModificada;
+        } else {
+            nuevaCoordenadaX = controlador.calcularNumerosAleatorios(0, mapa.getCantidadColumnas());
+            nuevaCoordenadaY = controlador.calcularNumerosAleatorios(0, mapa.getCantidadFilas());
+        }
+
         jugador.setPosicionX(nuevaCoordenadaX);
         jugador.setPosicionY(nuevaCoordenadaY);
         System.out.println("Has sido teletransportado a otra casilla");
@@ -44,6 +52,7 @@ public class CasillaTeletransporte extends Casilla {
 
     @Override
     public void modificarCasilla() {
+        
         
         boolean opcionValida = false; 
         int opcionMenu;
@@ -64,10 +73,13 @@ public class CasillaTeletransporte extends Casilla {
                     if(opcionMenu == 1){
                         controlador.limpiarPantalla();
                         menuDeModificacion();
+                        casillaModificada = true;
+                        opcionValida = true;
                         
                     } else{
                         controlador.limpiarPantalla();
                         System.out.println("Continuando con la edicion del mapa");
+                        opcionValida = true;
                     }
                 } else{
                     controlador.limpiarPantalla();
@@ -88,23 +100,67 @@ public class CasillaTeletransporte extends Casilla {
     @Override
     public void menuDeModificacion() {
         
-        while(coordenadaXModificada > 0 && coordenadaXModificada <= mapa.getCantidadFilas()){
+        boolean filaValida = false;
+        
+        while(filaValida == false ){
             try{
                 System.out.println("================================");
                 System.out.println("|| Ingrese la fila en la que  ||");
                 System.out.println("|| que quieres ser reubicado  || ");
                 System.out.println("================================");
-                System.out.print("Ingrese una coordenada (1," + mapa.getCantidadFilas() + ")" );
+                System.out.print("Ingrese una coordenada (1," + (mapa.getCantidadFilas()) + "): " );
                 
-                coordenadaXModificada = scanner.nextInt();
-                controlador.limpiarPantalla();
+                coordenadaYModificada = scanner.nextInt();
+                scanner.nextLine();
                 
-                System.out.println("");
+                if(coordenadaYModificada > 0 && coordenadaYModificada <= mapa.getCantidadFilas()){
+                    controlador.limpiarPantalla();
+                    obtenerCoordenadaColumna();
+                    filaValida = true;
+                } else{
+                    System.out.println("Opcion no valida, intente de nuevo.");
+                }
+                
+                
+            } catch(InputMismatchException e){
+                scanner.nextLine();
+                System.out.println("Opcion no valida, intente de nuevo.");
             }
             
         }
     }
+    
+    private void obtenerCoordenadaColumna(){
+        boolean columnaValida = false; 
+        String letraPrincipal;
+        
+        while (columnaValida == false) {
+         try {
+             System.out.println("==================================");
+             System.out.println("|| Ingrese la columna deseada   ||");
+             System.out.println("|| usando una letra             ||");
+             System.out.println("==================================");
+             System.out.print("Columna (A, " + colocarLetrasDeIndice(mapa.getCantidadColumnas() - 1 ) + "): ");
 
+             letraPrincipal = scanner.nextLine().trim().toUpperCase();
+
+             if (letraPrincipal.length() == 1 && letraPrincipal.charAt(0) >= 'A' && letraPrincipal.charAt(0) < 'A' + mapa.getCantidadColumnas()) {
+                 letraCoordenada = letraPrincipal;
+                 coordenadaXModificada = letraPrincipal.charAt(0) - 'A' + 1; 
+                 System.out.println("Seras teletransportado a la casilla: (" + coordenadaYModificada + ","+ coordenadaXModificada  + ")");
+                 columnaValida = true;
+             } else {
+                 System.out.println("Columna no valida, intent de nuevo. ");
+             }
+         } catch (Exception e) {
+             controlador.limpiarPantalla();
+             System.out.println("Error, opcion no valida, intente de nuevo. ");
+         }
+     }
+        
+        
+    }
+    
     @Override
     public void efectoDeCasillaModificado() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
